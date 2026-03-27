@@ -3,7 +3,7 @@
 -  Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw 
 - See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
 
-## Emitting LLVM IR from C++
+## Emitting LLVM IR from C++ with clang++
 
 ```C++
 int main(int argc, char const *argv[]) { return 42; }
@@ -22,7 +22,7 @@ Options:
 ```
 Produces the file test.ll, which contains the LLVM IR representation of the original C++ code.
 
-## Producing an executable from LLVM IR
+## Producing an executable from LLVM IR with clang
 
 We can compile the LLVM IR to machine code and execute it using `clang`:
 
@@ -68,7 +68,7 @@ The content of test.ll will look something like this:
 27  !5 = !{!"Homebrew clang version 22.1.1"}
 ```
 
-## lli interpreter
+## lli interpreter: Executing LLVM IR directly
 
 We can also use the lli interpreter to execute the LLVM IR directly without compiling it to machine code:
 
@@ -78,7 +78,7 @@ We can also use the lli interpreter to execute the LLVM IR directly without comp
 42
 ```
 
-## Assembler
+## Assembler: From LLVM IR to .bc
 
 We can also use the llvm-as assembler to convert the LLVM IR into a binary format (.bc):
 
@@ -118,7 +118,7 @@ We can dump the contents of the .bc file with `xxd`:
 00000130: 3668 8770 1887 7798 077c 9003 3b70 0338  6h.p..w..|..;p.8
 ```
 
-## llvm-dis disassembler
+## llvm-dis disassembler: From .bc back to LLVM IR
 
 We can also use the llvm-dis disassembler to convert the .bc file back into human-readable LLVM IR:
 
@@ -126,11 +126,14 @@ We can also use the llvm-dis disassembler to convert the .bc file back into huma
 llvm-dis test.bc -o test_dis.ll
 ```
 
-## clang++ -S: Gnerating native assembly code
+## clang++ -S: Generating native assembly code from llvm IR
 
 Using the option `-S` with `clang++` allows us to generate native assembly code (in our case for x86-64 architecture) from the LLVM IR:
-```
+
+```console
 ➜  hello-llvm clang++ -S test.ll 
+```
+```
 ➜  hello-llvm ls -tr test.*
 test.ll  test.cpp test.s
 ➜  hello-llvm cat -n test.s
