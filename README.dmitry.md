@@ -1,6 +1,7 @@
 ## Programming Language with LLVM. Introduction to LLVM IR and tools
 
 -  Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw 
+- See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
 
 ## Emitting LLVM IR from C++
 
