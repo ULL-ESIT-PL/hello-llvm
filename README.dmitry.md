@@ -158,7 +158,9 @@ test.ll  test.cpp test.s
     19          .cfi_endproc
 ```                             
 
-We can see that the generated assembly code in test.s , and we can compile and execute it as well:
+## Compile and execute the generated assembly code
+
+We can see that the generated assembly code is in test.s, and we can compile and execute it as well:
 
 ```
 ➜  hello-llvm clang++ test.s -o test
