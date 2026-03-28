@@ -1,7 +1,6 @@
 ## Visualizing
 
 Program Visualization using LLVM:
-Watch https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
 
 To visualize the Control Flow Graph (CFG)
 With LLVM version 21:
@@ -13,7 +12,16 @@ Writing '.identity.dot'...
 examples git:(main) ✗ dot -Tpng .identity.dot -o diag.png
 ```
 
+Files:
+
+- [diag.c](/examples/diag.c)
+- [diag.ll](/examples/diag.ll)
+- [.identity.dot](/examples/.identity.dot)
+- [diag.png](/docs/images/diag.png) 
+
 ![/docs/images/diag.png](/docs/images/diag.png)
+
+Watch https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
 
 ## The llvm-bindings package
 
