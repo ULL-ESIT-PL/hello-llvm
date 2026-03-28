@@ -100,7 +100,6 @@ Explanation:
     1 warning generated.
     ```
 
-
 This produce an executable `sdl-cube` that can be run with `./sdl-cube` to [see a rotating cube](https://github.com/ULL-ESIT-PL/complect/blob/casiano/rotating.gif).
 
 ```
