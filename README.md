@@ -33,9 +33,31 @@ A **Control Flow Graph (CFG)** is a graphical representation of all paths that m
 
 ## The llvm-bindings package
 
-The installation of `llvm-bindings` is complicated. The version of llvm that must be installed is 14.
+See the elementary example [examples/hello-llvm-bindings.mjs](/examples/hello-llvm-bindings.mjs) of how to use llvm-bindings to create a function that adds two integers and returns the result.
+
+Be sure to set the LLVM version before running this example to LLVM@14:
+
+                source ./llvm-version.sh 14
+
+Then run the example with:
+
+                node examples/hello-llvm-bindings.mjs
+
+This will print the following LLVM IR code:
+
+                ; ModuleID = 'demo'
+                source_filename = "demo"
+
+                define i32 @add(i32 %0, i32 %1) {
+                entry:
+                %2 = add i32 %0, %1
+                ret i32 %2
+                }
+
 
 ### Installing LLVM on macOS:
+
+The installation of `llvm-bindings` was complicated. The version of llvm that must be installed is 14.
 
 ```
 brew install cmake llvm@14
@@ -48,7 +70,7 @@ You could try a "custom" installation:
 https://github.com/ApsarasX/llvm-bindings?tab=readme-ov-file#custom-llvm-installation
 ```
 
-### Brew notes
+### Brew notes after installing llvm@14
 
 ```
 To use the bundled libc++ please add the following LDFLAGS:
