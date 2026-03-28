@@ -29,6 +29,9 @@ The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
   Backend: llvm
   Compiling: fixtures/fib.cplct
   Output: fixtures/fib.ll
+  ```
+  We can then run the generated llvm code with `lli`:
+  ```
   ➜  complect git:(casiano) lli fixtures/fib.ll
   1
   1
