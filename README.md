@@ -1,3 +1,10 @@
+## Main Goal
+
+Create a lab to translate from [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
+Related work:
+
+- [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano). It uses a PEG for parsing.
+
 ## The llvm-bindings package
 
 See the elementary example [examples/hello-llvm-bindings.mjs](/examples/hello-llvm-bindings.mjs) of how to use llvm-bindings to create a function that adds two integers and returns the result.
