@@ -49,6 +49,8 @@ The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
 
 ### The sdl-cube example
 
+First, install SDL2:
+
 ```
 brew install sdl2
 ```
@@ -58,6 +60,8 @@ sdl2-config --help
 Usage: /usr/local/bin/sdl2-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs] [--static-libs]
 ```
 
+Compile the `sdl-cube` example to llvm:
+
 ```
 ➜  complect git:(casiano) complect -f fixtures/sdl-cube.cplct -b llvm -o fixtures/sdl-cube.ll
 Backend: llvm
@@ -66,12 +70,18 @@ Output: fixtures/sdl-cube.ll
 ➜  complect git:
 ```
 
+Compile the generated llvm code to an executable using `clang`:
 ```
 ➜  complect git:(casiano) xcrun clang fixtures/sdl-cube.ll -o sdl-cube $(sdl2-config --cflags --libs)
 clang: warning: argument unused during compilation: '-I /usr/local/include/SDL2' [-Wunused-command-line-argument]
 warning: overriding the module target triple with x86_64-apple-macosx26.0.0
       [-Woverride-module]
 ```
+Explanation:
+
+- `$(sdl2-config --cflags --libs)` adds the correct include and library flags for SDL2.
+- `xcrun clang ` ensures clang uses the macOS SDK clang.
+
 This produce an executable `sdl-cube` that can be run with `./sdl-cube` to [see a rotating cube](https://github.com/ULL-ESIT-PL/complect/blob/casiano/rotating.gif).
 
 ```
@@ -79,10 +89,6 @@ This produce an executable `sdl-cube` that can be run with `./sdl-cube` to [see 
 -rwxr-xr-x@ 1 casianorodriguezleon  staff  13328 28 mar.  13:20 sdl-cube
 ```
 
-Explanation:
-
-- `$(sdl2-config --cflags --libs)` adds the correct include and library flags for SDL2.
-- `-isysroot $(xcrun --show-sdk-path)` ensures clang uses the correct macOS SDK.
 
 ### The RD parser
 
