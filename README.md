@@ -8,8 +8,7 @@ Related work:
 The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
 
 - Examples in the complect language at folder https://github.com/ULL-ESIT-PL/complect/tree/casiano/fixtures
-- Has the RD parser at folder. Here is the fib example:
-
+- Here is the `fib` example:
   ```
   make a 0
   make b 1
@@ -23,7 +22,26 @@ The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
     print a
   repeat
   ```
-https://github.com/ULL-ESIT-PL/complect/blob/casiano/lib/ast/ast-builder.js
+  
+  The command to compile to llvm is:
+  ```
+  ➜  complect git:(casiano) complect -f fixtures/fib.cplct -b llvm -o fixtures/fib.ll 
+  Backend: llvm
+  Compiling: fixtures/fib.cplct
+  Output: fixtures/fib.ll
+  ➜  complect git:(casiano) lli fixtures/fib.ll
+  1
+  1
+  2
+  3
+  5
+  8
+  13
+  21
+  34
+  55
+  ```
+- Has the RD parser at folder: https://github.com/ULL-ESIT-PL/complect/blob/casiano/lib/ast/ast-builder.js
 
 ## The llvm-bindings package
 
