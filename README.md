@@ -3,7 +3,7 @@
 Create a lab to translate from [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
 Related work:
 
-### Related work
+## Related work: The Complect project
 
 The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
 
