@@ -89,7 +89,16 @@ Explanation:
     warning: overriding the module target triple with x86_64-apple-macosx26.0.0
     This means clang is using your system’s default target triple instead of what’s in the .ll file. It’s just informational and usually not a problem unless you need a specific target.
 
-    Your executable works, so you can safely ignore these warnings! If you want to suppress the unused -I warning, you can remove $(sdl2-config --cflags) when compiling .ll files, but it’s not necessary.
+    Your executable works, so you can safely ignore these warnings! If you want to suppress the unused -I warning:
+
+    ```
+    ➜  complect git:(casiano) ✗ sdl2-config --cflags --libs 
+    -I/usr/local/include/SDL2 -D_THREAD_SAFE
+    -L/usr/local/lib -lSDL2
+    ➜  complect git:(casiano) ✗ xcrun clang fixtures/sdl-cube.ll -L/usr/local/lib -lSDL2 -o sdl-cube       
+    warning: overriding the module target triple with x86_64-apple-macosx26.0.0 [-Woverride-module]
+    1 warning generated.
+    ```
 
 
 This produce an executable `sdl-cube` that can be run with `./sdl-cube` to [see a rotating cube](https://github.com/ULL-ESIT-PL/complect/blob/casiano/rotating.gif).
