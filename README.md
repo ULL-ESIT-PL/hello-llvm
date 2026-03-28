@@ -5,7 +5,7 @@ Related work:
 
 ## Related work: The Complect project
 
-The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
+See the fork of the [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project at ULL-ESIT-PL.
 
 ### The fib example
 
