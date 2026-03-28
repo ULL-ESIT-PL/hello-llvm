@@ -1,0 +1,32 @@
+digraph "CFG for 'identity' function" {
+	label="CFG for 'identity' function";
+
+	Node0x7fcc9e1192a0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370" fontname="Courier",label="{entry:\l|  %a.addr = alloca ptr, align 8\l  %N.addr = alloca i32, align 4\l  %i = alloca i32, align 4\l  %j = alloca i32, align 4\l  %i9 = alloca i32, align 4\l  store ptr %a, ptr %a.addr, align 8\l  store i32 %N, ptr %N.addr, align 4\l  store i32 0, ptr %i, align 4\l  br label %for.cond\l}"];
+	Node0x7fcc9e1192a0 -> Node0x7fcc9e119310;
+	Node0x7fcc9e119310 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.cond:\l|  %0 = load i32, ptr %i, align 4\l  %1 = load i32, ptr %N.addr, align 4\l  %cmp = icmp slt i32 %0, %1\l  br i1 %cmp, label %for.body, label %for.end8\l|{<s0>T|<s1>F}}"];
+	Node0x7fcc9e119310:s0 -> Node0x7fcc9e119860;
+	Node0x7fcc9e119310:s1 -> Node0x7fcc9e119b20;
+	Node0x7fcc9e119860 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.body:\l|  store i32 0, ptr %j, align 4\l  br label %for.cond1\l}"];
+	Node0x7fcc9e119860 -> Node0x7fcc9e119ad0;
+	Node0x7fcc9e119ad0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{for.cond1:\l|  %2 = load i32, ptr %j, align 4\l  %3 = load i32, ptr %N.addr, align 4\l  %cmp2 = icmp slt i32 %2, %3\l  br i1 %cmp2, label %for.body3, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x7fcc9e119ad0:s0 -> Node0x7fcc9e119ed0;
+	Node0x7fcc9e119ad0:s1 -> Node0x7fcc9e11a0e0;
+	Node0x7fcc9e119ed0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{for.body3:\l|  %4 = load ptr, ptr %a.addr, align 8\l  %5 = load i32, ptr %i, align 4\l  %idxprom = sext i32 %5 to i64\l  %arrayidx = getelementptr inbounds ptr, ptr %4, i64 %idxprom\l  %6 = load ptr, ptr %arrayidx, align 8\l  %7 = load i32, ptr %j, align 4\l  %idxprom4 = sext i32 %7 to i64\l  %arrayidx5 = getelementptr inbounds i32, ptr %6, i64 %idxprom4\l  store i32 0, ptr %arrayidx5, align 4\l  br label %for.inc\l}"];
+	Node0x7fcc9e119ed0 -> Node0x7fcc9e11a090;
+	Node0x7fcc9e11a090 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{for.inc:\l|  %8 = load i32, ptr %j, align 4\l  %inc = add nsw i32 %8, 1\l  store i32 %inc, ptr %j, align 4\l  br label %for.cond1, !llvm.loop !6\l}"];
+	Node0x7fcc9e11a090 -> Node0x7fcc9e119ad0;
+	Node0x7fcc9e11a0e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.end:\l|  br label %for.inc6\l}"];
+	Node0x7fcc9e11a0e0 -> Node0x7fcc9e11a130;
+	Node0x7fcc9e11a130 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.inc6:\l|  %9 = load i32, ptr %i, align 4\l  %inc7 = add nsw i32 %9, 1\l  store i32 %inc7, ptr %i, align 4\l  br label %for.cond, !llvm.loop !8\l}"];
+	Node0x7fcc9e11a130 -> Node0x7fcc9e119310;
+	Node0x7fcc9e119b20 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370" fontname="Courier",label="{for.end8:\l|  store i32 0, ptr %i9, align 4\l  br label %for.cond10\l}"];
+	Node0x7fcc9e119b20 -> Node0x7fcc9e119b90;
+	Node0x7fcc9e119b90 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.cond10:\l|  %10 = load i32, ptr %i9, align 4\l  %11 = load i32, ptr %N.addr, align 4\l  %cmp11 = icmp slt i32 %10, %11\l  br i1 %cmp11, label %for.body12, label %for.end19\l|{<s0>T|<s1>F}}"];
+	Node0x7fcc9e119b90:s0 -> Node0x7fcc9e119d40;
+	Node0x7fcc9e119b90:s1 -> Node0x7fcc9e11b410;
+	Node0x7fcc9e119d40 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.body12:\l|  %12 = load ptr, ptr %a.addr, align 8\l  %13 = load i32, ptr %i9, align 4\l  %idxprom13 = sext i32 %13 to i64\l  %arrayidx14 = getelementptr inbounds ptr, ptr %12, i64 %idxprom13\l  %14 = load ptr, ptr %arrayidx14, align 8\l  %15 = load i32, ptr %i9, align 4\l  %idxprom15 = sext i32 %15 to i64\l  %arrayidx16 = getelementptr inbounds i32, ptr %14, i64 %idxprom15\l  store i32 1, ptr %arrayidx16, align 4\l  br label %for.inc17\l}"];
+	Node0x7fcc9e119d40 -> Node0x7fcc9e11b3c0;
+	Node0x7fcc9e11b3c0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{for.inc17:\l|  %16 = load i32, ptr %i9, align 4\l  %inc18 = add nsw i32 %16, 1\l  store i32 %inc18, ptr %i9, align 4\l  br label %for.cond10, !llvm.loop !9\l}"];
+	Node0x7fcc9e11b3c0 -> Node0x7fcc9e119b90;
+	Node0x7fcc9e11b410 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370" fontname="Courier",label="{for.end19:\l|  ret void\l}"];
+}

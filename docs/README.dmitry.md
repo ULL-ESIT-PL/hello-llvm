@@ -5,6 +5,8 @@
 
 ## Emitting LLVM IR from C++ with clang++
 
+File [test.cpp](test.cpp)
+
 ```C++
 int main(int argc, char const *argv[]) { return 42; }
 ```
@@ -167,3 +169,10 @@ We can see that the generated assembly code is in test.s, and we can compile and
 ➜  hello-llvm ./test; echo $?
 42
 ```
+
+## References
+
+* What Is LLVM?https://www.youtube.com/watch?v=HecW5byOrUY&list=PLDSTpI7ZVmVnvqtebWnnI8YeB8bJoGOyv by CompilersLaboratory
+* Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw 
+* See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
+
