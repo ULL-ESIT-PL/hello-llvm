@@ -81,6 +81,16 @@ Explanation:
 
 - `$(sdl2-config --cflags --libs)` adds the correct include and library flags for SDL2.
 - `xcrun clang ` ensures clang uses the macOS SDK clang.
+- Those warnings are common and not critical:
+
+    clang: warning: argument unused during compilation: '-I /usr/local/include/SDL2'
+    This happens because the -I flag is for C/C++ source files, but you’re compiling LLVM IR (.ll), so the include path isn’t needed at this stage. It’s safe to ignore.
+
+    warning: overriding the module target triple with x86_64-apple-macosx26.0.0
+    This means clang is using your system’s default target triple instead of what’s in the .ll file. It’s just informational and usually not a problem unless you need a specific target.
+
+    Your executable works, so you can safely ignore these warnings! If you want to suppress the unused -I warning, you can remove $(sdl2-config --cflags) when compiling .ll files, but it’s not necessary.
+
 
 This produce an executable `sdl-cube` that can be run with `./sdl-cube` to [see a rotating cube](https://github.com/ULL-ESIT-PL/complect/blob/casiano/rotating.gif).
 
