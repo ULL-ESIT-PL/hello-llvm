@@ -60,14 +60,13 @@ sdl2-config --help
 Usage: /usr/local/bin/sdl2-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs] [--static-libs]
 ```
 
-Compile the `sdl-cube` example to llvm:
+Compile [the `sdl-cube` example](https://github.com/ULL-ESIT-PL/complect/blob/casiano/fixtures/sdl-cube.cplct) to llvm:
 
 ```
 ➜  complect git:(casiano) complect -f fixtures/sdl-cube.cplct -b llvm -o fixtures/sdl-cube.ll
 Backend: llvm
 Compiling: fixtures/sdl-cube.cplct
 Output: fixtures/sdl-cube.ll
-➜  complect git:
 ```
 
 Compile the generated llvm code to an executable using `clang`:
