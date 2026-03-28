@@ -3,7 +3,27 @@
 Create a lab to translate from [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
 Related work:
 
-- [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano). It uses a PEG for parsing.
+### Related work
+
+The [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project.
+
+- Examples in the complect language at folder https://github.com/ULL-ESIT-PL/complect/tree/casiano/fixtures
+- Has the RD parser at folder. Here is the fib example:
+
+  ```
+  make a 0
+  make b 1
+  make t 0
+  make n 10
+  as n > 0
+    n = n - 1
+    assign t a
+    assign a b
+    b = b + t
+    print a
+  repeat
+  ```
+https://github.com/ULL-ESIT-PL/complect/blob/casiano/lib/ast/ast-builder.js
 
 ## The llvm-bindings package
 
