@@ -1,17 +1,37 @@
+## Visualizing 
+
+Program Visualization using LLVM: 
+Watch https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
+
+Con la versión 21 de LLVM: 
+
+``` 
+➜  examples git:(main) ✗ clang -S -emit-llvm -fno-discard-value-names diag.c -o diag.ll
+➜  examples git:(main) ✗ opt -passes=dot-cfg diag.ll -disable-output                   
+Writing '.identity.dot'...
+examples git:(main) ✗ dot -Tpng .identity.dot -o diag.png
+```
+
+![/docs/images/diag.png](/docs/images/diag.png)
+
+## The llvm-bindings package
+
 La instalación de llvm-bindings es complicada. La versión de llvm que hay que instalar es la 14.
 
-## Instalación en macOS:
+### Instalación de LLVM en macOS:
 
 brew install cmake llvm@14
 npm install llvm-bindings
 
 Se podría intentar hacer las instalación "custom": 
 
+```
 https://github.com/ApsarasX/llvm-bindings?tab=readme-ov-file#custom-llvm-installation
 ```
 
-## Notas de brew 
+### Notas de brew 
 
+```
 To use the bundled libc++ please add the following LDFLAGS:
   LDFLAGS="-L/usr/local/opt/llvm@14/lib/c++ -Wl,-rpath,/usr/local/opt/llvm@14/lib/c++"
 
@@ -33,19 +53,34 @@ Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
 Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
 ```
 
-## Mi .zshrc:
+### llvm-version.sh 
 
 ```zsh
-➜  complect git:(main) ✗ tail -n 4 ~/.zshrc 
-export PATH="/usr/local/opt/llvm@14/bin:$PATH"
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm@14/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm@14/include"
-export CMAKE_PREFIX_PATH="/usr/local/opt/llvm@14"% 
+➜  hello-llvm git:(main) cat llvm-version.sh 
+# Read argument from command line. If it is 14 then set the environment variables for llvm@14, otherwise 
+# set to 21
+# Execute this script in the terminal with `source llvm-version.sh 14` or `source llvm-version.sh 21` to set the environment variables for the desired LLVM version.
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  echo "Usage: source llvm-version.sh [14|21]"
+  return
+fi
+if [ "$1" = "14" ]; then
+  export PATH="/usr/local/opt/llvm@14/bin:$PATH"
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm@14/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm@14/include"
+  export CMAKE_PREFIX_PATH="/usr/local/opt/llvm@14"
+else
+  export PATH="/usr/local/opt/llvm@21/bin:$PATH"
+  export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm@21/lib"
+  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm@21/include"
+  export CMAKE_PREFIX_PATH="/usr/local/opt/llvm@21"
+fi
 ```
 
-## Error installing llvm-bindings
+### Error installing llvm-bindings with LLVM 21
 
-When trying to install llvm-bindings, I got the following error:
+When trying to install llvm-bindings with version of LLVM 21, I got the following error:
 
 ```
 ➜  complect git:(main) npm i
@@ -69,7 +104,7 @@ https://github.com/ApsarasX/llvm-bindings/issues/54
 > Hey, if you are still looking at this for an answer, you could run `$env:CMAKE_PREFIX_PATH="C:\Users\risharan\scoop\apps\llvm\current\lib\cmake\llvm"` and then run npm install. You can look at the cmake (not cmake-js) documentation for details the CMAKE_PREFIX_PATH env variable.
 
 
-### Funciona?
+### llvm-bindings in Codespaces
 
 Al final co  LLVM 14 parece que se completa la instalación
 
