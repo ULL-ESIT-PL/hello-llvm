@@ -7,7 +7,7 @@ Related work:
 
 See the fork of the [Complect](https://github.com/ULL-ESIT-PL/complect/tree/casiano) project at ULL-ESIT-PL.
 
-The initial implementation of this compiler was created by arrod Connolly, Kabam Games Inc to support a talk he presented at **OpenJS World 2022**. You can find the contents of this talk here. [Slides](https://static.sched.com/hosted_files/openjsworld2022/78/OpenJSW%20World%202022.pdf) [Video](https://youtu.be/aPHf_-N2yTU)
+The initial implementation of this compiler was created by Arrod Connolly, (Kabam Games Inc) to support a talk he presented at **OpenJS World 2022**. You can find the contents of this talk here. [Slides](https://static.sched.com/hosted_files/openjsworld2022/78/OpenJSW%20World%202022.pdf) [Video](https://youtu.be/aPHf_-N2yTU)
 
 
 ### The fib example
