@@ -83,11 +83,12 @@ Explanation:
 - `xcrun clang ` ensures clang uses the macOS SDK clang.
 - Those warnings are common and not critical:
 
-  clang: warning: argument unused during compilation: '-I /usr/local/include/SDL2'
-  This happens because the -I flag is for C/C++ source files, but you’re compiling LLVM IR (.ll), so the  include path isn’t needed at this stage. It’s safe to ignore.  
-  warning: overriding the module target triple with x86_64-apple-macosx26.0.0
-  This means clang is using your system’s default target triple instead of what’s in the .ll file. It’s just  informational and usually not a problem unless you need a specific target.  
-  If we want to suppress the unused -I warning:
+  **clang: warning**: `argument unused during compilation: '-I /usr/local/include/SDL2'`
+  This happens because the -I flag is for C/C++ source files, but we’re compiling LLVM IR (.ll), so the  include path isn’t needed at this stage. It’s safe to ignore.  
+
+  **overriding warning**: `overriding the module target triple with x86_64-apple-macosx26.0.0`
+  This means `clang` is using our system’s default target triple instead of what’s in the `.ll` file. It’s just  informational and usually not a problem unless we need a specific target.  
+  If we want to suppress the unused -I warning we do:
 
     ```
     ➜  complect git:(casiano) ✗ sdl2-config --cflags --libs 
