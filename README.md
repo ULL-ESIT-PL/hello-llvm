@@ -1,14 +1,14 @@
-## Visualizing 
+## Visualizing
 
-Program Visualization using LLVM: 
+Program Visualization using LLVM:
 Watch https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
 
-To visualize de Control Flow Graph (CFG) 
-Con la versión 21 de LLVM: 
+To visualize the Control Flow Graph (CFG)
+With LLVM version 21:
 
-``` 
+```
 ➜  examples git:(main) ✗ clang -S -emit-llvm -fno-discard-value-names diag.c -o diag.ll
-➜  examples git:(main) ✗ opt -passes=dot-cfg diag.ll -disable-output                   
+➜  examples git:(main) ✗ opt -passes=dot-cfg diag.ll -disable-output
 Writing '.identity.dot'...
 examples git:(main) ✗ dot -Tpng .identity.dot -o diag.png
 ```
@@ -17,20 +17,22 @@ examples git:(main) ✗ dot -Tpng .identity.dot -o diag.png
 
 ## The llvm-bindings package
 
-La instalación de llvm-bindings es complicada. La versión de llvm que hay que instalar es la 14.
+The installation of `llvm-bindings` is complicated. The version of llvm that must be installed is 14.
 
-### Instalación de LLVM en macOS:
+### Installing LLVM on macOS:
 
+```
 brew install cmake llvm@14
 npm install llvm-bindings
+```
 
-Se podría intentar hacer las instalación "custom": 
+You could try a "custom" installation:
 
 ```
 https://github.com/ApsarasX/llvm-bindings?tab=readme-ov-file#custom-llvm-installation
 ```
 
-### Notas de brew 
+### Brew notes
 
 ```
 To use the bundled libc++ please add the following LDFLAGS:
@@ -54,11 +56,13 @@ Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
 Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
 ```
 
-### llvm-version.sh 
+### Script to set LLVM version
+
+I have both LLVM 14 and LLVM 21 installed. I created a script to set the environment variables for the desired version:
 
 ```zsh
-➜  hello-llvm git:(main) cat llvm-version.sh 
-# Read argument from command line. If it is 14 then set the environment variables for llvm@14, otherwise 
+➜  hello-llvm git:(main) cat llvm-version.sh
+# Read argument from command line. If it is 14 then set the environment variables for llvm@14, otherwise
 # set to 21
 # Execute this script in the terminal with `source llvm-version.sh 14` or `source llvm-version.sh 21` to set the environment variables for the desired LLVM version.
 
@@ -81,7 +85,7 @@ fi
 
 ### Error installing llvm-bindings with LLVM 21
 
-When trying to install llvm-bindings with version of LLVM 21, I got the following error:
+When trying to install `llvm-bindings` with LLVM version 21, I got the following error:
 
 ```
 ➜  complect git:(main) npm i
@@ -98,7 +102,7 @@ npm error command failed
 npm error command sh -c cmake-js compile
 ```
 
-See Issue:
+See issue:
 
 https://github.com/ApsarasX/llvm-bindings/issues/54
 
@@ -107,15 +111,15 @@ https://github.com/ApsarasX/llvm-bindings/issues/54
 
 ### llvm-bindings in Codespaces
 
-Al final co  LLVM 14 parece que se completa la instalación
+In the end, with LLVM 14 it seems the installation completes.
 
-Lo he intentado en un codespace de GitHub y no ha funcionado.
+I tried it in a GitHub Codespace and it did not work.
 
-No puedes instalar LLVM 14 directamente con apt en Ubuntu 24.04 (noble) porque el repositorio no existe. Debes compilar desde fuente, usar paquetes de otra versión, o usar un contenedor.
+You cannot install LLVM 14 directly with apt on Ubuntu 24.04 (noble) because the repository does not exist. You must compile from source, use packages from another version, or use a container.
 
 ## References
 
-* What Is LLVM?https://www.youtube.com/watch?v=HecW5byOrUY&list=PLDSTpI7ZVmVnvqtebWnnI8YeB8bJoGOyv by CompilersLaboratory
-* Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw 
+* What Is LLVM? https://www.youtube.com/watch?v=HecW5byOrUY&list=PLDSTpI7ZVmVnvqtebWnnI8YeB8bJoGOyv by CompilersLaboratory
+* Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw
 * See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
 
