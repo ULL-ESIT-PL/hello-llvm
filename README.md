@@ -295,7 +295,7 @@ define i32 @main() {
 
 to make it work we have the `declare i32 @printf(ptr, ...)` declaration and also a `@main` entry point.
 
-The picture shows the Compiler Explorer interface with LLVM IR code in the left pane:
+The picture shows the Compiler Explorer interface with LLVM IR code in the left pane, the assembly output in the middle pane, and the execution output in the right pane.
 
 
 ![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
