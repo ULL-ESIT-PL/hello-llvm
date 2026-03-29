@@ -237,6 +237,65 @@ I tried it in a GitHub Codespace and it did not work.
 
 You cannot install LLVM 14 directly with apt on Ubuntu 24.04 (noble) because the repository does not exist. You must compile from source, use packages from another version, or use a container.
 
+## Informal and Simplistic LLVM IR grammar
+
+``` 
+module      ::= (function | global)*
+
+function    ::= 'define' type '@' name '(' params ')' '{' block* '}'
+
+block       ::= label ':' instruction*
+
+instruction ::= assignment | terminator
+
+assignment  ::= '%' name '=' op
+
+op          ::= 'add' type value ',' value
+              | 'sub' type value ',' value
+              | 'load' type ',' type '*'
+              | ...
+
+terminator  ::= 'ret' type value
+              | 'br' 'label' '%' name
+              | 'br' 'i1' value ',' 'label' '%' name ',' 'label' '%' name
+```
+
+- LLVM IR is strongly typed.
+- Global symbols begin with an at sign (`@`).
+- Local symbols begin with a percent symbol (`%`).
+- All symbols must be declared or defined.
+- If in doubt, consult the Language Reference Manual: https://llvm.org/docs/LangRef.html
+
+## Running LLVM IR in Compiler Explorer
+
+Use LLVM IR as the source language + Clang as compiler
+
+Compiler Explorer **does** support LLVM IR as a source language. Select:
+- **Language: LLVM IR**
+- **Compiler: Clang** (any version)
+
+Clang accepts `.ll` files as input and can compile them to a binary. Then if you add an **Executor** pane, it will run the resulting binary — so you effectively write IR and execute it.
+
+This is the closest thing to running IR directly inside Compiler Explorer. Your `printf` example would work here, as long as you have the `declare i32 @printf(ptr, ...)` declaration and a `@main` entry point.
+
+![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
+
+The picture shows the Compiler Explorer interface with LLVM IR code in the left pane:
+
+```ll
+@variable = global i32 21
+@fmt = constant [4 x i8] c"%d\0A\00"
+declare i32 @printf(ptr, ...)
+define i32 @main() {
+    %1 = load i32, i32* @variable  ; load the global variable
+    %2 = mul i32 %1, 2
+    store i32 %2, i32* @variable   ; store instruction to write to global variable
+    call i32 (ptr, ...) @printf(ptr @fmt, i32 %1)
+    ret i32 %2
+}
+```
+
+
 ## Visualizing
 
 Program Visualization using LLVM:
@@ -274,7 +333,8 @@ A **Control Flow Graph (CFG)** is a graphical representation of all paths that m
 
 * [My First Language Frontend with LLVM Tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
   * [fanyi-zhao/Kaleidoscope](https://github.com/fanyi-zhao/Kaleidoscope) repo at GitHub
-* [Mapping High-Level Constructs to LLVM IR](https://mapping-high-level-constructs-to-llvm-ir.readthedocs.io/en/latest/a-quick-primer/index.html)
+* [Mapping High-Level Constructs to LLVM IR](https://mapping-high-level-constructs-to-llvm-ir.readthedocs.io/en/latest/a-quick-primer/index.html) by Michael Rodler and Mikael Egevig
+* [LLVM Language Reference Manual](https://llvm.org/docs/LangRef.html)
 * What Is LLVM? https://www.youtube.com/watch?v=HecW5byOrUY&list=PLDSTpI7ZVmVnvqtebWnnI8YeB8bJoGOyv by CompilersLaboratory
 * See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
   * Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw
