@@ -268,19 +268,17 @@ terminator  ::= 'ret' type value
 
 ## Running LLVM IR in Compiler Explorer
 
-Use LLVM IR as the source language + Clang as compiler
 
-Compiler Explorer **does** support LLVM IR as a source language. Select:
+[Compiler Explorer](https://godbolt.org/) **does** support LLVM IR as a source language. Use LLVM IR as the source language + Clang as compiler. Select:
+
 - **Language: LLVM IR**
 - **Compiler: Clang** (any version)
 
 Clang accepts `.ll` files as input and can compile them to a binary. Then if you add an **Executor** pane, it will run the resulting binary — so you effectively write IR and execute it.
 
-This is the closest thing to running IR directly inside Compiler Explorer. Your `printf` example would work here, as long as you have the `declare i32 @printf(ptr, ...)` declaration and a `@main` entry point.
+This is the closest thing to running IR directly inside Compiler Explorer. 
 
-![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
-
-The picture shows the Compiler Explorer interface with LLVM IR code in the left pane:
+Given this input:
 
 ```ll
 @variable = global i32 21
@@ -294,6 +292,13 @@ define i32 @main() {
     ret i32 %2
 }
 ```
+
+to make it work we have the `declare i32 @printf(ptr, ...)` declaration and also a `@main` entry point.
+
+The picture shows the Compiler Explorer interface with LLVM IR code in the left pane:
+
+
+![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
 
 
 ## Visualizing
