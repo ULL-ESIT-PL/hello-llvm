@@ -19,7 +19,7 @@ LLVM programs are composed of Module’s, each of which is a translation unit of
 - global variables, and 
 - symbol table entries. 
 
-Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. Here is an example of the “hello world” module:
+Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. Here is an example of the `“hello world”` module:
 
 ```ll 
 ; Declare the string constant as a global constant.
