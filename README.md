@@ -12,6 +12,8 @@ See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-b
 
 ## Informal and Simplistic LLVM IR grammar
 
+See https://llvm.org/docs/LangRef.html#syntax
+
 ``` 
 module      ::= (function | global)*
 
