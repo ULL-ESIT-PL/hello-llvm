@@ -116,7 +116,7 @@ The type of an address is `ptr`.
 
 ![]([memory.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/memory.svg))
 
-`Value`s are typically moved from or to memory using loads or stores.
+`Value`s are typically moved from or to memory using `load` or `store` instructions.
 
 In this characterization, memory is _just_ a sequence of bytes. Memory does not
 hold information about the types of `Value`s that were previously stored in it;
