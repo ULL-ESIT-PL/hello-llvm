@@ -410,10 +410,10 @@ and therefore its type is a pointer type (`ptr`).
 It is a useful exercise to read the LLVM documentation on some of the topics
 discussed:
 
-* The existing [linkage types]. There are a lot of subtle variations between
+* The existing [linkage types](https://llvm.org/docs/LangRef.html#linkage-types). There are a lot of subtle variations between
 the two extremes of: "this symbol is only visible in this Module" and "this
 symbol is visible in all Modules"
-* The full specification for [functions] and [global variables]. Don't try to
+* The full specification for [functions](https://llvm.org/docs/LangRef.html#functions) and [global variables](https://llvm.org/docs/LangRef.html#global-variables). Don't try to
 understand everything there, but note how many details can be added to those
 global symbols.
 
