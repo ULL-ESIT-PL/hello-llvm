@@ -65,6 +65,28 @@ would no longer be language-agnostic. Because of this, one can inspect IR and
 understand how language concepts are mapped to simpler and lower level code
 abstractions.
 
+## Goals of the IR
+
+In the compilation pipeline, the IR sits between representations specific to
+source languages and representations specific to the target machine:
+
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position.svg)
+
+We can derive some of its design goals from where the IR is positioned in the
+compilation pipeline. It must be:
+
+* Able to represent concepts from any high level language,
+* Amenable to analysis required by "optimizing" transformations,
+* Able to represent concepts required by target specific representations.
+
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position_and_goals.svg)
+
+LLVM's IR attempts to achieve these design goals by:
+
+* Being a RISC-like language,
+* Having a type system,
+* Being highly configurable.
+
 
 # LLVM's IR Core Concepts - Values, Registers, Memory
 
@@ -123,7 +145,7 @@ hold information about the types of `Value`s that were previously stored in it;
 it is how we use memory addresses that give meaning (a type) to a sequence of
 bytes. We will come back to this when we talk about instructions.
 
-# Registers have Names, Memory has Addresses
+## Registers have Names, Memory has Addresses
 
 Note the difference in the definition of registers and memory: registers have
 names but not addresses (registers are _not_ memory locations). Memory does not
@@ -134,7 +156,7 @@ register, we use the _register's name_; to access a `Value` in memory, we
 use its _memory address_, which may be placed into a register.
 
 
-# Instructions
+## Instructions
 
 Having defined `Values`, registers, and memory, we're now ready to talk about
 instructions.
@@ -179,7 +201,7 @@ the `Function` exits.
 
 The second instruction, `store` , does not produce a `Value`. It takes the integer `i32` value in the register`%result`, and stores the value into the memory location stored in the register `%address`.
 
-# Memory Does Not Have a Type!
+## Memory Does Not Have a Type!
 
 Recall this paragraph from our memory definition:
 
@@ -196,30 +218,9 @@ If you're using a version of LLVM prior to April 2022, you may see pointer
 types that carry a "base type" with them, like `i32*`. These are being phased
 out, soon there will only be `ptr`.
 
-## Goals of the IR
-
-In the compilation pipeline, the IR sits between representations specific to
-source languages and representations specific to the target machine:
-
-![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position.svg)
-
-We can derive some of its design goals from where the IR is positioned in the
-compilation pipeline. It must be:
-
-* Able to represent concepts from any high level language,
-* Amenable to analysis required by "optimizing" transformations,
-* Able to represent concepts required by target specific representations.
-
-![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position_and_goals.svg)
-
-LLVM's IR attempts to achieve these design goals by:
-
-* Being a RISC-like language,
-* Having a type system,
-* Being highly configurable.
 
 
-## On the LLVM IR Syntax
+# On the LLVM IR Syntax
 
 See https://llvm.org/docs/LangRef.html#syntax
 
@@ -249,27 +250,6 @@ define i32 @main() {
 !foo = !{!0}
 ```
 
-``` 
-module      ::= (function | global)*
-
-function    ::= 'define' type '@' name '(' params ')' '{' block* '}'
-
-block       ::= label ':' instruction*
-
-instruction ::= assignment | terminator
-
-assignment  ::= '%' name '=' op
-
-op          ::= 'add' type value ',' value
-              | 'sub' type value ',' value
-              | 'load' type ',' type '*'
-              | ...
-
-terminator  ::= 'ret' type value
-              | 'br' 'label' '%' name
-              | 'br' 'i1' value ',' 'label' '%' name ',' 'label' '%' name
-```
-
 - LLVM IR is strongly typed.
 - Global symbols begin with an at sign (`@`).
 - Local symbols begin with a percent symbol (`%`).
@@ -277,7 +257,7 @@ terminator  ::= 'ret' type value
 - If in doubt, consult the Language Reference Manual: https://llvm.org/docs/LangRef.html
 
 
-## References
+# References
 
 * https://blog.piovezan.ca/ by Felipe de Azevedo
 * Felipe de Azevedo full animation of the LLVM IR presentation:https://blog.piovezan.ca/compilers/llvm_ir_animation/llvm_ir.html
