@@ -49,22 +49,6 @@ would no longer be language-agnostic. Because of this, one can inspect IR and
 understand how language concepts are mapped to simpler and lower level code
 abstractions.
 
-## Different Languages, Same IR
-
-Steps 1-5 are specific to the source language of the input program, whereas all
-other steps are agnostic to the language; the IR is the first such agnostic
-representation. Using this scheme, one can conceive different compilers that
-all share the "middle" and "back"-ends of the sequence above:
-
-![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg)
-
-As a side-effect of a language-agnostic IR, the behavior required by the input
-language specification must be captured using generic mechanisms provided by
-the IR; the language specification can't exist in that level, otherwise it
-would no longer be language-agnostic. Because of this, one can inspect IR and
-understand how language concepts are mapped to simpler and lower level code
-abstractions.
-
 ## Goals of the IR
 
 In the compilation pipeline, the IR sits between representations specific to
