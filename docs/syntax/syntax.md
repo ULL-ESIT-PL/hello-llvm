@@ -371,7 +371,7 @@ were using static to mean "local to this translation unit", and so it gets
 namespace to the variable, but it can still be accessed by other translation
 units.
 
-You can see these in action [in Godbolt].
+You can see these in action [in Godbolt](https://godbolt.org/z/4nbdede45).
 
 
 ## Functions
