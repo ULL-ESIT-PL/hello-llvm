@@ -10,7 +10,7 @@ See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
 
 See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
 
-## On the LLVM IR Syntax
+## On the LLVM IR 
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
 
