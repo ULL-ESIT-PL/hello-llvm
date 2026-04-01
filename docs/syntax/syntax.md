@@ -406,6 +406,8 @@ returns the result (`ret` instruction).
 What is the type of `@foo`? Like all global symbols, it defines a memory region
 and therefore its type is a pointer type (`ptr`).
 
+![](/docs/images/functions.png)
+
 ## Further Reading
 
 It is a useful exercise to read the LLVM documentation on some of the topics
