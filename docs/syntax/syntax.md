@@ -242,7 +242,8 @@ always start with the `@` symbol, for example: `@x`, `@__foo` and `@main`.
 Unlike registers, the name of a global symbol may have semantic meaning in the
 program; in other words, global symbols have **linkage**. For example, a global
 symbol may have `external` linkage, which means its name is visible to _other
-Modules_. For such a symbol, it would be illegal to rename it: doing so could
+Modules_. Or `internal` linkage, which means its name is only visible within the
+same Module. For such a symbol, it would be illegal to rename it: doing so could
 invalidate code in other Modules.
 
 Global symbols define memory regions allocated at compilation time. For this
