@@ -114,7 +114,7 @@ Memory is a sequence of bytes, each of which has an address. Addresses, also
 known as pointers, are `Value`s and therefore may be placed into a register.
 The type of an address is `ptr`.
 
-![](memory.svg){style="display:block; margin: auto; scale: 150%"}
+![]([memory.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/memory.svg))
 
 `Value`s are typically moved from or to memory using loads or stores.
 
