@@ -2,14 +2,6 @@
 
 Create a lab to translate from [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
 
-## Related work: The Complect project
-
-See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
-
-## The llvm-bindings package
-
-See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
-
 ## Introduction to LLVM IR 
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
@@ -84,6 +76,13 @@ See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-f
 
 See https://github.com/ULL-ESIT-PL/calc2llvmIR/blob/main/README.md
 
+## Related work: The Complect project
+
+See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
+
+## The llvm-bindings package
+
+See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
 
 ## References
 
