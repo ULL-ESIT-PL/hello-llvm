@@ -38,7 +38,7 @@ other steps are agnostic to the language; the IR is the first such agnostic
 representation. Using this scheme, one can conceive different compilers that
 all share the "middle" and "back"-ends of the sequence above:
 
-![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg){style="display:block; margin: auto;"}
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg)
 
 As a side-effect of a language-agnostic IR, the behavior required by the input
 language specification must be captured using generic mechanisms provided by
