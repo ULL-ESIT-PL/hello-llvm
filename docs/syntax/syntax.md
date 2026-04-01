@@ -252,12 +252,12 @@ For example, if we declare a global variable of type `i32` called `x`, the type
 of the `Value` `@x` is `ptr`. To access the underlying integer, we must first
 load from that address.
 
-There are two kinds of global symbols: global variables and functions.
+There are two kinds of global symbols: **global variables** and **functions**.
 
 ## Global Variables
 
-As a global symbol, global variables have a name and linkage. Additionally,
-they require a type and a _constant_ initial `Value`:
+As a global symbol, global variables have a **name** and **linkage**. Additionally,
+they require a **type** and a _constant_ **initial** `Value`:
 
 ```llvm
 @gv1 = external global float 1.0
