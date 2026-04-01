@@ -6,7 +6,7 @@ Name mangling is the compiler process of encoding extra information into symbol 
 - function name
 - parameter types
 - cv/ref qualifiers
-- sometimes calling convention and ABI details
+- sometimes calling convention and Application Binary Interface (ABI)) details
 
 Why:
 - Linkers only see symbol names, not high-level language constructs.
