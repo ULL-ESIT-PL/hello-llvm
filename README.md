@@ -2,6 +2,8 @@
 
 Create a lab for PL 25/26 to translate from [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
 
+See https://github.com/ULL-ESIT-PL/calc2llvmIR/ for a simple translator from arithmetic expressions to LLVM IR.
+
 ## Introduction to LLVM IR 
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
