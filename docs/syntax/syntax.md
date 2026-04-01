@@ -346,8 +346,8 @@ static const int static_const_int = 3;
 // @_ZL16static_const_int = internal constant i32 3
 ```
 
-* Name mangling can now be observed.
-* All three variables have internal linkage.
+* Name [mangling](name-mangling.md) can now be observed.
+* All three variables have internal linkage (which means their names are only visible within the same module).
 
 
 Compare these static variables to what happens with a _class_ static variable:
