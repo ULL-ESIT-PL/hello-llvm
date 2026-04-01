@@ -47,6 +47,44 @@ would no longer be language-agnostic. Because of this, one can inspect IR and
 understand how language concepts are mapped to simpler and lower level code
 abstractions.
 
+## Different Languages, Same IR
+
+Steps 1-5 are specific to the source language of the input program, whereas all
+other steps are agnostic to the language; the IR is the first such agnostic
+representation. Using this scheme, one can conceive different compilers that
+all share the "middle" and "back"-ends of the sequence above:
+
+![](more_frontends.svg){style="display:block; margin: auto;"}
+
+As a side-effect of a language-agnostic IR, the behavior required by the input
+language specification must be captured using generic mechanisms provided by
+the IR; the language specification can't exist in that level, otherwise it
+would no longer be language-agnostic. Because of this, one can inspect IR and
+understand how language concepts are mapped to simpler and lower level code
+abstractions.
+
+# Goals of the IR
+
+In the compilation pipeline, the IR sits between representations specific to
+source languages and representations specific to the target machine:
+
+![](ir_position.svg){style="display:block; margin: auto;"}
+
+We can derive some of its design goals from where the IR is positioned in the
+compilation pipeline. It must be:
+
+* Able to represent concepts from any high level language,
+* Amenable to analysis required by "optimizing" transformations,
+* Able to represent concepts required by target specific representations.
+
+![](ir_position_and_goals.svg){style="display:block; margin: auto;"}
+
+LLVM's IR attempts to achieve these design goals by:
+
+* Being a RISC-like language,
+* Having a type system,
+* Being highly configurable.
+
 
 ## On the LLVM IR Syntax
 
