@@ -1,3 +1,5 @@
+# How a dynamic library patches in a symbol from other library?
+
 At a high level, it happens through dynamic linking and relocation.
 
 1. A shared library leaves some symbol references unresolved
