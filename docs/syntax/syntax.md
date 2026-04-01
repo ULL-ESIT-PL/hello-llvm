@@ -95,7 +95,7 @@ Registers have _names_, and we use their _name_ to access the underlying `Value`
 Any name starting with the `%` symbol is the name of a register. For example:
 `%0, %hi, %___` are all register names.
 
-![](registers.svg){style="display:block; margin: auto;"}
+![]([registers.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/registers.svg))
 
 The exact name of a register carries no semantic meaning in the program,
 therefore registers may be renamed at will.
