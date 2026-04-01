@@ -10,9 +10,34 @@ See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
 
 See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
 
-## On the LLVM IR 
+## Introduction to LLVM IR 
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
+
+## Running LLVM IR with Clang and LLVMCli
+
+See files
+
+- [examples/factorial.ll](examples/factorial.ll)
+- [examples/factorial-main.ll](examples/factorial-main.ll)
+
+In my mac OS, I have LLVM 14 and 21 installed. To switch between them, I use the `
+[llvm-version.sh](llvm-version.sh) script:
+
+```bash
+source llvm-version.sh 14  # to use LLVM 14
+source llvm-version.sh 21  # to use LLVM 21
+```
+
+then compile and link the two IR files with:
+
+```bash
+➜  hello-llvm git:(main) ✗ clang examples/factorial-main.ll examples/factorial.ll -o 
+tmp/f
+➜  hello-llvm git:(main) ✗ tmp/f
+120
+```
+
 
 ## Running LLVM IR in Compiler Explorer
 
