@@ -54,7 +54,7 @@ other steps are agnostic to the language; the IR is the first such agnostic
 representation. Using this scheme, one can conceive different compilers that
 all share the "middle" and "back"-ends of the sequence above:
 
-![](more_frontends.svg){style="display:block; margin: auto;"}
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg)
 
 As a side-effect of a language-agnostic IR, the behavior required by the input
 language specification must be captured using generic mechanisms provided by
@@ -68,7 +68,7 @@ abstractions.
 In the compilation pipeline, the IR sits between representations specific to
 source languages and representations specific to the target machine:
 
-![](ir_position.svg){style="display:block; margin: auto;"}
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position.svg)
 
 We can derive some of its design goals from where the IR is positioned in the
 compilation pipeline. It must be:
@@ -77,7 +77,7 @@ compilation pipeline. It must be:
 * Amenable to analysis required by "optimizing" transformations,
 * Able to represent concepts required by target specific representations.
 
-![](ir_position_and_goals.svg){style="display:block; margin: auto;"}
+![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/ir_position_and_goals.svg)
 
 LLVM's IR attempts to achieve these design goals by:
 
