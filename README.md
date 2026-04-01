@@ -21,7 +21,9 @@ See files
 - [examples/factorial.ll](examples/factorial.ll)
 - [examples/factorial-main.ll](examples/factorial-main.ll)
 
-In my mac OS, I have LLVM 14 and 21 installed. To switch between them, I use the `
+The target triple and data layout in the IR files are set to match my architecture and platform. You may need to adjust them for your system. 
+
+In my machine, I have LLVM 14 and 21 installed. To switch between them, I use the `
 [llvm-version.sh](llvm-version.sh) script:
 
 ```bash
