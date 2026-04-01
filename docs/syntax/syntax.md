@@ -159,9 +159,9 @@ LLVM's type system is very strict, so the `add` instruction requires both
 operands to be `Value`s of the same type; this is statically checked, and the
 IR is invalid otherwise. In our example, the type of `i32 10` is spelled out
 explicitly; to find the type of `%result`, we would need to check the
-instruction that defined it. This is made possible because registers are
+instruction that defined it. This is made possible because **registers are
 defined once and never allowed to change, so there is exactly one instruction
-defining that register.
+defining that register**.
 
 Instructions can also interact with memory:
 
