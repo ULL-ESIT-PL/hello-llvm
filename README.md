@@ -8,7 +8,7 @@ See https://github.com/ULL-ESIT-PL/calc2llvmIR/ for a simple translator from ari
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
 
-## Running LLVM IR with Clang and LLVMCli
+## Running LLVM IR with Clang 
 
 See files
 
