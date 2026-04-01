@@ -183,6 +183,7 @@ The second instruction, `store` , does not produce a `Value`. It takes the integ
 
 Recall this paragraph from our memory definition:
 
+> [!IMPORTANT] Memory is _just_ a sequence of bytes.
 > Memory does not hold information about the types of `Value`s that were
 > previously stored in it; it is how we use memory addresses that give meaning
 > (a type) to a sequence of bytes.
