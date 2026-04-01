@@ -229,7 +229,7 @@ encapsulating all other sections in the IR. There are four such sections:
    2. Functions
 3. Metadata: debug information, optimization hints, etc.
 4. Other stuff: symbol table entries, unnamed metadata, etc.
-5. 
+   
 ![](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p3/module_anatomy.svg)
 
 We will focus on global symbols (variables and functions).
