@@ -458,3 +458,5 @@ define i32 @main() {
 
 * https://blog.piovezan.ca/ by Felipe de Azevedo
 * Felipe de Azevedo full animation of the LLVM IR presentation:https://blog.piovezan.ca/compilers/llvm_ir_animation/llvm_ir.html
+* [LLVM IR Tutorial - Phis, GEPs and other things, oh my!](https://youtu.be/m8G_S5LwlTo?si=aquQxzfpFCdZtdEi) By Vince Bridgers (Intel Corporation), Felipe de Azevedo Piovezan (Intel Corporation)
+    * [Slides](https://llvm.org/devmtg/2019-04/slides/Tutorial-Bridgers-LLVM_IR_tutorial.pdf)
