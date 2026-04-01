@@ -230,8 +230,9 @@ encapsulating all other sections in the IR. There are four such sections:
 3. Metadata: debug information, optimization hints, etc.
 4. Other stuff: symbol table entries, unnamed metadata, etc.
    
-![](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p3/module_anatomy.svg)
+![LLVM IR Module Anatomy](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p3/module_anatomy.svg)
 
+![LLM IR Layout](/docs/images/llvm-module-layout.png)
 We will focus on global symbols (variables and functions).
 
 ## Global Symbols
