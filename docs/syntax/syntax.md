@@ -177,9 +177,7 @@ that `Value` is placed in the register named `%address`. What is the type of thi
 `Functions`, the memory allocated by an `alloca` is automatically freed when
 the `Function` exits.
 
-The second instruction, `store i32`, does not produce a `Value`. It takes the
-memory address in the register `%address`, an integer in the register
-`%result`, and stores the integer into that memory location.
+The second instruction, `store` , does not produce a `Value`. It takes the integer `i32` value in the register`%result`, and stores the value into the memory location stored in the register `%address`.
 
 # Memory Does Not Have a Type!
 
