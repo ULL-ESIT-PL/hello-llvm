@@ -2,7 +2,8 @@
 # set to 21
 # Execute this script in the terminal with `source llvm-version.sh 14` or `source llvm-version.sh 21` to set the environment variables for the desired LLVM version.
 
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+# If not 14 or 21 print help message
+if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ -z "$1" ] || [ "$1" != "14" ] && [ "$1" != "21" ]; then
   echo "Usage: source llvm-version.sh [14|21]"
   return
 fi
