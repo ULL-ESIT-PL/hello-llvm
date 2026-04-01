@@ -221,15 +221,15 @@ out, soon there will only be `ptr`.
 # Modules
 
 One LLVM IR file (`.ll`) represents an LLVM IR Module, a top-level entity
-encapsulating all other data structures in the IR. There are four such data
-structures:
+encapsulating all other sections in the IR. There are four such sections:
 
 1. A structure describing the target architecture and platform.
 2. Global Symbols:
    1. Global Variables
    2. Functions
-4. Metadata: debug information, optimization hints, etc.
-
+3. Metadata: debug information, optimization hints, etc.
+4. Other stuff: symbol table entries, unnamed metadata, etc.
+5. 
 ![](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p3/module_anatomy.svg)
 
 We will focus on global symbols (variables and functions).
