@@ -95,7 +95,7 @@ Registers have _names_, and we use their _name_ to access the underlying `Value`
 Any name starting with the `%` symbol is the name of a register. For example:
 `%0, %hi, %___` are all register names.
 
-![]([registers.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/registers.svg)
+![registers.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/registers.svg)
 
 The exact name of a register carries no semantic meaning in the program,
 therefore registers may be renamed at will.
@@ -114,7 +114,7 @@ Memory is a sequence of bytes, each of which has an address. Addresses, also
 known as pointers, are `Value`s and therefore may be placed into a register.
 The type of an address is `ptr`.
 
-![]([memory.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/memory.svg))
+![memory.svg](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p2/memory.svg)
 
 `Value`s are typically moved from or to memory using `load` or `store` instructions.
 
