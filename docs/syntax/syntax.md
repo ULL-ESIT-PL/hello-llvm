@@ -309,7 +309,7 @@ int just_int;
 // @just_int = dso_local global i32 0, align 4
 ```
 
-The keyword `dso_local` is used to indicate, roughly, that this variable is
+The keyword `dso_local` (`dso` stands for [Dynamic Shared Object](dso.md), so `dso_local`literally means *local to this dynamic shared object*) is used to indicate, roughly, that this variable is
 `not` going to be "patched in" at runtime, like in the case of dynamic
 libraries. This information is useful for the optimizer.
 
