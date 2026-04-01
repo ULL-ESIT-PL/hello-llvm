@@ -237,10 +237,8 @@ We will focus on global symbols (variables and functions).
 
 ## Target Information 
 
-The target information section describes the architecture and platform for which the IR is intended. For example, in the data layout it may specify the endianness, the Executable and Linkable Format ([ELF](elf.md)) mangling, the Application Binary Interface ([ABI](abi.md)) alignment, the native integer widths, etc.
+The target information section describes the architecture and platform for which the IR is intended. For example, in the data layout it may specify the endianness, the Executable and Linkable Format ([ELF](elf.md)) [mangling](name-mangling.md), the Application Binary Interface ([ABI](abi.md)) alignment, the native integer widths, etc. The target triple specifies the architecture, vendor, operating system, and sometimes environment. 
 
-
-and available instruction sets of the target machine.
 
 ![](/docs/images/target-information.png)
 
