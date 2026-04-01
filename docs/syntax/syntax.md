@@ -404,7 +404,7 @@ returns the result (`ret` instruction).
 What is the type of `@foo`? Like all global symbols, it defines a memory region
 and therefore its type is a pointer type (`ptr`).
 
-# Further Reading
+## Further Reading
 
 It is a useful exercise to read the LLVM documentation on some of the topics
 discussed:
