@@ -197,6 +197,9 @@ Véase la imagen resultante
 - [diag.c](/examples/diag.c)
 - [diag.ll](/examples/diag.ll)
 
+Por ejemplo, `for.cond10` está dominado por `for.cond` ya que todas las rutas desde la entrada del programa hasta `for.cond10` pasan por `for.cond`. Sin embargo, `for.cond10` no domina a `for.cond` porque hay una ruta desde la entrada hasta `for.cond` que no pasa por `for.cond10` (por ejemplo, la ruta que va directamente desde la entrada a `for.inc6`) 
+
+
 ## Dot options of `opt`
 
 For version 21.1.8 of LLVM, 
