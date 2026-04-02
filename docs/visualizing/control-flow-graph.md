@@ -192,7 +192,12 @@ open tmp/domonly.identity.png
 
 See the resulting image:
 
-![](/docs/images/domonly.identity.png)
+
+| ------------------ | --------------- |
+| Dominator tree     | CFG with dominators highlighted |
+| ------------------ | --------------- |
+| ![](/docs/images/domonly.identity.png) | ![/docs/images/diag-dot-cfg-only.png](/docs/images/diag-dot-cfg-only.png) |
+
 
 - [diag.c](/examples/diag.c)
 - [diag.ll](/examples/diag.ll)
