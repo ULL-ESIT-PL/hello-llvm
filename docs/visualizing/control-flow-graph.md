@@ -52,6 +52,27 @@ open diag.png
 
 ![/docs/images/diag-dot-cfg-only.png](/docs/images/diag-dot-cfg-only.png)
 
+## Regions 
+
+A **region** is a subgraph of the CFG that has a single entry point and a single exit point. Regions are useful for various compiler optimizations and analyses, as they represent a portion of the program that can be treated as a unit.
+
+```
+➜  hello-llvm git:(main) opt -dot-regions-only examples/diag.ll -disable-output 
+Writing 'reg.identity.dot'...
+```
+This command generates a `.dot` file for each function in the IR, containing only the region information. The nodes represent regions, and the edges represent the control flow between them.
+
+```
+dot -Tpng reg.identity.dot -o reg-diag.png
+Warning: transparent is not a known color.
+```
+
+```
+open reg-diag.png 
+```
+
+![/docs/images/reg-diag.png](/docs/images/reg-diag.png)
+
 ## References
 
 - Watch "Program Visualization using LLVM" at https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
