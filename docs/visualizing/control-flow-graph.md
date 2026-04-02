@@ -167,8 +167,10 @@ Para la versión 21 de LLVM, usando la pass `dot-dom-only`, en el MacOS que esto
 primero compilamos el IR con:
 
 ```
-clang -S -emit-llvm -Xclang -disable-O0-optnone examples/diag.c -o examples/diag.ll
+clang -S -emit-llvm -Xclang  -disable-O0-optnone examples/diag.c -o examples/diag.ll -fno-discard-value-names
 ```
+La opción `-fno-discard-value-names`  preserva los nombres de las variables en el IR, lo que hace que el resultado sea más legible. Sin esta opción, LLVM puede asignar nombres genéricos a las variables, lo que dificulta la interpretación del CFG.
+
 y luego generamos el `.dot` con:
 
 ```
