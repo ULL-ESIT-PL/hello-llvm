@@ -543,6 +543,51 @@ entry:
 }
 ```
 
+## Simplifying access specificating the base type
+
+The `getelementptr` instruction can be simplified by specifying the base type of the pointer. For example, if we specify the base type as `[3 x i32]` instead of `[3 x [3 x i32]]`, we can omit the first index, which is always `0`, and simplify the instruction to:
+
+```ll 
+define i32 @main() {
+entry:
+  %M = alloca [3 x [3 x i32]], align 16
+
+  %p00 = getelementptr [3 x i32], ptr %M, i64 0, i64 0
+  store i32 1, ptr %p00, align 4
+
+  %p01 = getelementptr [3 x i32], ptr %M, i64 0, i64 1
+  store i32 0, ptr %p01, align 4
+
+  %p02 = getelementptr [3 x i32], ptr %M, i64 0, i64 2
+  store i32 0, ptr %p02, align 4
+
+  %p10 = getelementptr [3 x i32], ptr %M, i64 1, i64 0
+  store i32 0, ptr %p10, align 4
+
+  %p11 = getelementptr [3 x i32], ptr %M, i64 1, i64 1
+  store i32 1, ptr %p11, align 4
+
+  %p12 = getelementptr [3 x i32], ptr %M, i64 1, i64 2
+  store i32 0, ptr %p12, align 4
+
+  %p20 = getelementptr [3 x i32], ptr %M, i64 2, i64 0
+  store i32 0, ptr %p20, align 4
+
+  %p21 = getelementptr [3 x i32], ptr %M, i64 2, i64 1
+  store i32 0, ptr %p21, align 4
+
+  %p22 = getelementptr [3 x i32], ptr %M, i64 2, i64 2
+  store i32 1, ptr %p22, align 4
+
+  %base = getelementptr [3 x i32], ptr %M, i64 0, i64 0
+  call void @printMatrix(ptr noundef %base, i32 noundef 3)
+
+  ret i32 0
+}
+```
+
+See the file [/examples/hello-array2-simplified.ll](/examples/hello-array2-simplified.ll) for the actual code.
+
 ## The getelementptr syntax
 
 ![/docs/images/getelementptr-syntax.png](/docs/images/getelementptr-syntax.png)
