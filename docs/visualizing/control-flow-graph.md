@@ -150,6 +150,7 @@ opt -dot-dom examples/diag.ll -disable-output
 
 ## Dot options of `opt`
 
+For version 25.3 of LLVM, 
 ```
 ➜  hello-llvm git:(main) ✗ opt --version
 Homebrew LLVM version 21.1.8
@@ -157,6 +158,8 @@ Homebrew LLVM version 21.1.8
   Default target: x86_64-apple-darwin25.3.0
   Host CPU: skylake
 ```
+
+the `opt` tool has the following options for generating `.dot` files:
 
 | Option | Description |
 | --- | --- |
