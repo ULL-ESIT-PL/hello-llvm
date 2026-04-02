@@ -100,7 +100,7 @@ Reading our diagram we have:
       }
       ```
 - 🔴 Inner red region
-    * Entry: `for.cond1`
+    * Entry: `for.cond1`fdiag.c
     * Exit: `for.end`
     * 👉 This is the inner loop:
 
@@ -163,6 +163,9 @@ and then produce the image with:
 
 ![](/docs/images/dom.identity.png)
 
+- [diag.c](/examples/diag.c)
+- [diag.ll](/examples/diag.ll)
+
 Para la versión 21 de LLVM, usando la pass `dot-dom-only`, en el MacOS que estoy usando,
 primero compilamos el IR con:
 
@@ -190,6 +193,9 @@ open tmp/domonly.identity.png
 Véase la imagen resultante 
 
 ![](/docs/images/domonly.identity.png)
+
+- [diag.c](/examples/diag.c)
+- [diag.ll](/examples/diag.ll)
 
 ## Dot options of `opt`
 
