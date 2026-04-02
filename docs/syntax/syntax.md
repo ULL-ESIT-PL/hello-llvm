@@ -452,7 +452,7 @@ entry:
   %p0 = getelementptr i32, ptr %arr, i64 0
   store i32 1, ptr %p0, align 4
 
-  %p1 = getelementptr i32, ptr %arr, i64 1
+  %p1 = getelementptr i32, ptr %arr, i64 1 ; Notice the i32 base type used 
   store i32 2, ptr %p1, align 4
 
   %p2 = getelementptr i32, ptr %arr, i64 2
@@ -496,6 +496,54 @@ The `getelementptr` instruction computes the address of the element at position 
 
 
 See [/examples/hello-array2.ll](/examples/hello-array2.ll) for the actual code.
+
+```ll 
+@.fmt = private unnamed_addr constant [4 x i8] c"%d \00"
+@.nl = private unnamed_addr constant [2 x i8] c"\0A\00"
+declare i32 @printf(ptr noundef, ...)
+define void @printMatrix(ptr noundef %m, i32 noundef %N) {
+; ... ommitted for brevity
+}
+
+define i32 @main() {
+entry:
+  %M = alloca [3 x [3 x i32]], align 16
+
+  %p00 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 0
+  store i32 1, ptr %p00, align 4
+
+  %p01 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 1 ; Notice the base type [3 x [3 x i32]] used here.
+  store i32 0, ptr %p01, align 4 
+
+  %p02 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 2
+  store i32 0, ptr %p02, align 4
+
+  %p10 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 0
+  store i32 0, ptr %p10, align 4
+
+  %p11 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 1
+  store i32 1, ptr %p11, align 4
+
+  %p12 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 2
+  store i32 0, ptr %p12, align 4
+
+  %p20 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 0
+  store i32 0, ptr %p20, align 4
+
+  %p21 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 1
+  store i32 0, ptr %p21, align 4
+
+  %p22 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 2
+  store i32 1, ptr %p22, align 4
+
+  %base = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 0
+  call void @printMatrix(ptr noundef %base, i32 noundef 3)
+
+  ret i32 0
+}
+```
+s
+The first index refers to the "outer" array, the second index refers to the "inner" array, and the third index refers to the element within the inner array. 
 
 ## The getelementptr syntax
 

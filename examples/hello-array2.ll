@@ -80,8 +80,8 @@ entry:
   %p00 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 0
   store i32 1, ptr %p00, align 4
 
-  %p01 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 1
-  store i32 0, ptr %p01, align 4
+  %p01 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 1 ; Notice the base type [3 x [3 x i32]] used here.
+  store i32 0, ptr %p01, align 4 
 
   %p02 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 2
   store i32 0, ptr %p02, align 4
