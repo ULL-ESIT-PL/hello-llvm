@@ -497,6 +497,9 @@ The `getelementptr` instruction computes the address of the element at position 
 
 See [examples/hello-array2.ll](examples/hello-array2.ll) for the actual code.
 
+## The getelementptr syntax
+
+![/docs/images/getelementptr-syntax.png](/docs/images/getelementptr-syntax.png)
 
 # On the LLVM IR Syntax
 
