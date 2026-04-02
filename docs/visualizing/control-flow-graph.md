@@ -150,8 +150,14 @@ Homebrew LLVM version 14.0.6
   Optimized build.
   Default target: x86_64-apple-darwin25.3.0
   Host CPU: skylake
+```
+With LLVM 14, we can generate the dominator tree with:
+```
 ✗ opt -enable-new-pm=0 -dot-dom examples/diag.ll -disable-output 
 Writing 'dom.identity.dot'...
+```
+and then produce the image with:
+```
 ➜  hello-llvm git:(main) ✗ dot -Tpng dom.identity.dot -o tmp/dom.identity.png
 ```
 
