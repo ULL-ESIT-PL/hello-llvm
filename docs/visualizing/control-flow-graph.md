@@ -41,8 +41,13 @@ This writes a `.dot` file for each function in the IR, containing only the CFG i
 Now we can visualize the CFG with:
 
 ```
-➜  hello-llvm git:(main) ✗ dot -Tpng .identity.dot -o diag.png
-➜  hello-llvm git:(main) ✗ open diag.png
+dot -Tpng .identity.dot -o diag.png
+```
+
+and open the resulting `diag.png` file to see the CFG. On a Mac, you can
+
+```
+open diag.png
 ```
 
 ![/docs/images/diag-dot-cfg-only.png](/docs/images/diag-dot-cfg-only.png)
