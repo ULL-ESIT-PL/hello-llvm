@@ -31,6 +31,8 @@ A **Control Flow Graph (CFG)** is a graphical representation of all paths that m
 
 ## dot-cfg-only vs dot-cfg
 
+If we use `dot-cfg-only` instead of `dot-cfg`, the resulting `.dot` file will contain only the CFG information, without the instruction details. This can make the graph simpler and easier to read, especially for larger functions.
+
 ```
 opt -passes=dot-cfg-only examples/diag.ll -disable-output
 ```
