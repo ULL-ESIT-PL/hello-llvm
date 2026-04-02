@@ -138,7 +138,43 @@ Think of regions like structured programming blocks:
 | sequence of loops | sibling regions |
 
 
+## Dominator Trees
+
+A **dominator** of a node `B` in a CFG is a node `A` such that every path from the entry node to `B` must go through `A`. The **dominator tree** is a tree where each node's parent is its immediate dominator (the closest dominator).
+
+To visualize the dominator tree, we can use the `-dot-dom` pass:
+
+```
+opt -dot-dom examples/diag.ll -disable-output
+```
+
+## Dot options of `opt`
+
+```
+➜  hello-llvm git:(main) ✗ opt --version
+Homebrew LLVM version 21.1.8
+  Optimized build.
+  Default target: x86_64-apple-darwin25.3.0
+  Host CPU: skylake
+```
+
+| Option | Description |
+| --- | --- |
+| `--dot-callgraph` | Print call graph to `.dot` file |
+| `--dot-dom` | Print dominance tree of function to `.dot` file |
+| `--dot-dom-only` | Print dominance tree of function to `.dot` file (with no function bodies) |
+| `--dot-postdom` | Print postdominance tree of function to `.dot` file |
+| `--dot-postdom-only` | Print postdominance tree of function to `.dot` file (with no function bodies) |
+| `--dot-regions` | Print regions of function to `.dot` file |
+| `--dot-regions-only` | Print regions of function to `.dot` file (with no function bodies) |
+| `--dot-scops` | Polly: print Scops of function |
+| `--dot-scops-only` | Polly: print Scops of function (with no function bodies) |
+| `--dot-cfg-mssa=<file name for generated dot file>` | File name for generated `.dot` file |
+| `--pgo-view-block-coverage-graph` | Create a `.dot` file of CFGs with block coverage inference information |
+
 ## References
 
 - Watch "Program Visualization using LLVM" at https://youtu.be/aFbWIJlcWww?si=JHZ5wDfqHiKO3F1X by CompilersLab
+- [Slides of the LLVM course](https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/ementa/slides/YouTubeLLVM/) by CompilersLab
+- [Compilers Lab GitHub page](https://lac-dcc.github.io/index.html)
 
