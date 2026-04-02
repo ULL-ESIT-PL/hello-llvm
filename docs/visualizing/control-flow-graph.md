@@ -205,6 +205,10 @@ For example, `for.cond10` is dominated by `for.cond` because all paths from prog
 
 ## Callgraph
 
+A **call graph** is a directed graph that represents calling relationships between functions in a program. Each node represents a function, and each directed edge from node A to node B indicates that function A calls function B.
+
+To visualize the call graph, in LLVM 21 we can use the `-dot-callgraph` pass:
+
 ```
 opt -p dot-callgraph examples/factorial-main.ll -disable-output 
 ```
@@ -212,6 +216,7 @@ opt -p dot-callgraph examples/factorial-main.ll -disable-output
 Writing 'examples/factorial-main.ll.callgraph.dot'...
 ```
 
+Then we can visualize the call graph with:
 ```
 dot -Tpng examples/factorial-main.ll.callgraph.dot -o tmp/factorial.ll.callgraph.png
 ```
