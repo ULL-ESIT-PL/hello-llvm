@@ -97,11 +97,11 @@ Reading our diagram we have:
 - 🟢 First green region
     * Entry: `for.cond`
     * Exit: `for.end8`
-    * 👉 This corresponds to:
+    * 👉 This corresponds to the outer loop:
 
       ```c
       for (i = 0; i < N; i++) {
-      ...
+        ...
       }
       ```
 - 🔴 Inner red region
@@ -111,7 +111,7 @@ Reading our diagram we have:
 
       ```c
       for (j = 0; j < N; j++) {
-      ...
+        ...
       }
       ```
 - 🟢 Second green region (on the right)
@@ -121,16 +121,13 @@ Reading our diagram we have:
     
     ```
     for (i = 0; i < N; i++) {
-    a[i][i] = 1;
+      a[i][i] = 1;
     }
     ```
 
-
-
-
 **There are more valid SESE regions than the ones LLVM shows**
 
-LLVM chooses:
+LLVM chooses the regions it shows according to some heuristics, for example:
 
 - canonical
 - maximal under structural constraints
