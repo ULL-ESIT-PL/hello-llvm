@@ -588,6 +588,29 @@ entry:
 
 See the file [/examples/hello-array2-simplified.ll](/examples/hello-array2-simplified.ll) for the actual code.
 
+Example [examples/hello-array2-simplified2.ll](/examples/hello-array2-simplified2.ll) shows how can we access to thw rows of the matrix by specifying the base type as `[3 x i32]` :
+
+```ll
+define i32 @main() {
+entry:
+  %M = alloca [3 x [3 x i32]], align 16
+
+  %firstRow = getelementptr [3 x i32], ptr %M, i64 0
+  call void @initializeRow(ptr noundef %firstRow, i32 noundef 3, i32 0)
+
+  %secondRow = getelementptr [3 x i32], ptr %M, i64 1
+  call void @initializeRow(ptr noundef %secondRow, i32 noundef 3, i32 1)
+    
+  %thirdRow = getelementptr [3 x i32], ptr %M, i64 2
+  call void @initializeRow(ptr noundef %thirdRow, i32 noundef 3, i32 2)
+
+  %base = getelementptr [3 x i32], ptr %M, i64 0, i64 0
+  call void @printMatrix(ptr noundef %base, i32 noundef 3)
+
+  ret i32 0
+}
+```
+
 ## The getelementptr syntax
 
 ![/docs/images/getelementptr-syntax.png](/docs/images/getelementptr-syntax.png)
