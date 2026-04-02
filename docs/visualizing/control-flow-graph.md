@@ -81,13 +81,8 @@ open reg-diag.png
 
 ![/docs/images/reg-diag.png](/docs/images/reg-diag.png)
 
-Formally:
-
-* **One entry block** (dominates all nodes in the region)
-* **One exit block** (post-dominated by all nodes in the region)
-
-👉 This is *not* just “a loop”
-👉 It’s a structural property of the CFG
+- [diag.c](/examples/diag.c)
+- [diag.ll](/examples/diag.ll)
 
 Reading our diagram we have:
 
