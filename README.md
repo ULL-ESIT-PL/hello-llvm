@@ -70,10 +70,6 @@ The picture shows the Compiler Explorer interface with LLVM IR code in the left 
 ![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
 
 
-## Visualizing
-
-See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-flow-graph.md)
-
 ## A Translator from Simple Arithmetic Expressions to LLVM IR
 
 See https://github.com/ULL-ESIT-PL/calc2llvmIR/blob/main/README.md
