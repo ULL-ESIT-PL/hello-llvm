@@ -367,6 +367,7 @@ You can see these in action [in Godbolt](https://godbolt.org/z/4nbdede45).
 
 ## Functions
 
+### Function Declarations 
 A function _declaration_ in LLVM IR has the following syntax:
 
 ```llvm
@@ -377,6 +378,8 @@ declare i64 @foo(i64, ptr)
 * The return type (`i64`),
 * The symbol name (`foo`),
 * The list of parameter types (`i64`, `ptr`).
+
+### Function Definitions
 
 A function _definition_ is very similar to the declaration, but we use a
 different keyword (`define`), provide names to the parameters and include the
@@ -395,6 +398,8 @@ returns the result (`ret` instruction).
 
 What is the type of `@foo`? Like all global symbols, it defines a memory region
 and therefore its type is a pointer type (`ptr`).
+
+### The structure of functions
 
 ![](/docs/images/functions.png)
 
