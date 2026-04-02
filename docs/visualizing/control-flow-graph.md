@@ -145,8 +145,17 @@ A **dominator** of a node `B` in a CFG is a node `A` such that every path from t
 To visualize the dominator tree, we can use the `-dot-dom` pass:
 
 ```
-opt -dot-dom examples/diag.ll -disable-output
+✗ opt --version
+Homebrew LLVM version 14.0.6
+  Optimized build.
+  Default target: x86_64-apple-darwin25.3.0
+  Host CPU: skylake
+✗ opt -enable-new-pm=0 -dot-dom examples/diag.ll -disable-output 
+Writing 'dom.identity.dot'...
+➜  hello-llvm git:(main) ✗ dot -Tpng dom.identity.dot -o tmp/dom.identity.png
 ```
+
+![](/docs/images/dom.identity.png)
 
 ## Dot options of `opt`
 
