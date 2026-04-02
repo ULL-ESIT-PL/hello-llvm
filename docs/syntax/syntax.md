@@ -424,7 +424,7 @@ Virtual registers are "local" variables.They come in two flavors: named and unna
 
 A basic block is straight-line code sequence with no branches in except to the entry and no branches out except at the exit. Basic blocks are used to structure the control flow of a function.
 
-## Visualizing the Control Flow Graph
+## Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.   
 
 See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-flow-graph.md)
 
