@@ -417,6 +417,8 @@ Virtual registers are "local" variables.They come in two flavors: named and unna
 
 # Arrays and getelementptr
 
+## One dimensional arrays
+
 To create an array in LLVM IR, we can use the `alloca` instruction to allocate memory for the array:
 
 ```ll
@@ -425,6 +427,11 @@ To create an array in LLVM IR, we can use the `alloca` instruction to allocate m
 This allocates memory for an array of 5 integers (`i32`) and returns a pointer to the array, which is stored in the register `%arr`. The `align 16` specifies that the memory should be aligned to a 16-byte boundary.
 
 To access elements of the array, we can use the `getelementptr` instruction, which computes the address of a specific element in the array. For example, to access the first element of the array, we can do:
+
+```ll
+%p0 = getelementptr [5 x i32], ptr %arr, i64 0, i64 2
+```
+The first index `0` is convenient because each index reduces the type of the pointer by one level. The first index reduces the pointer from `ptr` to `[5 x i32]*` to `i32*`. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`". For one dimensional arrays, we can omit the first index, which is always `0`, and simplify it to
 
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 2
@@ -464,9 +471,33 @@ entry:
 }
 ```
 
-[examples/hello-array2.ll](examples/hello-array2.ll) for examples of how to work with arrays in LLVM IR.
+## Multi-dimensional arrays
 
-- 
+To create a multi-dimensional array, we can use nested `alloca` instructions. For example, to create a 3x3 matrix `%M` of `i32`integers, we can do:
+
+```ll
+%M = alloca [3 x [3 x i32]], align 16
+```
+
+To set the element in the second row and third column of the matrix to `4`, the resulting instruction looks like this:
+
+```ll
+%p12 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 2
+store i32 4, ptr %p12, align 4
+```
+
+The `getelementptr` instruction computes the address of the element at position `[1,2]`.
+
+**We need three indices** to access the element at position `[1,2]` (remember that indices are zero-based).
+
+- **The first index must be `0`** because it reduces the dimension of the pointer from `ptr` to `[3 x [3 x i32]]*` to `[3 x i32]`.
+- The second index is `1` because it reduces the dimension of the pointer from `[3 x i32]` to `i32`, and it also selects the second row of the matrix. 
+- The third index `2` is now an `i32` offset. 
+
+
+See [examples/hello-array2.ll](examples/hello-array2.ll) for the actual code.
+
+
 # On the LLVM IR Syntax
 
 See https://llvm.org/docs/LangRef.html#syntax

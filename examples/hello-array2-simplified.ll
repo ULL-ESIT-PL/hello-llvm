@@ -1,9 +1,3 @@
-; Compile and run with:
-; clang examples/hello-array2-simplified.ll -o tmp/hello-array2-simplified 
-; tmp/hello-array2-simplified 
-; 1 0 0 
-; 0 1 0 
-; 0 0 1 
 target triple = "x86_64-apple-macosx26.0.0"
 
 @.fmt = private unnamed_addr constant [4 x i8] c"%d \00"
@@ -77,34 +71,34 @@ define i32 @main() {
 entry:
   %M = alloca [3 x [3 x i32]], align 16
 
-  %p00 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 0
+  %p00 = getelementptr [3 x i32], ptr %M, i64 0, i64 0
   store i32 1, ptr %p00, align 4
 
-  %p01 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 1
+  %p01 = getelementptr [3 x i32], ptr %M, i64 0, i64 1
   store i32 0, ptr %p01, align 4
 
-  %p02 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 2
+  %p02 = getelementptr [3 x i32], ptr %M, i64 0, i64 2
   store i32 0, ptr %p02, align 4
 
-  %p10 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 0
+  %p10 = getelementptr [3 x i32], ptr %M, i64 1, i64 0
   store i32 0, ptr %p10, align 4
 
-  %p11 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 1
+  %p11 = getelementptr [3 x i32], ptr %M, i64 1, i64 1
   store i32 1, ptr %p11, align 4
 
-  %p12 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 1, i64 2
+  %p12 = getelementptr [3 x i32], ptr %M, i64 1, i64 2
   store i32 0, ptr %p12, align 4
 
-  %p20 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 0
+  %p20 = getelementptr [3 x i32], ptr %M, i64 2, i64 0
   store i32 0, ptr %p20, align 4
 
-  %p21 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 1
+  %p21 = getelementptr [3 x i32], ptr %M, i64 2, i64 1
   store i32 0, ptr %p21, align 4
 
-  %p22 = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 2, i64 2
+  %p22 = getelementptr [3 x i32], ptr %M, i64 2, i64 2
   store i32 1, ptr %p22, align 4
 
-  %base = getelementptr [3 x [3 x i32]], ptr %M, i64 0, i64 0, i64 0
+  %base = getelementptr [3 x i32], ptr %M, i64 0, i64 0
   call void @printMatrix(ptr noundef %base, i32 noundef 3)
 
   ret i32 0
