@@ -1,5 +1,4 @@
-
-## Visualizing
+## Visualizing the Control Flow Graph (CFG)
 
 Program Visualization using LLVM:
 
