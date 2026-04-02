@@ -166,15 +166,15 @@ and then produce the image with:
 - [diag.c](/examples/diag.c)
 - [diag.ll](/examples/diag.ll)
 
-Para la versión 21 de LLVM, usando la pass `dot-dom-only`, en el MacOS que estoy usando,
-primero compilamos el IR con:
+For LLVM version 21, using the `dot-dom-only` pass on the macOS setup I am using,
+we first compile the IR with:
 
 ```
 clang -S -emit-llvm -Xclang  -disable-O0-optnone examples/diag.c -o examples/diag.ll -fno-discard-value-names
 ```
-La opción `-fno-discard-value-names`  preserva los nombres de las variables en el IR, lo que hace que el resultado sea más legible. Sin esta opción, LLVM puede asignar nombres genéricos a las variables, lo que dificulta la interpretación del CFG.
+The `-fno-discard-value-names` option preserves variable names in the IR, which makes the output more readable. Without this option, LLVM may assign generic names to variables, which makes CFG interpretation harder.
 
-y luego generamos el `.dot` con:
+Then we generate the `.dot` file with:
 
 ```
 opt -passes=dot-dom-only examples/diag.ll -disable-output
@@ -182,7 +182,7 @@ opt -passes=dot-dom-only examples/diag.ll -disable-output
 ```
 Writing 'domonly.identity.dot'...
 ```
-Para visualizar el resultado, ejecutamos:
+To visualize the result, run:
 ```
 dot -Tpng domonly.identity.dot -o tmp/domonly.identity.png
 ```
@@ -190,14 +190,14 @@ dot -Tpng domonly.identity.dot -o tmp/domonly.identity.png
 open tmp/domonly.identity.png
 ```
 
-Véase la imagen resultante 
+See the resulting image:
 
 ![](/docs/images/domonly.identity.png)
 
 - [diag.c](/examples/diag.c)
 - [diag.ll](/examples/diag.ll)
 
-Por ejemplo, `for.cond10` está dominado por `for.cond` ya que todas las rutas desde la entrada del programa hasta `for.cond10` pasan por `for.cond`. Sin embargo, `for.cond10` no domina a `for.cond` porque hay una ruta desde la entrada hasta `for.cond` que no pasa por `for.cond10` (por ejemplo, la ruta que va directamente desde la entrada a `for.inc6`) 
+For example, `for.cond10` is dominated by `for.cond` because all paths from program entry to `for.cond10` pass through `for.cond`. However, `for.cond10` does not dominate `for.cond` because there is a path from entry to `for.cond` that does not pass through `for.cond10` (for example, the path that goes directly from entry to `for.inc6`).
 
 
 ## Dot options of `opt`
