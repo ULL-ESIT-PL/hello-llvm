@@ -54,12 +54,20 @@ open diag.png
 
 ## Regions 
 
-A **region** is a subgraph of the CFG that has a single entry point and a single exit point. Regions are useful for various compiler optimizations and analyses, as they represent a portion of the program that can be treated as a unit.
+A **region** is a subgraph of the CFG that has a single-entry point and a single-exit point (SESE). Regions are useful for various compiler optimizations and analyses, as they represent a portion of the program that can be treated as a unit.
+
+A region must satisfy:
+
+1. **Single entry**:All nodes in the region must be dominated by the entry
+2. **Single exit**:All nodes must be post-dominated by the exit
+
+To visualize regions, we can use the `-dot-regions-only` pass:
 
 ```
 ➜  hello-llvm git:(main) opt -dot-regions-only examples/diag.ll -disable-output 
 Writing 'reg.identity.dot'...
 ```
+
 This command generates a `.dot` file for each function in the IR, containing only the region information. The nodes represent regions, and the edges represent the control flow between them.
 
 ```
@@ -72,6 +80,71 @@ open reg-diag.png
 ```
 
 ![/docs/images/reg-diag.png](/docs/images/reg-diag.png)
+
+Formally:
+
+* **One entry block** (dominates all nodes in the region)
+* **One exit block** (post-dominated by all nodes in the region)
+
+👉 This is *not* just “a loop”
+👉 It’s a structural property of the CFG
+
+Reading our diagram we have:
+
+- 🔵 Outer region (blue)
+    * Entry: `entry`
+    * Exit: function exit (`ret`)
+- 🟢 First green region
+    * Entry: `for.cond`
+    * Exit: `for.end8`
+    * 👉 This corresponds to:
+
+      ```c
+      for (i = 0; i < N; i++) {
+      ...
+      }
+      ```
+- 🔴 Inner red region
+    * Entry: `for.cond1`
+    * Exit: `for.end`
+    * 👉 This is the inner loop:
+
+      ```c
+      for (j = 0; j < N; j++) {
+      ...
+      }
+      ```
+- 🟢 Second green region (on the right)
+  * Entry: `for.cond10`
+  * Exit: `for.end19`
+  * 👉 This is the second loop after the first one.
+    
+    ```
+    for (i = 0; i < N; i++) {
+    a[i][i] = 1;
+    }
+    ```
+
+
+
+
+**There are more valid SESE regions than the ones LLVM shows**
+
+LLVM chooses:
+
+- canonical
+- maximal under structural constraints
+- nicely nested
+
+Think of regions like structured programming blocks:
+
+| CFG pattern       | Region          |
+| ----------------- | --------------- |
+| `if`              | region          |
+| `while` / `for`   | region          |
+| nested loops      | nested regions  |
+| sequence of loops | sibling regions |
+
 
 ## References
 
