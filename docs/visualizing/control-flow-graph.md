@@ -157,9 +157,35 @@ Writing 'dom.identity.dot'...
 
 ![](/docs/images/dom.identity.png)
 
+Para la versión 21 de LLVM, usando la pass `dot-dom-only`, en el MacOS que estoy usando,
+primero compilamos el IR con:
+
+```
+clang -S -emit-llvm -Xclang -disable-O0-optnone examples/diag.c -o examples/diag.ll
+```
+y luego generamos el `.dot` con:
+
+```
+opt -passes=dot-dom-only examples/diag.ll -disable-output
+```
+```
+Writing 'domonly.identity.dot'...
+```
+Para visualizar el resultado, ejecutamos:
+```
+dot -Tpng domonly.identity.dot -o tmp/domonly.identity.png
+```
+```
+open tmp/domonly.identity.png
+```
+
+Véase la imagen resultante 
+
+![](/docs/images/domonly.identity.png)
+
 ## Dot options of `opt`
 
-For version 25.3 of LLVM, 
+For version 21.1.8 of LLVM, 
 ```
 ➜  hello-llvm git:(main) ✗ opt --version
 Homebrew LLVM version 21.1.8
