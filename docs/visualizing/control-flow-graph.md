@@ -203,6 +203,23 @@ See the resulting image:
 
 For example, `for.cond10` is dominated by `for.cond` because all paths from program entry to `for.cond10` pass through `for.cond`. However, `for.cond10` does not dominate `for.cond` because there is a path from entry to `for.cond` that does not pass through `for.cond10` (for example, the path that goes directly from entry to `for.inc6`).
 
+## Callgraph
+
+```
+opt -p dot-callgraph examples/factorial-main.ll -disable-output 
+```
+```
+Writing 'examples/factorial-main.ll.callgraph.dot'...
+```
+
+```
+dot -Tpng examples/factorial-main.ll.callgraph.dot -o tmp/factorial.ll.callgraph.png
+```
+```
+open tmp/factorial.ll.callgraph.png
+```
+
+![](/docs/images/factorial.ll.callgraph.png)
 
 ## Dot options of `opt`
 
