@@ -542,12 +542,12 @@ entry:
   ret i32 0
 }
 ```
-s
-The first index refers to the "outer" array, the second index refers to the "inner" array, and the third index refers to the element within the inner array. 
 
 ## The getelementptr syntax
 
 ![/docs/images/getelementptr-syntax.png](/docs/images/getelementptr-syntax.png)
+
+The first index refers to the "outer" array, the second index refers to the "inner" array, and the third index refers to the element within the inner array. 
 
 # On the LLVM IR Syntax
 
