@@ -547,7 +547,8 @@ entry:
 
 ![/docs/images/getelementptr-syntax.png](/docs/images/getelementptr-syntax.png)
 
-The first index refers to the "outer" array, the second index refers to the "inner" array, and the third index refers to the element within the inner array. 
+The **base type** determines how offsets are calculated. The first index multiplies by the size of the base type, the second index multiplies by the size of the type of the first index, and so on. 
+
 
 # On the LLVM IR Syntax
 
