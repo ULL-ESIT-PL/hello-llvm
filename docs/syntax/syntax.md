@@ -485,6 +485,8 @@ entry:
 }
 ```
 
+The `@printArray(ptr noundef %arr, i32 noundef %N)` function takes a pointer to the first element of the array `%arr` and its size `%N`, and prints the elements of the array. Both parameters are given the [noundef attribute](noundef.md), which means that they cannot be `undef` values.
+
 ## Multi-dimensional arrays
 
 To create a multi-dimensional array, we can use nested `alloca` instructions. For example, to create a 3x3 matrix `%M` of `i32`integers, we can do:
