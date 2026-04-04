@@ -516,7 +516,7 @@ Two important rules:
 - `phi` instructions **must appear at the beginning of a basic block**.
 - They only refer to predecessor blocks of that block.
 
-The attribute [local_unnamed_addr](local_unnamed_addr.md) qualifying `@factorial` means that the function's address is not significant. Te `#0` is a [reference to a function attribute group](local_unnamed_addr.md#the-meaning-of-0-in-the-function-header).
+The attribute [local_unnamed_addr](local_unnamed_addr.md) qualifying `@factorial` means that the function's address is not significant. Te `#0` is a [reference to a function attribute group](local_unnamed_addr.md#the-meaning-of-0-in-the-function-header). These two tell us the huge amount of details that have beend added by the C++ to IR translation.
 
 # Arrays and getelementptr
 
