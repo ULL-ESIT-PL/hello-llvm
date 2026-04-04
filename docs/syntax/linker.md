@@ -5,6 +5,9 @@ In LLVM, you can have multiple IR modules (files) that define different function
 Link at LLVM IR level first, then build executable
 ```bash
 llvm-link examples/factorial-main.ll examples/factorial.ll -o tmp/combined.ll
+```
+Then compile the combined IR to an executable:
+```
 clang tmp/combined.ll -o tmp/f
 ```
 
