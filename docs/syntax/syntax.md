@@ -225,6 +225,7 @@ The target information section describes the architecture and platform for which
 
 ![](/docs/images/target-information.png)
 
+See [docs/syntax/target-information.md](target-information.md)
 
 ## Global Symbols
 

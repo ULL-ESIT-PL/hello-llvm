@@ -8,13 +8,21 @@ if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ -z "$1" ] || [ "$1" != "14" ] && 
   return
 fi
 if [ "$1" = "14" ]; then
-  export PATH="/usr/local/opt/llvm@14/bin:$PATH"
-  export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm@14/lib"
-  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm@14/include"
-  export CMAKE_PREFIX_PATH="/usr/local/opt/llvm@14"
+  LLVM_ADD="/usr/local/opt/llvm@14"
+  LLVM_REMOVE="/usr/local/opt/llvm@21"
 else
-  export PATH="/usr/local/opt/llvm@21/bin:$PATH"
-  export LDFLAGS="$LDFLAGS -L/usr/local/opt/llvm@21/lib"
-  export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/llvm@21/include"
-  export CMAKE_PREFIX_PATH="/usr/local/opt/llvm@21"
+  LLVM_ADD="/usr/local/opt/llvm@21"
+  LLVM_REMOVE="/usr/local/opt/llvm@14"
 fi
+
+# Remove the other version and any duplicate of the target from PATH, then prepend
+PATH=$(echo "$PATH" | tr ':' '\n' | grep -vF "$LLVM_REMOVE/bin" | grep -vF "$LLVM_ADD/bin" | tr '\n' ':' | sed 's/:$//')
+export PATH="$LLVM_ADD/bin:$PATH"
+
+LDFLAGS=$(echo "$LDFLAGS" | tr ' ' '\n' | grep -vF "$LLVM_REMOVE/lib" | grep -vF "$LLVM_ADD/lib" | tr '\n' ' ' | sed 's/ $//')
+export LDFLAGS="$LDFLAGS -L$LLVM_ADD/lib"
+
+CPPFLAGS=$(echo "$CPPFLAGS" | tr ' ' '\n' | grep -vF "$LLVM_REMOVE/include" | grep -vF "$LLVM_ADD/include" | tr '\n' ' ' | sed 's/ $//')
+export CPPFLAGS="$CPPFLAGS -I$LLVM_ADD/include"
+
+export CMAKE_PREFIX_PATH="$LLVM_ADD"
