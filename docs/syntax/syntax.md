@@ -218,12 +218,6 @@ encapsulating all other sections in the IR. There are four such sections:
 
 Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. 
 
-- LLVM IR is strongly typed.
-- Global symbols begin with an at sign (`@`).
-- Local symbols begin with a percent symbol (`%`).
-- All symbols must be declared or defined.
-- If in doubt, consult the Language Reference Manual: https://llvm.org/docs/LangRef.html
-
 ## Target Information 
 
 The target information section describes the architecture and platform for which the IR is intended. For example, in the data layout it may specify the endianness, the Executable and Linkable Format ([ELF](elf.md)) [mangling](name-mangling.md), the Application Binary Interface ([ABI](abi.md)) alignment, the native integer widths, etc. The target triple specifies the architecture, vendor, operating system, the ABI and sometimes the environment to refine an ABI variant of the runtime ecosystem. 
