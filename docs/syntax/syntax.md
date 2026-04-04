@@ -217,6 +217,33 @@ encapsulating all other sections in the IR. There are four such sections:
 ![LLM IR Layout](/docs/images/llvm-module-layout.png)
 We will focus on global symbols (variables and functions).
 
+Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. Here is an example of the `“hello world”` module:
+
+```ll 
+; Declare the string constant as a global constant.
+@.str = private unnamed_addr constant [13 x i8] c"hello world\0A\00"
+
+; External declaration of the puts function
+declare i32 @puts(ptr captures(none)) nounwind
+
+; Definition of main function
+define i32 @main() {
+  ; Call puts function to write out the string to stdout.
+  call i32 @puts(ptr @.str)
+  ret i32 0
+}
+
+; Named metadata
+!0 = !{i32 42, null, !"string"}
+!foo = !{!0}
+```
+
+- LLVM IR is strongly typed.
+- Global symbols begin with an at sign (`@`).
+- Local symbols begin with a percent symbol (`%`).
+- All symbols must be declared or defined.
+- If in doubt, consult the Language Reference Manual: https://llvm.org/docs/LangRef.html
+
 ## Target Information 
 
 The target information section describes the architecture and platform for which the IR is intended. For example, in the data layout it may specify the endianness, the Executable and Linkable Format ([ELF](elf.md)) [mangling](name-mangling.md), the Application Binary Interface ([ABI](abi.md)) alignment, the native integer widths, etc. The target triple specifies the architecture, vendor, operating system, the ABI and sometimes the environment to refine an ABI variant of the runtime ecosystem. 
@@ -768,41 +795,6 @@ entry:
 The **base type** determines how offsets are calculated. The first index multiplies by the size of the base type, the second index multiplies by the size of the type of the first index, and so on. 
 
 
-# On the LLVM IR Syntax
-
-See https://llvm.org/docs/LangRef.html#syntax
-
-LLVM programs are composed of Module’s, each of which is a translation unit of the input programs. Each module consists of 
-- functions, 
-- global variables, and 
-- symbol table entries. 
-
-Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. Here is an example of the `“hello world”` module:
-
-```ll 
-; Declare the string constant as a global constant.
-@.str = private unnamed_addr constant [13 x i8] c"hello world\0A\00"
-
-; External declaration of the puts function
-declare i32 @puts(ptr captures(none)) nounwind
-
-; Definition of main function
-define i32 @main() {
-  ; Call puts function to write out the string to stdout.
-  call i32 @puts(ptr @.str)
-  ret i32 0
-}
-
-; Named metadata
-!0 = !{i32 42, null, !"string"}
-!foo = !{!0}
-```
-
-- LLVM IR is strongly typed.
-- Global symbols begin with an at sign (`@`).
-- Local symbols begin with a percent symbol (`%`).
-- All symbols must be declared or defined.
-- If in doubt, consult the Language Reference Manual: https://llvm.org/docs/LangRef.html
 
 
 # References
