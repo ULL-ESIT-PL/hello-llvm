@@ -487,10 +487,6 @@ How labels work in practice:
 
 The same rule applies: defined as `entry:`, referenced as `%entry`.
 
-## Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.   
-
-See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-flow-graph.md)
-
 ## Phi instructions
 
 A `phi` instruction is LLVM’s way of saying:
@@ -561,6 +557,11 @@ Two important rules:
 - They only refer to predecessor blocks of that block.
 
 The attribute [local_unnamed_addr](local_unnamed_addr.md) qualifying `@factorial` means that the function's address is not significant. Te `#0` is a [reference to a function attribute group](local_unnamed_addr.md#the-meaning-of-0-in-the-function-header). These two tell us the huge amount of details that have beend added by the C++ to IR translation.
+
+# Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.   
+
+See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-flow-graph.md)
+
 
 # Arrays and getelementptr
 
