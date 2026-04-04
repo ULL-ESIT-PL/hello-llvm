@@ -215,7 +215,6 @@ encapsulating all other sections in the IR. There are four such sections:
 <!-- ![LLVM IR Module Anatomy](https://github.com/ULL-ESIT-PL/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p3/module_anatomy.svg)-->
 
 ![LLM IR Layout](/docs/images/llvm-module-layout.png)
-We will focus on global symbols (variables and functions).
 
 Modules may be combined together with the LLVM linker, which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. Here is an example of the `“hello world”` module:
 
