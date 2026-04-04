@@ -216,7 +216,7 @@ encapsulating all other sections in the IR. There are four such sections:
 
 ![LLM IR Layout](/docs/images/llvm-module-layout.png)
 
-Modules may be combined together with the [LLVM linker](https://llvm.org/docs/Linker.html), which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. 
+Modules may be combined together with the [LLVM linker](linker.md), which merges function (and global variable) definitions, resolves forward declarations, and merges symbol table entries. 
 
 ## Target Information 
 
