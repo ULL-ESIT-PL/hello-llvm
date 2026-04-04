@@ -66,6 +66,6 @@ This means that the function `@factorial` has all the attributes listed in `#0`.
 - `nosync` indicates that the function does not perform synchronization operations.
 - `nounwind` indicates that the function does not unwind the stack (i.e., it does not throw exceptions).
 - `readnone` indicates that the function does not read or write memory.
-- `ssp` indicates that the function should use [stack smashing protection](https://llvm.org/docs/LangRef.html#stack-smashing-protection).
-- `uwtable` indicates that the function should have an [unwind table for exception handling](https://llvm.org/docs/LangRef.html#unwind-table).
-- The other attributes provide information about the target architecture and optimization hints.
+- `ssp` indicates that the function should use [stack smashing protection](https://llvm.org/docs/LangRef.html#function-attributes).
+- `uwtable` indicates that the function should have an [unwind table for exception handling](https://llvm.org/docs/LangRef.html#function-attributes).
+- The [other attributes](https://llvm.org/docs/LangRef.html#function-attributes) provide information about the target architecture and optimization hints.
