@@ -23,12 +23,11 @@ it tells LLVM:
 - Calls/cmp/use should care about function behavior, not its unique pointer identity (locally).
 - The optimizer may merge/deduplicate equivalent symbols more aggressively within the module.
 
-Why “local”:
+Why *“local”*:
 - The non-local form `unnamed_addr` is a stronger claim (address insignificance globally).
 - `local_unnamed_addr` is weaker: only guaranteed within this module; across modules the address may still matter.
 
-So, practical summary: **it is an optimization hint about pointer identity of the symbol’s address**.
-
+**It is an optimization hint about pointer identity of the symbol’s address**:
 Knowing that an address is not significant lets LLVM optimize based on behavior, not identity.
 
 ## Simple example
