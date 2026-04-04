@@ -14,11 +14,11 @@ clang examples/factorial-main.ll examples/factorial.ll -o tmp/f
 ```
 
 So:
-- llvm-link merges modules into one LLVM module. The linker resolves references between the modules, so if `a.ll` calls a function defined in `b.ll`, the linker will connect them.
+- [llvm-link](https://llvm.org/docs/CommandGuide/llvm-link.html) merges modules into one LLVM module. The linker resolves references between the modules, so if `a.ll` calls a function defined in `b.ll`, the linker will connect them.
 
 - clang can absolutely be used for linking, and in practice it is usually the easiest driver.
 
-- If you go through `llc` (producing `.s`), then use `clang` for final link:
+- If you go through [llc](https://llvm.org/docs/CommandGuide/llc.html) (producing `.s`), then use `clang` for final link:
   
     ```bash
     llc a.ll -o a.s
