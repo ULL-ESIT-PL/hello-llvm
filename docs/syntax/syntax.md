@@ -516,7 +516,7 @@ Two important rules:
 - `phi` instructions **must appear at the beginning of a basic block**.
 - They only refer to predecessor blocks of that block.
 
-The attribute [local_unnamed_addr](local_unnamed_addr.md) qualifying `@factorial` means that the function's address is not significant. 
+The attribute [local_unnamed_addr](local_unnamed_addr.md) qualifying `@factorial` means that the function's address is not significant. Te `#0` is a [reference to a function attribute group](local_unnamed_addr.md#the-meaning-of-0-in-the-function-header).
 
 # Arrays and getelementptr
 
