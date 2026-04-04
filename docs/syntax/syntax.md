@@ -453,7 +453,7 @@ A `phi` instruction is LLVM’s way of saying:
 
 > Choose a value depending on which control-flow edge just arrived at this block.
 
-In SSA form, **each register** is assigned exactly once. When two or more branches join, LLVM cannot *reassign* a variable, so it uses `phi` to merge possible incoming values.
+In Single-Static-Assignment (SSA) form, **each register** is assigned exactly once. When two or more branches join, LLVM cannot *reassign* a variable, so it uses `phi` to merge possible incoming values.
 
 Consider this implementation of the `factorial` function:
 
