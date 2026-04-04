@@ -24,7 +24,7 @@ So:
 - If you go through [llc](https://llvm.org/docs/CommandGuide/llc.html) (producing `.s`), then use `clang` for final link:
   
     ```bash
-    llc a.ll -o a.s
-    llc b.ll -o b.s
-    clang a.s b.s -o prog
+    llc examples/factorial.ll -o tmp/factorial.s
+    llc examples/factorial-main.ll -o tmp/factorial-main.s 
+    clang tmp/factorial-main.s tmp/factorial.s -o tmp/f
     ```
