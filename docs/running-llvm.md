@@ -26,6 +26,9 @@ tmp/f
 120
 ```
 
+### Linking LLVM IR Modules
+
+See section [/docs/syntax/linker.md](/docs/syntax/linker.md)
 
 ## Running LLVM IR in Compiler Explorer
 
@@ -62,7 +65,3 @@ The picture shows the Compiler Explorer interface with LLVM IR code in the left 
 ![Running LLVM IR in Compiler Explorer](/docs/images/runningLLVM-IR-on-compiler-explorer.png)
 
 
-
-## Linking LLVM IR Modules
-
-See section [/docs/syntax/linker.md](/docs/syntax/linker.md)
