@@ -137,6 +137,9 @@ This is a core principle, so excuse the repetition: to access a `Value` inside a
 register, we use the _register's name_; to access a `Value` in memory, we
 use its _memory address_, which may be placed into a register.
 
+## Garbage Collection and Memory Management
+
+See section [How is memory management in LLVM? is there some sort of garbage collector available?](garbage-collector.md)
 
 ## Instructions
 
