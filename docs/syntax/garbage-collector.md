@@ -12,10 +12,11 @@ LLVM itself does not provide automatic memory management for your program by def
 
 ### Heap memory malloc/free examples
 
-- [malloc/free example](examples/malloc-free.ll)
-- [malloc/free array example](examples/malloc-free-array.ll)
-  
-![Malloc/Free Array Example](/docs/images/malloc-free-array.png)
+- [malloc/free example](/examples/malloc-free.ll)
+- [malloc/free array example](/examples/malloc-free-array.ll)
+
+The following CFG shows the control flow of the `malloc/free-array.ll` example:
+![CFG of malloc/free array example](/docs/images/malloc-free-array-cfg.png)
 
 ## About garbage collection:
 
