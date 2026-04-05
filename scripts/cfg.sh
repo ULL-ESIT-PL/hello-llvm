@@ -22,7 +22,8 @@ if [ -z "$DOT_FILE" ]; then
   echo "Error: no .dot file generated"
   exit 1
 fi
+mv "$DOT_FILE" "tmp/$DOT_FILE"
 # Convert .dot to .png
-dot -Tpng "$DOT_FILE" -o "$OUTPUT"
-# Open the image
-open "$OUTPUT"
+dot -Tpng "tmp/$DOT_FILE" -o "$OUTPUT"
+# Open the image 
+# open "$OUTPUT"

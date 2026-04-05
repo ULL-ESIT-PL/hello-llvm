@@ -10,6 +10,13 @@ LLVM itself does not provide automatic memory management for your program by def
 2. **Static/global memory**: globals live for the whole program lifetime.
 3. **Heap memory**: usually done through runtime/library calls (for example [malloc/free](/examples/malloc-free.ll), or C++ new/delete). LLVM will optimize around these calls, but it does not free heap objects automatically. Conservative garbage collection often does not require any special support from either the language or the compiler: it can handle non-type-safe programming languages (such as C/C++) and does not require any special information from the compiler. The [Boehm collector](https://hboehm.info/gc/) is an example of a conservative collector.
 
+### Heap memory malloc/free examples
+
+- [malloc/free example](examples/malloc-free.ll)
+- [malloc/free array example](examples/malloc-free-array.ll)
+  
+![Malloc/Free Array Example](/docs/images/malloc-free-array.png)
+
 ## About garbage collection:
 
 1. There is no built-in, always-on GC in LLVM like in Java/.NET runtimes.
