@@ -84,6 +84,8 @@ this definition is being used.
 
 There are two places where `Value`s may live: in a register or in memory.
 
+See also [signed vs unsigned in LLVM IR](signed-vs-unsigned.md)
+
 ## Registers
 
 A register is an entity that holds exactly one `Value`. `Value`s are placed
