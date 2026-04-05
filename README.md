@@ -1,8 +1,3 @@
-## ULL-ESIT-PL LLVM IR related labs 
-
-- Labs [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
-- See also this repo for a ULL-ESIT-PL lab: https://github.com/ULL-ESIT-PL/calc2llvmIR/ .
-
 ## Introduction to LLVM IR 
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
@@ -26,6 +21,7 @@ See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-b
 ### Arithmetic expressions to LLVM IR translator
 
 - See: https://github.com/ULL-ESIT-PL/calc2llvmIR/ .
+- Labs [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
 
 ### The Complect project
 
