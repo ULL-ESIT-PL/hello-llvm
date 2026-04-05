@@ -84,7 +84,7 @@ this definition is being used.
 
 There are two places where `Value`s may live: in a register or in memory.
 
-See also [signed vs unsigned in LLVM IR](signed-vs-unsigned.md)
+See also [signed vs unsigned in LLVM IR](signed-or-unsigned.md)
 
 ## Registers
 
