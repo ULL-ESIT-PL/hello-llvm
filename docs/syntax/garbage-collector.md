@@ -16,7 +16,7 @@ LLVM itself does not provide automatic memory management for your program by def
 - [malloc/free array example](/examples/malloc-free-array.ll)
 
 The following CFG shows the control flow of the `malloc/free-array.ll` example:
-![CFG of malloc/free array example](/docs/images/malloc-free-array-cfg.png)
+![Malloc/Free Array Example](/docs/images/malloc-free-array.png)
 
 ## About garbage collection:
 
