@@ -2,7 +2,7 @@
 
 ## Is `i32` signed or unsigned?
 
-In LLVM IR, `i32` is neither — it's just a 32-bit integer with no inherent signedness. Signedness is determined by the instruction used on it: `add`/`sub`/`mul` are sign-agnostic (two's complement), while `sdiv`/`udiv`, `icmp slt`/`icmp ult`, `sext`/`zext` encode the sign semantics explicitly.
+In LLVM IR, `i32` is neither — it's just a 32-bit integer with no inherent signedness. Signedness is determined by the instruction used on it: `add`/`sub`/`mul` are **sign-agnostic (two's complement)**, while `sdiv`/`udiv`, `icmp slt`/`icmp ult`, `sext`/`zext` **encode the sign semantics explicitly**.
 
 ## What does it mean "sign-agnostic"?
 
