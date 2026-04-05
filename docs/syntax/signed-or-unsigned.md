@@ -20,4 +20,4 @@ Same bits in `%a` and `%b` — different behavior — because the opcode carries
 
 ## Example
 
-See [/examples/signed-unsigned.ll](/examples/signed-or-unsigned.ll)
+See [/examples/signed-or-unsigned.ll](/examples/signed-or-unsigned.ll)
