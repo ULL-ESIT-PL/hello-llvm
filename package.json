@@ -1,12 +1,13 @@
 {
   "name": "hello-llvm",
   "version": "1.0.0",
-  "description": "",
+  "description": "LLVM IR Tutorial",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean:objects": "rm *.o",
-    "clean:executables": "find . -maxdepth 1 -type f -perm +111 | xargs rm -f"
+    "clean:objects": "find . -name '*.o' -type f -delete",
+    "clean:executables": "find . -maxdepth 2 -type f -perm +111 | xargs rm -f",
+    "clean:png": "rm -f tmp/*.png"
   },
   "keywords": [],
   "author": "Casiano Rodriguez Leon <crguezl@ull.edu.es> (https://crguezl.github.io/)",
@@ -14,5 +15,18 @@
   "type": "commonjs",
   "dependencies": {
     "llvm-bindings": "^0.4.2"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-PL/hello-llvm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PL/hello-llvm/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-PL/hello-llvm#readme"
 }
