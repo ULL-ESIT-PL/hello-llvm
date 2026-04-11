@@ -6,6 +6,11 @@
 ; 0000000000000000 T _my_function
 
 ; Total per struct: 16 bytes 
+; Offsets summary:
+;   i32    -> 0
+;   i1     -> 4
+;   double -> 8
+;   sizeof -> 16
 %MyStruct = type { 
     i32,     ; 4 bytes from 0 to 3 for the i32
     i1,      ; 1 byte 4 for the i1

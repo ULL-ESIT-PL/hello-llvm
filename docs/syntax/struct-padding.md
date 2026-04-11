@@ -23,12 +23,34 @@ the usual layout is:
 
 Total size: `16` bytes.
 
+If we reorder the fields to put the most aligned one first:
+
+```ll
+%MyStructReordered = type {
+  double,
+  i32,
+  i1
+}
+```
+
+the layout changes to:
+
+| Field | Offset | Size | Note |
+| --- | ---: | ---: | --- |
+| `double` | 0 | 8 | starts aligned already |
+| `i32` | 8 | 4 | follows the `double` |
+| `i1` | 12 | 1 | follows the `i32` |
+| padding | 13 | 3 | final padding so arrays of the struct stay 8-byte aligned |
+
+Total size: still `16` bytes.
+
 There are two different kinds of padding worth separating:
 
 - Internal padding: bytes inserted between fields so the next field is properly aligned.
 - Final padding: bytes added at the end of the struct so that arrays of that struct keep each element correctly aligned.
 
 In `%MyStruct`, the 3 padding bytes are internal padding. There is no final padding beyond byte 15, because the struct already ends at a multiple of 8.
+In `%MyStructReordered`, there is no internal padding between fields, but there are 3 bytes of final padding at the end.
 
 This matters for arrays:
 
@@ -50,4 +72,4 @@ The array occupies `2 * 16 = 32` bytes, not `26`.
 
 These pointers refer to offsets `0`, `4`, and `8` respectively.
 
-See [/examples/types.ll](/examples/types.ll) for the layout discussion and [/examples/types-gep.ll](/examples/types-gep.ll) for a version that materializes the offsets with `getelementptr`.
+See [/examples/types.ll](/examples/types.ll) for the layout discussion, [/examples/types-gep.ll](/examples/types-gep.ll) for a version that materializes the offsets with `getelementptr`, and [/examples/types-reordered-gep.ll](/examples/types-reordered-gep.ll) for the reordered case.
