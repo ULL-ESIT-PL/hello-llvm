@@ -22,11 +22,7 @@ Then use [lldb](https://lldb.llvm.org/):
 Current executable set to '/Users/casianorodriguezleon/campus-virtual/2526/learning/llvm-learning/hello-llvm/tmp/struct' (x86_64).
 ```
 
-👉 You can:
-
-* set breakpoints (`main`)
-* step instructions
-* inspect variables
+But you need to have debug metadata (`!dbg`) in your IR for this to be useful. Otherwise, you’ll just see assembly-level instructions without source mapping.
 
 ---
 # 🧠 First level: **validate the IR (catch bugs early)**
