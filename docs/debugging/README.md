@@ -6,14 +6,41 @@ Let me structure it in a way that fits your compiler work.
 
 ---
 
-# 🧠 1. First level: **validate the IR (catch bugs early)**
+# 🧰 Debug like a normal program (with lldb)
+
+Compile with debug info:
+
+```bash
+clang -g program.ll -o program
+```
+
+Then use [lldb](https://lldb.llvm.org/):
+
+```bash
+➜  hello-llvm git:(main) ✗ lldb tmp/struct 
+(lldb) target create "tmp/struct"
+Current executable set to '/Users/casianorodriguezleon/campus-virtual/2526/learning/llvm-learning/hello-llvm/tmp/struct' (x86_64).
+```
+
+👉 You can:
+
+* set breakpoints (`main`)
+* step instructions
+* inspect variables
+
+---
+# 🧠 First level: **validate the IR (catch bugs early)**
 
 Before even running anything:
 
-👉 Use opt as a verifier:
+👉 Use opt as a verifier (>= v21):
 
 ```bash
-opt -verify your.ll -disable-output
+opt -passes=verify examples/struct.ll -disable-output
+```
+or 
+```
+opt -p=verify examples/struct.ll -disable-output
 ```
 
 ✔ Catches:
@@ -23,15 +50,9 @@ opt -verify your.ll -disable-output
 * invalid `phi`
 * broken SSA
 
-👉 You can also combine:
-
-```bash
-opt -passes=verify your.ll -disable-output
-```
-
 ---
 
-# 🔍 2. Inspect transformations (super useful)
+# 🔍  Inspect transformations (super useful)
 
 ```bash
 opt -S -passes=mem2reg your.ll
@@ -50,29 +71,10 @@ opt -S -passes=instcombine your.ll
 
 ---
 
-# 🧭 3. Visualize control flow (you already started!)
+# 🧭 3. Visualize control flow 
 
-You used:
-
-```bash
-opt -dot-regions-only file.ll
-```
-
-Also try:
-
-```bash
-opt -dot-cfg file.ll -disable-output
-```
-
-👉 Generates `.dot` files → visualize with Graphviz
-
-Shows:
-
-* basic blocks
-* branches
-* loops
-
----
+See [/docs/visualizing/control-flow-graph.md](/docs/visualizing/control-flow-graph.md)
+for details on how to visualize CFGs with Graphviz.
 
 # 🧪 4. Execute IR step-by-step
 
@@ -84,32 +86,6 @@ Use the LLVM interpreter:
 lli program.ll
 ```
 
-✔ Fast way to test semantics
-✔ No need to compile
-
----
-
-# 🧰 5. Debug like a normal program (with lldb)
-
-Compile with debug info:
-
-```bash
-clang -g program.ll -o program
-```
-
-Then use lldb:
-
-```bash
-lldb ./program
-```
-
-👉 You can:
-
-* set breakpoints (`main`)
-* step instructions
-* inspect variables
-
----
 
 # 🧠 Important caveat
 
