@@ -651,6 +651,8 @@ The `getelementptr` instruction computes the address of the element at position 
 - The second index is `1` because it reduces the dimension of the pointer from `[3 x i32]` to `i32`, and it also selects the second row of the matrix. 
 - The third index `2` is now an `i32` offset. 
 
+For `struct` types, `getelementptr` also accounts for field alignment and padding automatically. See [struct-padding.md](struct-padding.md) for a short note and the examples [/examples/types.ll](/examples/types.ll) and [/examples/types-gep.ll](/examples/types-gep.ll).
+
 
 See [/examples/hello-array2.ll](/examples/hello-array2.ll) for the actual code.
 
