@@ -49,4 +49,4 @@ See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
   * [Github Complect](https://github.com/jarrodconnolly/complect)
   * [Slides](https://static.sched.com/hosted_files/openjsworld2022/78/OpenJSW%20World%202022.pdf) 
   * [Video](https://youtu.be/aPHf_-N2yTU)
-* An introduction to LLVM IR: https://youtu.be/CDKuH7SIgdM?si=kDHsuQsNNXo6uDJW by revng 2025
+* An introduction to LLVM IR: https://youtu.be/CDKuH7SIgdM?si=kDHsuQsNNXo6uDJW by revng 2025. Alessandro di Fedrico. Youtube.
