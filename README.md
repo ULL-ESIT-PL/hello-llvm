@@ -44,9 +44,9 @@ See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
 * See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
   * Watch "Programming Language with LLVM [1/20] Introduction to LLVM IR and tools" by Dmitry Soshnikov at https://youtu.be/Lvc8qx8ukOI?si=u-toTGVKTV7sHguw
 * [CppInsights](https://cppinsights.io/)
-  * C++ Insights at YouTube: Hello, C++ Insights: https://www.youtube.com/watch?v=NhIubRbFfuM&list=PLm0Dc2Lp2ycaFyR2OqPkusuSB8LmifY8D 
+  * C++ Insights at YouTube: [Hello, C++ Insights](https://www.youtube.com/watch?v=NhIubRbFfuM&list=PLm0Dc2Lp2ycaFyR2OqPkusuSB8LmifY8D ). A web sit that shows C++ source‑to‑source transformations, 
 * Jarrod Connolly, (Kabam Games Inc) at **OpenJS World 2022** "Writing a Compiler in Node.js using Streams" 
   * [Github Complect](https://github.com/jarrodconnolly/complect)
   * [Slides](https://static.sched.com/hosted_files/openjsworld2022/78/OpenJSW%20World%202022.pdf) 
   * [Video](https://youtu.be/aPHf_-N2yTU)
-* An introduction to LLVM IR: https://youtu.be/CDKuH7SIgdM?si=kDHsuQsNNXo6uDJW by revng 2025. Alessandro di Fedrico. Youtube.
+* An introduction to LLVM IR: https://youtu.be/CDKuH7SIgdM?si=kDHsuQsNNXo6uDJW by revng 2025. Alessandro di Federico. Youtube.
