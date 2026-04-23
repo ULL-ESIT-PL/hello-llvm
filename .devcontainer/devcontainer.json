@@ -16,15 +16,12 @@
         "ms-vscode.cmake-tools",
         "llvm-vs-code-extensions.vscode-clangd",
         "ms-vscode.makefile-tools"
-      ]
-    },
-    "vscode.settings": {
-      "C_Cpp.clang_format_path": "/usr/bin/clang-format"
+      ],
+      "settings": {
+        "C_Cpp.clang_format_path": "/usr/bin/clang-format"
+      }
     }
   },
-  "remoteUser": "vscode",
-  "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,readonly"
-  ]
+  "remoteUser": "vscode"
 }
 

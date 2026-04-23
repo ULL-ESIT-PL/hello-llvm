@@ -52,4 +52,8 @@ clang -S yourfile.c -o yourfile.s
 
 - The container pre-installs LLVM 17 by default
 - All apt cache is cleaned after installation to minimize container size
-- SSH keys are automatically mounted if available on your local machine
+- SSH keys are not mounted by default in Codespaces. Use GitHub authentication or Codespaces secrets when needed.
+
+## Troubleshooting
+
+- If Codespaces fails while creating the container with a mount error mentioning `/.ssh`, remove custom `mounts` entries from [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json).
