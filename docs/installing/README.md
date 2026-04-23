@@ -30,7 +30,7 @@ llvm-config --version
 
 ### ULL iaas virtual machines
 
-When using the ULL iaas environment:
+When using the ULL iaas environment, you have a Ubuntu image:
 
 ```
 usuario@ubuntu:~/pl/llvm$ sudo apt update
