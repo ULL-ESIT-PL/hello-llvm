@@ -27,6 +27,7 @@ This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LL
    ```bash
    llvm-config --version
    clang --version
+   bash scripts/llvm-health-check.sh
    ```
 
 3. **First End-to-End Run (factorial)**:
