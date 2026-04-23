@@ -17,7 +17,7 @@ These two repos are private. Students do not have access to them:
 
 ### The Complect project
 
-See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
+See section [docs/related-work/complect.md](/docs/related-work/complect.md)
 
 ### The llvm-bindings package
 
