@@ -1,9 +1,9 @@
 
-### Quick install on the main platforms
+# Quick install on the main platforms
 
 These are the easiest package-manager based options for a working LLVM/Clang toolchain.
 
-#### macOS (Homebrew)
+## macOS (Homebrew)
 
 ```bash
 brew update
@@ -14,9 +14,9 @@ source ~/.zshrc
 llvm-config --version
 ```
 
-#### Linux
+## Linux
 
-Ubuntu/Debian:
+### Ubuntu/Debian:
 
 ```bash
 sudo apt update
@@ -24,21 +24,21 @@ sudo apt install -y llvm clang lld
 llvm-config --version
 ```
 
-Fedora:
+### Fedora:
 
 ```bash
 sudo dnf install -y llvm clang lld
 llvm-config --version
 ```
 
-Arch Linux:
+### Arch Linux:
 
 ```bash
 sudo pacman -S llvm clang lld
 llvm-config --version
 ```
 
-#### Windows
+## Windows
 
 Option 1 (easiest): `winget`
 
@@ -57,6 +57,7 @@ clang --version
 If `clang` is not recognized after installation, reopen the terminal or add LLVM's `bin` folder to `PATH`.
 
 
+## Building from source
 
 See also the LLVM section
 [Getting Started with the LLVM System¶](https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm)
