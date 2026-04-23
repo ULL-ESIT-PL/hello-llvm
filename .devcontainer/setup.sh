@@ -20,6 +20,14 @@ sudo apt-get install -y --no-install-recommends \
   lsb-release \
   gnupg
 
+# Optional SSH server support for `gh codespace ssh`.
+# Keep disabled by default to minimize startup time for students.
+ENABLE_SSHD="${ENABLE_SSHD:-0}"
+if [ "$ENABLE_SSHD" = "1" ]; then
+  echo "📦 Installing optional SSH server..."
+  sudo apt-get install -y --no-install-recommends openssh-server
+fi
+
 # Install LLVM from official LLVM repository (version 17)
 echo "📦 Installing LLVM 17..."
 LLVM_VERSION=17

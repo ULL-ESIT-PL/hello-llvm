@@ -49,6 +49,13 @@ This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LL
    cat factorial.ll
    ```
 
+5. **Optional: connect via SSH from your local terminal**:
+   ```bash
+   gh codespace list
+   gh codespace ssh -c <codespace-name>
+   ```
+   This project keeps SSH disabled by default to reduce startup time. If you need it, enable it by setting `ENABLE_SSHD=1` in [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) under `containerEnv`, then rebuild/create the Codespace.
+
 ## Building from Source
 
 To compile C to LLVM IR:
@@ -66,6 +73,7 @@ clang -S yourfile.c -o yourfile.s
 - The container pre-installs LLVM 17 by default
 - All apt cache is cleaned after installation to minimize container size
 - SSH keys are not mounted by default in Codespaces. Use GitHub authentication or Codespaces secrets when needed.
+- SSH server installation is optional (`ENABLE_SSHD=1`) to avoid extra setup time in classroom scenarios.
 
 ## Troubleshooting
 
