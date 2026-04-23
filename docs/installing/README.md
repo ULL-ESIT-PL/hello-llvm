@@ -14,6 +14,10 @@ source ~/.zshrc
 llvm-config --version
 ```
 
+### Managing several LLVM versions 
+
+See the script at [llvm-version.sh](/llvm-version.sh)
+
 ## Linux
 
 ### Ubuntu/Debian:
@@ -55,6 +59,7 @@ clang --version
 ```
 
 If `clang` is not recognized after installation, reopen the terminal or add LLVM's `bin` folder to `PATH`.
+
 
 
 ## Building from source
