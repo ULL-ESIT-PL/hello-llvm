@@ -6,31 +6,22 @@ See section [docs/installing/README.md](/docs/installing/README.md)
 
 See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
 
-### Running LLVM 
-
-See section [docs/running-llvm.md](/docs/running-llvm.md)
-
-## A Translator from Simple Arithmetic Expressions to LLVM IR
-
-See https://github.com/ULL-ESIT-PL/calc2llvmIR/blob/main/README.md
-
-## LLVM bindings for JS
-
-### The llvm-bindings package
-
-See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
 
 ## Related work
 
 ### Arithmetic expressions to LLVM IR translator
 
-- See: https://github.com/ULL-ESIT-PL/calc2llvmIR/ .
-- Labs [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) to LLVM IR.
+These two repos are private. Students do not have access to them:
+  - A Translator from Simple Arithmetic Expressions to LLVM IR at https://github.com/ULL-ESIT-PL/calc2llvmIR/ .
+  - Labs [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) has a translator to LLVM IR.
 
 ### The Complect project
 
 See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
 
+### The llvm-bindings package
+
+See section [docs/bindings-for-js/llvm-bindings.md](/docs/bindings-for-js/llvm-bindings.md)
 
 ## References
 

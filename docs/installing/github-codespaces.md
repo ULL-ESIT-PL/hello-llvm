@@ -1,6 +1,6 @@
 # GitHub Codespaces DevContainer for LLVM Learning
 
-This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LLVM Learning Tutorial** for the *Procesadores de Lenguajes* course. It uses the script [setup.sh](/.devcontainer/setup.sh) to install LLVM and related tools in a GitHub Codespaces environment.
+This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LLVM Learning Tutorial** for the *Procesadores de Lenguajes* course. It uses the script [setup.sh](/.devcontainer/setup.sh) to install LLVM and related tools in a GitHub Codespaces environment. Use it as a template for your own LLVM projects.
 
 ## What's Included
 
