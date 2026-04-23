@@ -1,6 +1,6 @@
 # GitHub Codespaces DevContainer for LLVM Learning
 
-This devcontainer is configured for the **LLVM Learning Tutorial** for the *Procesadores de Lenguajes* course.
+This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LLVM Learning Tutorial** for the *Procesadores de Lenguajes* course. It uses the script [setup.sh](/.devcontainer/setup.sh) to install LLVM and related tools in a GitHub Codespaces environment.
 
 ## What's Included
 
@@ -35,11 +35,6 @@ This devcontainer is configured for the **LLVM Learning Tutorial** for the *Proc
    clang -S factorial.c -emit-llvm -o factorial.ll
    cat factorial.ll
    ```
-
-## Available Scripts
-
-- `llvm-version.sh` — Switch between LLVM versions 14 and 21 (Homebrew on macOS)
-  - In Codespaces, use direct `clang` command or install additional versions with apt
 
 ## Building from Source
 
