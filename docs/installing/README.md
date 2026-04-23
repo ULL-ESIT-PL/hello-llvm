@@ -72,7 +72,9 @@ clang --version
 
 If `clang` is not recognized after installation, reopen the terminal or add LLVM's `bin` folder to `PATH`.
 
+## GitHub CodeSpaces DevContainer
 
+See section [/docs/installing/github-codespaces.md](/docs/installing/github-codespaces.md)
 
 ## Building from source
 
