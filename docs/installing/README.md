@@ -28,6 +28,8 @@ sudo apt install -y llvm clang lld
 llvm-config --version
 ```
 
+### ULL iaas virtual machines
+
 When using the ULL iaas environment:
 
 ```
@@ -36,8 +38,19 @@ sudo apt install -y llvm clang lld
 [sudo] password for usuario: 
 Des:1 https://cli.github.com/packages stable InRelease [3.917 B]
 ...
-usuario@ubuntu:~/pl/llvm$ llvm-config --version
-18.1.3
+```
+
+You can use the `scripts/llvm-health-check.sh` to check that LLVM is working:
+
+```
+usuario@ubuntu:~/pl/hello-llvm$ scripts/llvm-health-check.sh
+[check] Platform: Linux
+[check] Workspace: /home/usuario/pl/hello-llvm
+[check] clang: Ubuntu clang version 18.1.3 (1ubuntu1)
+[check] llvm-config: 18.1.3
+[check] Detected Linux (Codespaces environment)
+[check] Compiling factorial example...
+[check] Running tmp/f...
 ```
 
 ### Fedora:
