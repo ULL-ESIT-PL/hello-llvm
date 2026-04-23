@@ -16,6 +16,12 @@ Let clang do it directly from multiple IR files
 clang examples/factorial-main.ll examples/factorial.ll -o tmp/f
 ```
 
+On Linux/Codespaces, these sample `.ll` files may need an explicit Linux target because they were generated on macOS:
+
+```bash
+clang --target=x86_64-pc-linux-gnu examples/factorial-main.ll examples/factorial.ll -o tmp/f
+```
+
 So:
 - [llvm-link](https://llvm.org/docs/CommandGuide/llvm-link.html) merges modules into one LLVM module. The linker resolves references between the modules, so if `a.ll` calls a function defined in `b.ll`, the linker will connect them.
 

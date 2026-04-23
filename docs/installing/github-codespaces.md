@@ -29,7 +29,20 @@ This [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LL
    clang --version
    ```
 
-3. **Run Examples**:
+3. **First End-to-End Run (factorial)**:
+   ```bash
+   cd /workspaces/hello-llvm
+   clang --target=x86_64-pc-linux-gnu examples/factorial-main.ll examples/factorial.ll -o tmp/f
+   ./tmp/f
+   ```
+   Expected output:
+   ```text
+   120
+   ```
+
+   Note: these `.ll` files were generated on macOS, so in Linux/Codespaces you should keep the explicit `--target=x86_64-pc-linux-gnu` to avoid linker errors.
+
+4. **Run Examples**:
    ```bash
    cd examples
    clang -S factorial.c -emit-llvm -o factorial.ll

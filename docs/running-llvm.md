@@ -9,7 +9,7 @@ See files
 
 The target triple and data layout in the IR files are set to match my architecture and platform. You may need to adjust them for your system. 
 
-In my machine, I have LLVM 14 and 21 installed. To switch between them, I use the `
+In my machine, I have LLVM 14 and 21 installed. To switch between them, I use the
 [llvm-version.sh](llvm-version.sh) script:
 
 ```bash
@@ -25,6 +25,15 @@ tmp/f
 ➜  hello-llvm git:(main) ✗ tmp/f
 120
 ```
+
+In GitHub Codespaces (Linux), use an explicit Linux target because these sample `.ll` files were generated on macOS:
+
+```bash
+clang --target=x86_64-pc-linux-gnu examples/factorial-main.ll examples/factorial.ll -o tmp/f
+tmp/f
+```
+
+If you skip `--target` in Linux, you may get linker errors like `ld: library 'System' not found`.
 
 ### Linking LLVM IR Modules
 

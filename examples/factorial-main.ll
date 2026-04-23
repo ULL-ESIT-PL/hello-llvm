@@ -1,4 +1,4 @@
-; Compile with MacOS Clang: /usr/bin/clang examples/factorial-main.ll examples/factorial.ll -o tmp/f
+; Compile with MacOS Clang: clang /usr/bin/clang examples/factorial-main.ll examples/factorial.ll -o tmp/f
 ; Run with:     tmp/f
 ; 
 
