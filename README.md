@@ -42,7 +42,7 @@ See section [docs/related-work/complect.md)](/docs/related-work/complect.md)
   * [Compiler Explorer | Introduction to Common Compiler Tools #4](https://www.youtube.com/watch?v=0Idx1hiz_Bk) by LLVM Social Bangalore
 * [My First Language Frontend with LLVM Tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
   * [fanyi-zhao/Kaleidoscope](https://github.com/fanyi-zhao/Kaleidoscope) repo at GitHub
-* [Mapping High-Level Constructs to LLVM IR](https://mapping-high-level-constructs-to-llvm-ir.readthedocs.io/en/latest/a-quick-primer/index.html) by Michael Rodler and Mikael Egevig
+* [Mapping High-Level Constructs to LLVM IR](https://mapping-high-level-constructs-to-llvm-ir.readthedocs.io/en/latest/a-quick-primer/index.html) by Michael Rodler and Mikael Egevig. This is a gitbook dedicated to providing a description on how LLVM based compilers map high-level language constructs into the LLVM intermediate representation (IR).
 * [LLVM Language Reference Manual](https://llvm.org/docs/LangRef.html)
 * [What Is LLVM?](https://www.youtube.com/watch?v=HecW5byOrUY&list=PLDSTpI7ZVmVnvqtebWnnI8YeB8bJoGOyv) by CompilersLaboratory.Fernando Pereira. Youtube.
 * See the list of LLVM videos by Dmitry Soshnikov at https://www.youtube.com/@DmitrySoshnikov-education/search?query=LLVM
