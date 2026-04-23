@@ -4,7 +4,7 @@ See section [docs/installing/README.md](/docs/installing/README.md)
 
 ## Introduction to LLVM IR 
 
-See section [docs/syntax/syntax.md](/docs/syntax/syntax.md)
+See section [docs/syntax/syntax.md](/docs/syntax/README.md)
 
 
 ## Related work
