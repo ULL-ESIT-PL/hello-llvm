@@ -16,7 +16,7 @@ llvm-config --version
 
 ### Managing several LLVM versions 
 
-See the script at [llvm-version.sh](/llvm-version.sh)
+See the script at [llvm-version.sh](/llvm-version.sh). It helps me to switch between different LLVM versions installed via Homebrew. You can use it as a template to create your own version manager for LLVM.
 
 ## Linux
 
