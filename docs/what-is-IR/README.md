@@ -43,9 +43,10 @@ all share the "middle" and "back"-ends
 
 ![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg)
 
-As a side-effect of a language-agnostic IR, the behavior required by the input
+> [!IMPORTANT]
+> As a side-effect of a language-agnostic IR, the behavior required by the input
 language specification must be captured using generic mechanisms provided by
-the IR; the language specification can't exist in that level, otherwise it
+the IR; **the language specification can't exist in that level**, otherwise it
 would no longer be language-agnostic. Because of this, one can inspect IR and
 understand how language concepts are mapped to simpler and lower level code
 abstractions.
