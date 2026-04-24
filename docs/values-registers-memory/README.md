@@ -117,6 +117,10 @@ the `Function` exits](garbage-collector.md).
 
 The second instruction, `store` , does not produce a `Value`. It takes the integer `i32` value in the register`%result`, and stores the value into the memory location stored in the register `%address`.
 
+## Phi Instructions
+
+See section [phi-instructions/README.md](/docs/phi-instructions/README.md)
+
 ## Memory Does Not Have a Type!
 
 Recall this paragraph from our memory definition:
