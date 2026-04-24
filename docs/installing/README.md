@@ -1,5 +1,5 @@
 
-# Quick install on the main platforms
+# LLVM: Quick install on the main platforms
 
 These are the easiest package-manager based options for a working LLVM/Clang toolchain.
 
