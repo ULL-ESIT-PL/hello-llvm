@@ -36,7 +36,7 @@ Intermediate Representation to mean
 
 ## Different Languages, Same IR
 
-Steps 1-5 are specific to the source language of the input program, whereas all
+Steps 1-3 are specific to the source language of the input program, whereas all
 other steps are agnostic to the language; the IR is the first such agnostic
 representation. Using this scheme, one can conceive different compilers that
 all share the "middle" and "back"-ends of the sequence above:
