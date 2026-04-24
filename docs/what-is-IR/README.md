@@ -30,8 +30,10 @@ how __all__ of them must preserve behavior.
 
 Each representation in the list above is "intermediate" in the sense that it is
 neither the input program nor the final executable, but we usually define
-Intermediate Representation to mean the IR generated in Step 4, "optimized"
-(_transformed_) in Step 5, and lowered in Step 6.
+Intermediate Representation to mean
+- the IR generated in Step 4, 
+- "optimized" (_transformed_) in Step 5, and 
+- "lowered" in Step 6.
 
 ## Different Languages, Same IR
 
