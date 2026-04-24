@@ -39,7 +39,7 @@ Intermediate Representation to mean
 Steps 1-3 are specific to the source language of the input program, whereas all
 other steps are agnostic to the language; the IR is the first such language-agnostic
 representation. Using this scheme, one can conceive different compilers that
-all share the "middle" and "back"-ends of the sequence above:
+all share the "middle" and "back"-ends 
 
 ![](https://github.com/felipepiovezan/felipepiovezan.github.io/raw/main/docs/compilers/llvm_ir_p1/more_frontends.svg)
 
