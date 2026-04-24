@@ -73,3 +73,12 @@ LLVM's IR attempts to achieve these design goals by:
 * Having a type system,
 * Being highly configurable.
 
+## Navigation
+
+- [LLVM's IR Core Concepts - Values, Registers, Memory](/docs/syntax/README.md#llvms-ir-core-concepts---values-registers-memory)
+- [Modules](/docs/syntax/README.md#modules)
+- [The Body of a Function](/docs/syntax/README.md#the-body-of-a-function)
+- [Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.](/docs/syntax/README.md#visualizing-the-control-flow-graph-regions-dominator-trees-call-graphs-etc)
+- [Arrays and getelementptr](/docs/syntax/README.md#arrays-and-getelementptr)
+- [References](/docs/syntax/README.md#references)
+

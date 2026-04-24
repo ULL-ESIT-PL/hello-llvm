@@ -29,3 +29,14 @@ See section [arrays-and-getelementptr/README.md](/docs/arrays-and-getelementptr/
 ## References
 
 See section [references/README.md](/README.md#references)
+
+## Table of Contents
+
+- [What is Intermediate Representation?](#what-is-intermediate-representation)
+- [LLVM's IR Core Concepts - Values, Registers, Memory](#llvms-ir-core-concepts---values-registers-memory)
+- [Modules](#modules)
+- [The Body of a Function](#the-body-of-a-function)
+- [Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.](#visualizing-the-control-flow-graph-regions-dominator-trees-call-graphs-etc)
+- [Arrays and getelementptr](#arrays-and-getelementptr)
+- [References](#references)
+- [Table of Contents](#table-of-contents)
