@@ -28,4 +28,4 @@ See section [arrays-and-getelementptr/README.md](/docs/arrays-and-getelementptr/
 
 ## References
 
-See section [references/README.md](/README#references)
+See section [references/README.md](/README.md#references)
