@@ -18,10 +18,10 @@ We start with the source program, and then we:
 2. _Transform_ it into an Abstract Syntax Tree (AST).
 3. _Transform_ it into a semantically valid AST.
    * Usually, this step can fail for ill-formed programs.
-4. _Transform_ it into Intermediate Representation (IR).
-5. _Transform_ it into equivalent IR.
+4. **_Transform_ it into Intermediate Representation (IR).**
+5. **_Transform_ it into equivalent IR.**
    * Often referred to as "optimizations".
-6. _Transform_ it into a Selection DAG.
+6. **_Transform_ it into a Selection DAG.**
 7. _Transform_ it into sequence of machine instructions.
 8. _Transform_ it into the final program.
 
