@@ -13,7 +13,7 @@ encapsulating all other sections in the IR.
 
 See section [modules/README.md](/docs/modules/README.md)
 
-# The Body of a Function
+## The Body of a Function
 
 See section [function-body/README.md](/docs/function-body/README.md)
 
