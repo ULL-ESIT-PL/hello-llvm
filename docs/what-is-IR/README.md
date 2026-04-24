@@ -65,6 +65,8 @@ compilation pipeline. It must be:
 * Amenable to analysis required by "optimizing" transformations,
 * Able to represent concepts required by target specific representations.
 
+## How does LLVM IR achieve these goals?
+
 LLVM's IR attempts to achieve these design goals by:
 
 * Being a RISC-like language,
