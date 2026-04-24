@@ -1,5 +1,5 @@
 
-# LLVM's IR Core Concepts - Values, Registers, Memory
+# LLVM's IR Core Concepts - Values, Registers, Memory, Instructions,  Phi Instructions
 
 There are three key abstractions on top of which LLVM IR is built: values,
 registers and memory.
