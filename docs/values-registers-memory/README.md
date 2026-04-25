@@ -245,7 +245,7 @@ function generateIR(ast, options = {}, source, sourceFile) {
     const mainFunc = `\ndefine i32 @main() {\n${ctx.getCode()}\n  ret i32 0\n}\n`;
     return {
         code: preamble + globals + mainFunc,
-        map: null
+        map: null // Source maps are not supported  by the llv compiler, so we return null here.
     };
 }
 ```
