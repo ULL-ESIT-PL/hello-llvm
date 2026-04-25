@@ -303,6 +303,8 @@ En C equivale simplemente a: `"%d\n"` — o más precisamente, `&str[0]`.
 
 El doble `0, 0` es porque en LLVM IR los arrays globales tienen **dos niveles de indirección**, y hay que "atravesar" ambos para llegar al primer byte.
 
+Véase la sección [getelmentptr/docs/arrays-and-getelementptr/README.md)
+
 ---
 
 ### ARG2 — el valor a imprimir
