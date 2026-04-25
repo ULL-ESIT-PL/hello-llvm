@@ -214,7 +214,7 @@ although you don't even need to write `-lc` explicitly because it's included in 
 
 ---
 
-### If you want to avoid it
+### If you want to avoid automatic linking with the system's libc
 
 To compile **without** automatic linking:
 
