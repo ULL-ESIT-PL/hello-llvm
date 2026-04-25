@@ -148,12 +148,16 @@ Let us consider the following simple Dragon program:
 {
     print(0);
 }
-```                                                                                                 
+```     
+When we compile this program to LLVM IR, with the dragon transpiler using the option `-g llvm`:
+
 `➜  dragon2js git:(LLVM-simple-assign) bin/drg2js.cjs -g llvm examples/llvm/llvm-0-int.drg -o tmp/llvm-0.ll`
-```                                              
+```                                   
 Output saved to tmp/llvm-0.ll
 ➜  dragon2js git:(LLVM-simple-assign) cat tmp/llvm-0.ll
 ```
+
+we get the following LLVM IR code:
 ```ll
 ; ModuleID = 'examples/llvm/llvm-0-int.drg'
 source_filename = "examples/llvm/llvm-0-int.drg"
