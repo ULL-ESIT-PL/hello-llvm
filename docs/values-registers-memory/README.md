@@ -185,8 +185,89 @@ define i32 @main() {
   ret i32 0
 }
 ```
-Execution:
+
+
+### 1. Cabecera del módulo
+
+```ll
+; ModuleID = 'examples/llvm/llvm-0-int.drg'
+source_filename = "examples/llvm/llvm-0-int.drg"
+```
+
+Metadatos: identifican de qué archivo fuente proviene este IR. Los `;` son comentarios.
+
+### 2. Declaraciones externas (`declare`)
+
+```ll
+declare i32 @printf(i8*, ...)
+declare i8* @malloc(i64)
+declare void @free(i8*)
+; ...etc
+```
+
+Son como los **prototipos de funciones en C** — le dicen al compilador que estas funciones existen en alguna librería externa (libc), pero no las define aquí. Algunos tipos:
+
+| Tipo LLVM | Equivalente en C |
+|-----------|-----------------|
+| `i32` | `int` (32 bits) |
+| `i64` | `long` (64 bits) |
+| `i8*` | `char*` (puntero) |
+| `void` | `void` |
+
+---
+
+### 3. Constantes globales de strings
+
+```ll
+@.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+```
+
+Esto define el string `"%d\n"` en memoria global:
+- `[4 x i8]` → array de 4 bytes
+- `c"%d\0A\00"` → los caracteres `%`, `d`, `\n` (0x0A), y `\0` (terminador nulo)
+- `private` → solo visible dentro de este módulo
+- `align 1` → alineado a 1 byte
+
+Son los **format strings** que usará `printf` y `sprintf`.
+
+---
+
+### 4. La función `main`
+
+```ll
+define i32 @main() {
+  %tmp_a = call i32 (i8*, ...) @printf(
+    i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0),
+    i32 0
+  )
+  ret i32 0
+}
+```
+
+Esto equivale exactamente a este código en C:
+
+```c
+int main() {
+    printf("%d\n", 0);
+    return 0;
+}
+```
+
+Desglosando la llamada a `printf`:
+
+- `%tmp_a` → variable temporal que guarda el valor de retorno de printf (cuántos caracteres imprimió)
+- `getelementptr inbounds (...)` → es como hacer `&str[0]`, obtiene un puntero al primer byte del string `"%d\n"`
+- `i32 0` → el entero `0` que se imprime
+
+---
+
+
+### Execution
+
+To execute this IR, we can use `lli`, the LLVM interpreter:
+
 ```bash
 ➜  dragon2js git:(LLVM-simple-assign) lli tmp/llvm-0.ll
 0
 ```
+
