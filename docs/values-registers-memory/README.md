@@ -190,6 +190,52 @@ define i32 @main() {
 }
 ```
 
+Notice that our translator needs a template of standard declarations and string constants to be able to generate the IR for our simple `print(0)` statement. Here is an excerpt of the code that generates the IR:
+
+```
+function generateIR(ast, options = {}, source, sourceFile) {
+    const ctx = new CodegenContext();
+    const nodeValues = new Map();
+    const visitors = {
+        StringLiteral(path) {
+          ...
+        },
+        BlockStatement: {
+            enter() { ctx.enterScope(); },
+            exit() { ctx.exitScope(); }
+        },
+        VariableDeclarator: {
+            ...
+        },
+        NumericLiteral(path) {
+            const node = path.node;
+            const value = node.value;
+            const type = node._type || { baseType: Number.isInteger(value) ? 'int' : 'float' };
+            nodeValues.set(node, {
+                value: String(value),
+                type: type,
+                isLiteral: true
+            });
+
+        },
+        Identifier(path) {
+           ...
+        },
+        MemberExpression: {
+           ...
+        },
+        ...
+    };
+    traverse(ast, { noScope: true, ...visitors });
+    const preamble = generateModuleStub(sourceFile);
+    const globals = ctx.globals.length ? ctx.globals.join('\n') + '\n' : '';
+    const mainFunc = `\ndefine i32 @main() {\n${ctx.getCode()}\n  ret i32 0\n}\n`;
+    return {
+        code: preamble + globals + mainFunc,
+        map: null
+    };
+}
+```
 
 ### 1. Cabecera del módulo
 
