@@ -51,6 +51,8 @@ define i32 @main() {
 }
 ```
 
+## generateIR
+
 Notice that our translator needs a template of standard declarations and string constants to be able to generate the IR for our simple `print(0)` statement. Here is an excerpt of the code that generates the IR:
 
 ```js
@@ -111,7 +113,7 @@ function generateIR(ast, options = {}, source, sourceFile) {
 }
 ```
 
-### Cabecera del módulo
+## Cabecera del módulo: generateModuleStub
 
 ```ll
 ; ModuleID = 'examples/llvm/llvm-0-int.drg'
@@ -120,7 +122,7 @@ source_filename = "examples/llvm/llvm-0-int.drg"
 
 Metadatos: identifican de qué archivo fuente proviene este IR. Los `;` son comentarios.
 
-$2 2. Declaraciones externas (`declare`)
+### Declaraciones externas (`declare`)
 
 ```ll
 declare i32 @printf(i8*, ...)
@@ -140,7 +142,7 @@ Son como los **prototipos de funciones en C** — le dicen al compilador que est
 
 ---
 
-$2 3. Constantes globales de strings
+### 3. Constantes globales de strings
 
 ```ll
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
@@ -156,7 +158,7 @@ Son los **format strings** que usará `printf` y `sprintf`.
 
 ---
 
-$2 4. La función `main`
+### 4. La función `main`
 
 ```ll
 define i32 @main() {
@@ -177,14 +179,14 @@ int main() {
 }
 ```
 
-$2 Desglosando la llamada a `printf`:
+### Desglosando la llamada a `printf`:
 
 - `%tmp_a` → variable temporal que guarda el valor de retorno de printf (cuántos caracteres imprimió)
 - `getelementptr inbounds (...)` → es como hacer `&str[0]`, obtiene un puntero al primer byte del string `"%d\n"`
 - `i32 0` → el entero `0` que se imprime
 
 
-$2 Desglose de la línea @printf
+### Desglose de la línea @printf
 
 Esta línea 
 
@@ -196,7 +198,7 @@ es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
 
 ---
 
-$2 Estructura general
+### Estructura general
 
 ```
 %tmp_a = call i32 (i8*, ...) @printf( ARG1, ARG2 )
