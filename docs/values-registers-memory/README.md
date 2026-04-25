@@ -257,12 +257,73 @@ int main() {
 }
 ```
 
-Desglosando la llamada a `printf`:
+### Desglosando la llamada a `printf`:
 
 - `%tmp_a` → variable temporal que guarda el valor de retorno de printf (cuántos caracteres imprimió)
 - `getelementptr inbounds (...)` → es como hacer `&str[0]`, obtiene un puntero al primer byte del string `"%d\n"`
 - `i32 0` → el entero `0` que se imprime
 
+
+## Desglose de la línea
+
+Esta línea es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
+
+---
+
+### Estructura general
+
+```
+%tmp_a = call i32 (i8*, ...) @printf( ARG1, ARG2 )
+│              │               │
+│              │               └─ función a llamar
+│              └─ tipo de retorno (int = nº chars impresos)
+└─ variable que guarda el valor de retorno
+```
+
+---
+
+### ARG1 — el format string
+
+```ll
+i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0)
+```
+
+Esto obtiene un puntero al string `"%d\n"`. Desglosado:
+
+| Parte | Significado |
+|---|---|
+| `i8*` | el resultado es un `char*` |
+| `getelementptr inbounds` | "dame la dirección de este elemento" (como `&array[i]` en C) |
+| `[4 x i8]` | el tipo del array (4 bytes) |
+| `[4 x i8]* @.str.i32` | puntero al array global `"%d\n\0"` |
+| `i64 0` | índice del array exterior (el array en sí) |
+| `i64 0` | índice del elemento interior (primer byte, `'%'`) |
+
+En C equivale simplemente a: `"%d\n"` — o más precisamente, `&str[0]`.
+
+El doble `0, 0` es porque en LLVM IR los arrays globales tienen **dos niveles de indirección**, y hay que "atravesar" ambos para llegar al primer byte.
+
+---
+
+### ARG2 — el valor a imprimir
+
+```ll
+i32 0
+```
+
+Simplemente el entero `0`. Es el valor que reemplaza al `%d` en el format string.
+
+---
+
+### En resumen
+
+```ll
+; LLVM IR
+call @printf( getelementptr(@.str.i32), i32 0 )
+
+// C equivalente
+printf("%d\n", 0);
+```
 ---
 
 
