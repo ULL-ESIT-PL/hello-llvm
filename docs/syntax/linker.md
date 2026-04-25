@@ -104,70 +104,96 @@ define i32 @main() {
 
 ## LLVM IR — Explicación
 
-Este código es **LLVM IR** (Intermediate Representation), el "lenguaje ensamblador de alto nivel" que usa el compilador LLVM como paso intermedio antes de generar código máquina.
+## Explanation of `charsum.drg` LLVM IR
 
----
-
-### La cabecera: declaraciones externas
-
-```ll
-declare i32 @printf(i8*, ...)
-declare i8* @strcpy(i8*, i8*)
-...
-```
-
-Son declaraciones de funciones externas de la **libc estándar de C** — le dice a LLVM "estas funciones existen en alguna librería, no las definas aquí".
-
----
-
-### Constantes globales
-
-```ll
-@.str.char.0 = private unnamed_addr constant [6 x i8] c"hello\00", align 1
-@.str.char.1 = private unnamed_addr constant [8 x i8] c" world!\00", align 1
-```
-
-Dos strings almacenados en memoria estática (como `const char*` en C). El `\00` es el **null terminator**.
-
----
-
-### La función `main` — paso a paso
-
-Lo que hace en conjunto es equivalente a este C:
+This program concatenates two strings and prints the result. The equivalent C code would be:
 
 ```c
 int main() {
-    char *a = "hello";
-    char *b = " world!";
-    char *buf = malloc(strlen(a) + strlen(b) + 1);
-    strcpy(buf, a);
-    strcat(buf, b);
-    printf("%s\n", buf);
+    char* a = strdup("hello");
+    char* b = strdup(" world!");
+    char* result = malloc(strlen(a) + strlen(b) + 1);
+    strcpy(result, a);
+    strcat(result, b);
+    printf("%s\n", result);
     return 0;
 }
+// Output: "hello world!"
 ```
 
-| Instrucción IR | Qué hace |
-|---|---|
-| `getelementptr` | Obtiene el puntero al primer carácter de cada string (`&str[0]`) |
-| `call @strlen` x2 | Mide la longitud de cada string |
-| `add ... +1` | Suma las longitudes + 1 byte para el `\0` final |
-| `call @malloc` | Reserva memoria dinámica del tamaño exacto |
-| `call @strcpy` | Copia `"hello"` al buffer |
-| `call @strcat` | Concatena `" world!"` al buffer |
-| `call @printf` | Imprime el resultado: **`hello world!`** |
-| `ret i32 0` | Retorna 0 (éxito) |
+---
+
+### Global string literals
+
+```ll
+@.strlit.0 = private unnamed_addr constant [6 x i8] c"hello\00", align 1
+@.strlit.3 = private unnamed_addr constant [8 x i8] c" world!\00", align 1
+```
+
+Two read-only strings stored in global memory:
+- `"hello\0"` → 5 chars + null terminator = **6 bytes**
+- `" world!\0"` → 7 chars + null terminator = **8 bytes**
 
 ---
 
-### Detalles del tipo system
+### Inside `main`, step by step
 
-- `i8*` → puntero a byte (equivale a `char*` en C)
-- `i32` → entero de 32 bits
-- `i64` → entero de 64 bits (usado para tamaños/punteros en 64-bit)
-- `[6 x i8]` → array de 6 bytes
+**Step 1 — Copy "hello" into heap memory**
+```ll
+%tmp_b = call i8* @malloc(i64 6)
+%tmp_c = getelementptr inbounds [6 x i8], [6 x i8]* @.strlit.0, i64 0, i64 0
+call i8* @strcpy(i8* %tmp_b, i8* %tmp_c)
+```
+Allocates 6 bytes on the heap and copies `"hello"` into it. You can't modify a global constant directly, so a writable copy is needed.
+
+**Step 2 — Copy " world!" into heap memory**
+```ll
+%tmp_e = call i8* @malloc(i64 8)
+%tmp_f = getelementptr inbounds [8 x i8], [8 x i8]* @.strlit.3, i64 0, i64 0
+call i8* @strcpy(i8* %tmp_e, i8* %tmp_f)
+```
+Same thing for the second string — 8 bytes allocated, `" world!"` copied in.
+
+**Step 3 — Calculate the size needed for the combined string**
+```ll
+%tmp_g = call i64 @strlen(i8* %tmp_b)   ; strlen("hello")  = 5
+%tmp_h = call i64 @strlen(i8* %tmp_e)   ; strlen(" world!") = 7
+%tmp_i = add i64 %tmp_g, %tmp_h         ; 5 + 7 = 12
+%tmp_j = add i64 %tmp_i, 1              ; 12 + 1 = 13  ← +1 for the null terminator '\0'
+```
+
+**Step 4 — Allocate the result buffer and concatenate**
+```ll
+%tmp_k = call i8* @malloc(i64 %tmp_j)   ; malloc(13)
+call i8* @strcpy(i8* %tmp_k, i8* %tmp_b) ; tmp_k = "hello"
+call i8* @strcat(i8* %tmp_k, i8* %tmp_e) ; tmp_k = "hello world!"
+```
+Allocates exactly the right amount of memory, copies the first string in, then appends the second.
+
+**Step 5 — Print and return**
+```ll
+%tmp_l = call i32 (i8*, ...) @printf(...@.str.char..., i8* %tmp_k)
+ret i32 0
+```
+Prints using the `"%s\n"` format string, outputting `hello world!`.
 
 ---
+
+### Memory layout visualization
+
+```
+Heap after all mallocs:
+
+%tmp_b → [ h | e | l | l | o |\0 ]         (6 bytes)
+%tmp_e → [   | w | o | r | l | d | ! |\0 ] (8 bytes)
+%tmp_k → [ h | e | l | l | o |   | w | o | r | l | d | ! |\0 ] (13 bytes)
+```
+
+---
+
+### One thing to notice
+
+The code **never calls `free()`**, so all three heap allocations leak. This is likely intentional for a simple example — the OS reclaims memory when the program exits anyway.
 
 ### Contexto general
 
