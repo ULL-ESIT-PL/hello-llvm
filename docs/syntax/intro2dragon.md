@@ -111,7 +111,7 @@ function generateIR(ast, options = {}, source, sourceFile) {
 }
 ```
 
-## 1. Cabecera del módulo
+### Cabecera del módulo
 
 ```ll
 ; ModuleID = 'examples/llvm/llvm-0-int.drg'
