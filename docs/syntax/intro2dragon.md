@@ -173,15 +173,6 @@ define i32 @main() {
 }
 ```
 
-Esto equivale exactamente a este código en C:
-
-```c
-int main() {
-    printf("%d\n", 0);
-    return 0;
-}
-```
-
 ### Desglose de la línea @printf
 
 Esta línea 
