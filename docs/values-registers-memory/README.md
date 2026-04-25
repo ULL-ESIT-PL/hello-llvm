@@ -192,7 +192,7 @@ define i32 @main() {
 
 Notice that our translator needs a template of standard declarations and string constants to be able to generate the IR for our simple `print(0)` statement. Here is an excerpt of the code that generates the IR:
 
-```
+```js
 function generateIR(ast, options = {}, source, sourceFile) {
     const ctx = new CodegenContext();
     const nodeValues = new Map();
