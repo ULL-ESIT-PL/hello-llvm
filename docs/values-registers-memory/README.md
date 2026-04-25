@@ -275,4 +275,7 @@ To execute this IR, we can use `lli`, the LLVM interpreter:
 0
 ```
 
-Véase sección [Running LLVM IR](/docs/running-llvm.md) para más detalles sobre cómo ejecutar IR.
+Véanse las secciones 
+
+- [Running LLVM IR](/docs/running-llvm.md) para más detalles sobre cómo ejecutar IR.
+- [Linking LLVM IR Modules](/docs/syntax/linker.md) para detalles sobre cómo combinar varios módulos IR.
