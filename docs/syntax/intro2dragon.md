@@ -111,7 +111,7 @@ function generateIR(ast, options = {}, source, sourceFile) {
 }
 ```
 
-### 1. Cabecera del módulo
+## 1. Cabecera del módulo
 
 ```ll
 ; ModuleID = 'examples/llvm/llvm-0-int.drg'
@@ -120,7 +120,7 @@ source_filename = "examples/llvm/llvm-0-int.drg"
 
 Metadatos: identifican de qué archivo fuente proviene este IR. Los `;` son comentarios.
 
-### 2. Declaraciones externas (`declare`)
+$2 2. Declaraciones externas (`declare`)
 
 ```ll
 declare i32 @printf(i8*, ...)
@@ -140,7 +140,7 @@ Son como los **prototipos de funciones en C** — le dicen al compilador que est
 
 ---
 
-### 3. Constantes globales de strings
+$2 3. Constantes globales de strings
 
 ```ll
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
@@ -156,7 +156,7 @@ Son los **format strings** que usará `printf` y `sprintf`.
 
 ---
 
-### 4. La función `main`
+$2 4. La función `main`
 
 ```ll
 define i32 @main() {
@@ -177,14 +177,14 @@ int main() {
 }
 ```
 
-### Desglosando la llamada a `printf`:
+$2 Desglosando la llamada a `printf`:
 
 - `%tmp_a` → variable temporal que guarda el valor de retorno de printf (cuántos caracteres imprimió)
 - `getelementptr inbounds (...)` → es como hacer `&str[0]`, obtiene un puntero al primer byte del string `"%d\n"`
 - `i32 0` → el entero `0` que se imprime
 
 
-### Desglose de la línea @printf
+$2 Desglose de la línea @printf
 
 Esta línea 
 
@@ -196,7 +196,7 @@ es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
 
 ---
 
-#### Estructura general
+$2 Estructura general
 
 ```
 %tmp_a = call i32 (i8*, ...) @printf( ARG1, ARG2 )
@@ -208,7 +208,7 @@ es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
 
 ---
 
-#### ARG1 — el format string
+### ARG1 — el format string
 
 ```ll
 i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0)
@@ -233,7 +233,7 @@ Véase la sección [getelmentptr](/docs/arrays-and-getelementptr/README.md)
 
 ---
 
-#### ARG2 — el valor a imprimir
+### ARG2 — el valor a imprimir
 
 ```ll
 i32 0
@@ -244,7 +244,7 @@ Simplemente el entero `0`. Es el valor que reemplaza al `%d` en el format string
 ---
 
 
-### Execution
+$2 Execution
 
 To execute this IR, we can use `lli`, the LLVM interpreter:
 
