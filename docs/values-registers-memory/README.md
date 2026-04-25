@@ -138,3 +138,51 @@ If you're using a version of LLVM prior to April 2022, you may see pointer
 types that carry a "base type" with them, like `i32*`. These are being phased
 out, soon there will only be `ptr`.
 
+## A simple example of translation from Dragon to LLVM IR
+
+Let us consider the following simple Dragon program:
+
+
+`➜  dragon2js git:(LLVM-simple-assign) cat examples/llvm/llvm-0-int.drg`
+```C
+{
+    print(0);
+}
+```                                                                                                 
+`➜  dragon2js git:(LLVM-simple-assign) bin/drg2js.cjs -g llvm examples/llvm/llvm-0-int.drg -o tmp/llvm-0.ll`
+```                                              
+Output saved to tmp/llvm-0.ll
+➜  dragon2js git:(LLVM-simple-assign) cat tmp/llvm-0.ll
+```
+```ll
+; ModuleID = 'examples/llvm/llvm-0-int.drg'
+source_filename = "examples/llvm/llvm-0-int.drg"
+
+; Standard declarations
+declare i32 @printf(i8*, ...)
+declare i8* @strcpy(i8*, i8*)
+declare i8* @strcat(i8*, i8*)
+declare i64 @strlen(i8*)
+declare i8* @malloc(i64)
+declare void @free(i8*)
+declare i32 @memcmp(i8*, i8*, i64)
+
+; LLVM intrinsics for memory operations
+declare void @llvm.memset.p0i8.i64(i8*, i8, i64, i1)
+
+; String constants for print (will be populated when needed)
+@.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+@.str.double = private unnamed_addr constant [4 x i8] c"%f\0A\00", align 1
+@.str.char = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
+
+
+define i32 @main() {
+  %tmp_a = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0), i32 0)
+  ret i32 0
+}
+```
+Execution:
+```bash
+➜  dragon2js git:(LLVM-simple-assign) lli tmp/llvm-0.ll
+0
+```
