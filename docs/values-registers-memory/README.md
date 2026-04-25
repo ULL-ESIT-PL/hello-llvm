@@ -315,17 +315,6 @@ Simplemente el entero `0`. Es el valor que reemplaza al `%d` en el format string
 
 ---
 
-### En resumen
-
-```ll
-; LLVM IR
-call @printf( getelementptr(@.str.i32), i32 0 )
-
-// C equivalente
-printf("%d\n", 0);
-```
----
-
 
 ### Execution
 
