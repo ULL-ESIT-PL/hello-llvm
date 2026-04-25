@@ -131,6 +131,7 @@ declare void @free(i8*)
 ; ...etc
 ```
 
+
 Son como los **prototipos de funciones en C** — le dicen al compilador que estas funciones existen en alguna librería externa (libc), pero no las define aquí. Algunos tipos:
 
 | Tipo LLVM | Equivalente en C |
@@ -142,7 +143,9 @@ Son como los **prototipos de funciones en C** — le dicen al compilador que est
 
 ---
 
-### 3. Constantes globales de strings
+## Globals
+
+### Constantes globales de strings
 
 ```ll
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
@@ -158,7 +161,7 @@ Son los **format strings** que usará `printf` y `sprintf`.
 
 ---
 
-### 4. La función `main`
+### La función `main`
 
 ```ll
 define i32 @main() {
