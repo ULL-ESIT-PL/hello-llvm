@@ -37,8 +37,6 @@ So:
 
 ## Example
 
-**Me lo explicas?**
-
 
 ```ll
 ; ModuleID = 'examples/char/charsum.drg'
