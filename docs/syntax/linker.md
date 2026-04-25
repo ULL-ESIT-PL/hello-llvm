@@ -37,7 +37,21 @@ So:
 
 ## Example
 
+The following example is the translation of the Dragon source code:
 
+
+`➜  dragon2js git:(LLVM-simple-factorized) cat examples/char/charsum.drg`
+```C  
+{
+    print("hello" + " world!"); // Since we rely on JS it will concatenate
+}
+```
+
+```
+➜  dragon2js git:(LLVM-simple-factorized) bin/drg2js.cjs -g llvm examples/char/charsum.drg -o tmp/charsum.ll
+Output saved to tmp/charsum.ll
+``` 
+The resulting LLVM IR code is in [tmp/charsum.ll](tmp/charsum.ll):
 ```ll
 ; ModuleID = 'examples/char/charsum.drg'
 source_filename = "examples/char/charsum.drg"
