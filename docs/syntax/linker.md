@@ -51,13 +51,17 @@ The following example is the translation of the Dragon source code:
 ➜  dragon2js git:(LLVM-simple-factorized) bin/drg2js.cjs -g llvm examples/char/charsum.drg -o tmp/charsum.ll
 Output saved to tmp/charsum.ll
 ``` 
-The resulting LLVM IR code is in [tmp/charsum.ll](tmp/charsum.ll):
+
+The resulting LLVM IR code is in `tmp/charsum.ll`:
+
 ```ll
+➜  dragon2js git:(LLVM-simple-factorized) cat tmp/charsum.ll
 ; ModuleID = 'examples/char/charsum.drg'
 source_filename = "examples/char/charsum.drg"
 
 ; Standard declarations
 declare i32 @printf(i8*, ...)
+declare i32 @sprintf(i8*, i8*, ...)
 declare i8* @strcpy(i8*, i8*)
 declare i8* @strcat(i8*, i8*)
 declare i64 @strlen(i8*)
@@ -72,26 +76,30 @@ declare void @llvm.memset.p0i8.i64(i8*, i8, i64, i1)
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
 @.str.double = private unnamed_addr constant [4 x i8] c"%f\0A\00", align 1
 @.str.char = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
+; String constants for sprintf (no newline)
+@.str.i32.noline = private unnamed_addr constant [3 x i8] c"%d\00", align 1
+@.str.double.noline = private unnamed_addr constant [3 x i8] c"%f\00", align 1
 
-
-; String constants
-@.str.char.0 = private unnamed_addr constant [6 x i8] c"hello\00", align 1
-@.str.char.1 = private unnamed_addr constant [8 x i8] c" world!\00", align 1
+@.strlit.0 = private unnamed_addr constant [6 x i8] c"hello\00", align 1
+@.strlit.3 = private unnamed_addr constant [8 x i8] c" world!\00", align 1
 
 define i32 @main() {
-  %str_ptr_a = getelementptr inbounds [6 x i8], [6 x i8]* @.str.char.0, i64 0, i64 0
-  %str_ptr_b = getelementptr inbounds [8 x i8], [8 x i8]* @.str.char.1, i64 0, i64 0
-  %strlen_left_a = call i64 @strlen(i8* %str_ptr_a)
-  %strlen_right_a = call i64 @strlen(i8* %str_ptr_b)
-  %total_len_a = add i64 %strlen_left_a, %strlen_right_a
-  %total_len_1_a = add i64 %total_len_a, 1
-  %concat_buffer_a = call i8* @malloc(i64 %total_len_1_a)
-  %strcpy_result_a = call i8* @strcpy(i8* %concat_buffer_a, i8* %str_ptr_a)
-  %strcat_result_a = call i8* @strcat(i8* %concat_buffer_a, i8* %str_ptr_b)
-  %tmp_a = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.char, i64 0, i64 0), i8* %strcat_result_a)
+  %tmp_b = call i8* @malloc(i64 6)
+  %tmp_c = getelementptr inbounds [6 x i8], [6 x i8]* @.strlit.0, i64 0, i64 0
+  call i8* @strcpy(i8* %tmp_b, i8* %tmp_c)
+  %tmp_e = call i8* @malloc(i64 8)
+  %tmp_f = getelementptr inbounds [8 x i8], [8 x i8]* @.strlit.3, i64 0, i64 0
+  call i8* @strcpy(i8* %tmp_e, i8* %tmp_f)
+  %tmp_g = call i64 @strlen(i8* %tmp_b)
+  %tmp_h = call i64 @strlen(i8* %tmp_e)
+  %tmp_i = add i64 %tmp_g, %tmp_h
+  %tmp_j = add i64 %tmp_i, 1
+  %tmp_k = call i8* @malloc(i64 %tmp_j)
+  call i8* @strcpy(i8* %tmp_k, i8* %tmp_b)
+  call i8* @strcat(i8* %tmp_k, i8* %tmp_e)
+  %tmp_l = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.char, i64 0, i64 0), i8* %tmp_k)
   ret i32 0
 }
-
 ```
 
 ## LLVM IR — Explicación
