@@ -26,6 +26,11 @@ See section [docs/visualizing/control-flow-graph.md](/docs/visualizing/control-f
 
 See section [arrays-and-getelementptr/README.md](/docs/arrays-and-getelementptr/README.md)
 
+
+## A simple example of translation from Dragon to LLVM IR
+
+Véase la sección [intro2dragon/README.md](/docs/syntax/intro2dragon.md) 
+
 ## References
 
 See section [references/README.md](/README.md#references)
@@ -38,5 +43,6 @@ See section [references/README.md](/README.md#references)
 - [The Body of a Function](#the-body-of-a-function)
 - [Visualizing the Control Flow Graph, Regions, Dominator Trees, Call Graphs, etc.](#visualizing-the-control-flow-graph-regions-dominator-trees-call-graphs-etc)
 - [Arrays and getelementptr](#arrays-and-getelementptr)
+- [A simple example of translation from Dragon to LLVM IR](#a-simple-example-of-translation-from-dragon-to-llvm-ir)
 - [References](#references)
 - [Table of Contents](#table-of-contents)
