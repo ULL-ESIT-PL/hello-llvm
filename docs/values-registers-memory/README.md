@@ -193,6 +193,19 @@ define i32 @main() {
 Notice that our translator needs a template of standard declarations and string constants to be able to generate the IR for our simple `print(0)` statement. Here is an excerpt of the code that generates the IR:
 
 ```js
+const traverse = require('@babel/traverse').default;
+const CodegenContext = require('./context.cjs');
+const { dragonTypeToLLVM, dragonArrayTypeToLLVM, getFormatStringConst } = require('./type-helpers.cjs');
+const { escapeLLVMString } = require('./string-helpers.cjs');
+
+function generateModuleStub(sourceFile) {
+    return `; ModuleID = '${sourceFile || "<stdin>"}'
+source_filename = "${sourceFile || "<stdin>"}"
+
+; Standard declarations
+   ... 
+`;
+}
 function generateIR(ast, options = {}, source, sourceFile) {
     const ctx = new CodegenContext();
     const nodeValues = new Map();
