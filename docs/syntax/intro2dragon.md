@@ -184,7 +184,7 @@ int main() {
 
 ### Desglosando la llamada a `printf`:
 
-- `%tmp_a` → variable temporal que guarda el valor de retorno de printf (cuántos caracteres imprimió)
+- `%tmp_a` → variable temporal que guarda el valor de retorno de `printf` (cuántos caracteres imprimió)
 - `getelementptr inbounds (...)` → es como hacer `&str[0]`, obtiene un puntero al primer byte del string `"%d\n"`
 - `i32 0` → el entero `0` que se imprime
 
