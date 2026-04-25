@@ -323,13 +323,19 @@ int main() {
 - `i32 0` → el entero `0` que se imprime
 
 
-## Desglose de la línea
+### Desglose de la línea @printf
 
-Esta línea es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
+Esta línea 
+
+```ll
+  %tmp_a = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0), i32 0)
+```
+
+es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
 
 ---
 
-### Estructura general
+#### Estructura general
 
 ```
 %tmp_a = call i32 (i8*, ...) @printf( ARG1, ARG2 )
@@ -341,7 +347,7 @@ Esta línea es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
 
 ---
 
-### ARG1 — el format string
+#### ARG1 — el format string
 
 ```ll
 i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0)
@@ -366,7 +372,7 @@ Véase la sección [getelmentptr](/docs/arrays-and-getelementptr/README.md)
 
 ---
 
-### ARG2 — el valor a imprimir
+#### ARG2 — el valor a imprimir
 
 ```ll
 i32 0
