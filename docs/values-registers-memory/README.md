@@ -160,6 +160,7 @@ source_filename = "examples/llvm/llvm-0-int.drg"
 
 ; Standard declarations
 declare i32 @printf(i8*, ...)
+declare i32 @sprintf(i8*, i8*, ...)
 declare i8* @strcpy(i8*, i8*)
 declare i8* @strcat(i8*, i8*)
 declare i64 @strlen(i8*)
@@ -174,6 +175,9 @@ declare void @llvm.memset.p0i8.i64(i8*, i8, i64, i1)
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
 @.str.double = private unnamed_addr constant [4 x i8] c"%f\0A\00", align 1
 @.str.char = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
+; String constants for sprintf (no newline)
+@.str.i32.noline = private unnamed_addr constant [3 x i8] c"%d\00", align 1
+@.str.double.noline = private unnamed_addr constant [3 x i8] c"%f\00", align 1
 
 
 define i32 @main() {
