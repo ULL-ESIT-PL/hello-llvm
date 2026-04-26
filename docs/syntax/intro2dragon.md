@@ -112,17 +112,16 @@ function generateIR(ast, options = {}, source, sourceFile) {
     };
 }
 ```
-
-## Cabecera del módulo: generateModuleStub
+## Module Header: generateModuleStub
 
 ```ll
 ; ModuleID = 'examples/llvm/llvm-0-int.drg'
 source_filename = "examples/llvm/llvm-0-int.drg"
 ```
 
-Metadatos: identifican de qué archivo fuente proviene este IR. Los `;` son comentarios.
+Metadata: identifies the source file of this IR. The semicolons (`;`) are comments.
 
-### Declaraciones externas (`declare`)
+### External Declarations (`declare`)
 
 ```ll
 declare i32 @printf(i8*, ...)
@@ -131,120 +130,127 @@ declare void @free(i8*)
 ; ...etc
 ```
 
+These are like **function prototypes in C** — they tell the compiler that these functions exist in an external library (libc), but don't define them here. Some types:
 
-Son como los **prototipos de funciones en C** — le dicen al compilador que estas funciones existen en alguna librería externa (libc), pero no las define aquí. Algunos tipos:
+| LLVM Type | C Equivalent |
 
-| Tipo LLVM | Equivalente en C |
 |-----------|-----------------|
-| `i32` | `int` (32 bits) |
-| `i64` | `long` (64 bits) |
-| `i8*` | `char*` (puntero) |
+| `i32` | `int` (32-bit) |
+| `i64` | `long` (64-bit) |
+| `i8*` | `char*` (pointer) |
 | `void` | `void` |
 
 ---
 
 ## Globals
 
-### Constantes globales de strings
+### Global String Constants
 
 ```ll
 @.str.i32 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
 ```
 
-Esto define el string `"%d\n"` en memoria global:
-- `[4 x i8]` → array de 4 bytes
-- `c"%d\0A\00"` → los caracteres `%`, `d`, `\n` (0x0A), y `\0` (terminador nulo)
-- `private` → solo visible dentro de este módulo
-- `align 1` → alineado a 1 byte
+This defines the string `"%d\n"` in global memory:
+- `[4 x i8]` → 4-byte array
+- `c"%d\0A\00"` → the characters `%`, `d`, `\n` (0x0A), and `\0` (null terminator)
+- `private` → visible only within this module
+- `align 1` → aligned to 1 byte
 
-Son los **format strings** que usará `printf` y `sprintf`.
+These are the **format strings** that `printf` and `sprintf` will use.
 
----
 
-### La función `main`
+` ... ---
+
+### The `main` function
 
 ```ll
-define i32 @main() {
-  %tmp_a = call i32 (i8*, ...) @printf(
-    i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0),
-    i32 0
-  )
-  ret i32 0
+define i32 @main() { 
+%tmp_a = call i32 (i8*, ...) @printf( 
+i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0), 
+i32 0 
+) 
+ret i32 0
 }
 ```
 
-### Desglose de la línea @printf
+### @printf line breakdown
 
-Esta línea 
+This line
 
-```ll
-  %tmp_a = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0), i32 0)
+```ll 
+%tmp_a = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0), i32 0)
 ```
 
-es una llamada a `printf("%d\n", 0)`. Vamos parte por parte:
+is a call to `printf("%d\n", 0)`. Let's go part by part:
 
 ---
 
-### Estructura general
+### General Structure
 
 ```
 %tmp_a = call i32 (i8*, ...) @printf( ARG1, ARG2 )
-│              │               │
-│              │               └─ función a llamar
-│              └─ tipo de retorno (int = nº chars impresos)
-└─ variable que guarda el valor de retorno (cuántos caracteres imprimió)
+│ │ │
+│ │ └─ function to call
+│ └─ return type (int = number of characters printed)
+└─ variable that stores the return value (how many characters were printed)
 ```
 
 ---
 
-### ARG1 — el format string
+### ARG1 — the format string
 
 ```ll
 i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.i32, i64 0, i64 0)
 ```
 
-Esto obtiene un puntero al string `"%d\n"`. Desglosado:
+This gets a pointer to the string `"%d\n"`. Broken down:
 
-| Parte | Significado |
+| Part | Meaning |
+
 |---|---|
-| `i8*` | el resultado es un `char*` |
-| `getelementptr inbounds` | "dame la dirección de este elemento" (como `&array[i]` en C) |
-| `[4 x i8]` | el tipo del array (4 bytes) |
-| `[4 x i8]* @.str.i32` | puntero al array global `"%d\n\0"` |
-| `i64 0` | índice del array exterior (el array en sí) |
-| `i64 0` | índice del elemento interior (primer byte, `'%'`) |
 
-En C equivale simplemente a: `"%d\n"` — o más precisamente, `&str[0]`.
+`i8*` | the result is a `char*` |
 
-El doble `0, 0` es porque en LLVM IR los arrays globales tienen **dos niveles de indirección**, y hay que "atravesar" ambos para llegar al primer byte.
+`getelementptr inbounds` | "give me the address of this element" (like `&array[i]` in C) |
 
-Véase la sección [getelmentptr](/docs/arrays-and-getelementptr/README.md)
+`[4 x i8]` | the array type (4 bytes) |
+
+`[4 x i8]* @.str.i32` | pointer to the global array `"%d\n\0"` |
+
+`i64 0` | index of the outer array (the array itself) |
+
+`i64 0` | index of the inner element (first byte, `'%'`) |
+
+In C, this is simply equivalent to: `"%d\n"` — or more precisely, `&str[0]`.
+
+The double `0, 0` is because in LLVM IR global arrays have **two levels of indirection**, and both must be traversed to reach the first byte.
+
+See the section [getelmentptr](/docs/arrays-and-getelementptr/README.md)
 
 ---
 
-### ARG2 — el valor a imprimir
+### ARG2 — the value to print
 
 ```ll
 i32 0
 ```
 
-Simplemente el entero `0`. Es el valor que reemplaza al `%d` en el format string.
+Simply the integer `0`. It is the value that replaces `%d` in the format string.
+
 
 ---
-
 
 $2 Execution
 
 To execute this IR, we can use `lli`, the LLVM interpreter:
 
 ```bash
-➜  dragon2js git:(LLVM-simple-assign) lli tmp/llvm-0.ll
+➜ dragon2js git:(LLVM-simple-assign) lli tmp/llvm-0.ll
 0
 ```
 
-Véanse las secciones 
+See the sections:
 
-- [Running LLVM IR](/docs/running-llvm.md) para más detalles sobre cómo ejecutar IR.
-- [Linking LLVM IR Modules](/docs/syntax/linker.md) para detalles sobre cómo combinar varios módulos IR.
+- [Running LLVM IR](/docs/running-llvm.md) for more details on how to run IRs.
 
-
+- [Linking LLVM IR Modules](/docs/syntax/linker.md) for details on how to combine multiple IR modules.
