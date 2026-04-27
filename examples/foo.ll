@@ -1,4 +1,4 @@
 define void @foo(i32 %arg) {
-    ; You can readme!
-    ret void
+    ; This is a comment!
+    ret void ; void in LLVM is the absence of a value
 }
