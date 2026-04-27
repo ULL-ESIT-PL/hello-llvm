@@ -107,6 +107,11 @@ See the code at [examples/factorial-main.ll](https://github.com/ULL-ESIT-PL/hell
 ### More examples in Compiler Explorer
 
 You can see the following examples in action [in Godbolt Compiler Explorer](https://godbolt.org/z/4nbdede45).
+Also, in the command line compile example [examples/mangling-compiler-explorer.cpp](examples/mangling-compiler-explorer.cpp):
+
+```
+clang++ -S -emit-llvm -O0 -g examples/mangling-compiler-explorer.cpp -o tmp/compiler-explorer.ll
+```
 
 Let's compile some C++ global declarations and look at the corresponding IR
 global variable:
