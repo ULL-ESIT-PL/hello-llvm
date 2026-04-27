@@ -1,3 +1,9 @@
+## LLVM IR Tutorial - Phis, GEPs and other things, oh my!
+
+* [LLVM IR Tutorial - Phis, GEPs and other things, oh my!](https://youtu.be/m8G_S5LwlTo?si=aquQxzfpFCdZtdEi) By Vince Bridgers (Intel Corporation), Felipe de Azevedo Piovezan (Intel Corporation). Youtube.
+    * [Copy of the Slides in this repo](/docs/pdfs/llvm-ir-tutorial.pdf)
+    * [Original Slides: Tutorial-Bridgers-LLVM_IR_tutorial.pdf](https://llvm.org/devmtg/2019-04/slides/Tutorial-Bridgers-LLVM_IR_tutorial.pdf)
+
 ## What is Intermediate Representation?
 
 See section [what-is-IR/README.md](/docs/what-is-IR/README.md)
@@ -37,6 +43,7 @@ See section [references/README.md](/README.md#references)
 
 ## Table of Contents
 
+- [LLVM IR Tutorial - Phis, GEPs and other things, oh my!](#llvm-ir-tutorial---phis-geps-and-other-things-oh-my)
 - [What is Intermediate Representation?](#what-is-intermediate-representation)
 - [LLVM's IR Core Concepts - Values, Registers, Memory](#llvms-ir-core-concepts---values-registers-memory)
 - [Modules](#modules)
