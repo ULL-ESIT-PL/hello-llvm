@@ -1,10 +1,11 @@
 ; ModuleID = 'examples/factorial.c'
+; Comment first target datalayout and target triple to match
 ; Compile: (MacOS) clang examples/factorial-main.ll examples/factorial.ll -o tmp/f
 ; Compile (Linux/Codespaces): clang --target=x86_64-pc-linux-gnu examples/factorial-main.ll examples/factorial.ll -o tmp/f
 ; Run: tmp/f (Output: 120)
 source_filename = "examples/factorial.c"
 target datalayout = "e-m:o-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
-target triple = "x86_64-apple-macosx26.0.0"
+;target triple = "x86_64-apple-macosx26.0.0"
 
 ; Function Attrs: nofree nosync nounwind readnone ssp uwtable
 define i32 @factorial(i32 noundef %0) local_unnamed_addr #0 {
