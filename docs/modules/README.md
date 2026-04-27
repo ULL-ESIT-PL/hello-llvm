@@ -203,13 +203,13 @@ declare i64 @foo(i64, ptr)
 
 A function _definition_ is very similar to the declaration, but we use a
 different keyword (`define`), provide names to the parameters and include the
-body of the function:
+body of the function (see file [examples/foo-ptr.ll](/examples/foo-ptr.ll)):
 
 ```llvm
 define i64 @foo(i64 %val, ptr %myptr) {
   %temp = load i64, ptr %myptr
   %mul = mul i64 %val, %temp
-  ret %mul
+  ret i64 %mul
 }
 ```
 
