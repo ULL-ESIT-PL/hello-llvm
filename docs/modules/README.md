@@ -42,7 +42,7 @@ invalidate code in other Modules.
 reason, the `Value` of a global symbol has a pointer type.
 
 For example, if we declare a global variable of type `i32` called `x`, the type
-of the `Value` `@x` is `ptr`. To access the underlying integer, we must first
+of the `Value` `@x` is `i32*`. To access the underlying integer, we must first
 load from that address.
 
 There are two kinds of global symbols: **global variables** and **functions**.
