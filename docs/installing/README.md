@@ -87,6 +87,8 @@ If `clang` is not recognized after installation, reopen the terminal or add LLVM
 
 ## GitHub CodeSpaces DevContainer
 
+This repo [devcontainer](/.devcontainer/devcontainer.json) is configured for the **LLVM Learning Tutorial** for the *Procesadores de Lenguajes* course. It uses the script [setup.sh](/.devcontainer/setup.sh) to install LLVM and related tools in a GitHub Codespaces environment. Use it as a template for your own LLVM projects.
+
 See section [/docs/installing/github-codespaces.md](/docs/installing/github-codespaces.md)
 
 ## Building from source
