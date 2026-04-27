@@ -104,6 +104,8 @@ Another example:
 
 ## Global Variables: examples from C++ to LLVM IR
 
+You can see the following examples in action [in Godbolt Compiler Explorer](https://godbolt.org/z/4nbdede45).
+
 Let's compile some C++ global declarations and look at the corresponding IR
 global variable:
 
@@ -174,7 +176,6 @@ were using static to mean "local to this translation unit", and so it gets
 namespace to the variable, but it can still be accessed by other translation
 units.
 
-You can see these in action [in Godbolt](https://godbolt.org/z/4nbdede45).
 
 
 ## Functions
