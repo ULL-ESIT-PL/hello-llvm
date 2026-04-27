@@ -59,8 +59,8 @@ they require a **type** and a _constant_ **initial** `Value`:
 In this example, we have a global symbol that:
 
 * Has name `gv1`.
-* Has external linkage (its name is visible to other Modules).
-* Is a global variable.
+* Has `external` linkage (its name is visible to other Modules).
+* Is a `global` variable.
 * Contains a `float` `Value`.
 * Is initialized with `Value` `float 1.0`.
 
