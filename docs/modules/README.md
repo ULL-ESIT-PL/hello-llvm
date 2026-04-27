@@ -70,8 +70,6 @@ External linkage is the default and can be omitted:
 @gv1 = global float 1.0
 ```
 
-From here on, we will be omitting linkage for all global symbols.
-
 Recall that, because all global symbols define a memory region, the `Value`
 `@gv1` has a pointer type. As such, to read or write the `Value` in that memory
 location we use loads and stores:
