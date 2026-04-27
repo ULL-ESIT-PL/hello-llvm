@@ -153,7 +153,7 @@ static const int static_const_int = 3;
 // @_ZL16static_const_int = internal constant i32 3
 ```
 
-* Name [mangling](name-mangling.md) can now be observed.
+* Name [mangling](/docs/syntax/name-mangling.md) can now be observed.
 * All three variables have internal linkage (which means their names are only visible within the same module).
 
 
