@@ -203,7 +203,7 @@ declare i64 @foo(i64, ptr)
 
 A function _definition_ is very similar to the declaration, but we use a
 different keyword (`define`), provide names to the parameters and include the
-body of the function (see file [examples/foo-ptr.ll](/examples/foo-ptr.ll)):
+body of the function (see file [examples/foo-ptr.ll](/examples/foo-ptr.ll)) and file [examples/foo-ptr-main.c](/examples/foo-ptr-main.c):
 
 ```llvm
 define i64 @foo(i64 %val, ptr %myptr) {
