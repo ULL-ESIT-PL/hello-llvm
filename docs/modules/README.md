@@ -230,6 +230,13 @@ and returns the result (`ret` instruction).
 What is the type of `@foo`? Like all global symbols, it defines a memory region
 and therefore its type is a pointer type (`ptr`).
 
+```
+clang examples/foo-ptr-main.c examples/foo-ptr.ll -o tmp/foo
+```
+```
+tmp/foo
+```
+
 ### The structure of functions
 
 ![](/docs/images/functions.png)
