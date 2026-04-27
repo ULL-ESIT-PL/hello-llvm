@@ -94,6 +94,8 @@ assume they do not exist.
 
 ### Another example `@.str = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1`
 
+See the code at [examples/factorial-main.ll](https://github.com/ULL-ESIT-PL/hello-llvm/blob/main/examples/factorial-main.ll#L6):
+
 ```ll
 @.str = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
 ```
