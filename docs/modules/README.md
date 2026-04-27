@@ -38,7 +38,7 @@ Modules_. Or `internal` linkage, which means its name is only visible within the
 same Module. For such a symbol, it would be illegal to rename it: doing so could
 invalidate code in other Modules.
 
-Global symbols define memory regions allocated at compilation time. For this
+**Global symbols define memory regions allocated at compilation time**. For this
 reason, the `Value` of a global symbol has a pointer type.
 
 For example, if we declare a global variable of type `i32` called `x`, the type
