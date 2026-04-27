@@ -89,6 +89,19 @@ There is one other important variation of global variables, we may replace
 This means that stores to this memory region are illegal and the optimizer can
 assume they do not exist.
 
+
+Another example:
+
+```ll
+@.str = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+```
+
+- `unnamed_addr`: This attribute tells LLVM that the address of this global variable is not significant—only its contents matter. This allows the optimizer to merge identical constants or move them around, since their address is not used for identity.
+- `[4 x i8] c"%d\0A\00"`: This defines a constant array of 4 bytes (characters) initialized with the string `"%d\n"`. The `\0A` is the newline character, and `\00` is the null terminator. The type `[4 x i8]` indicates that this is an array of 4 bytes (8-bit integers).
+- `align 1`: This specifies the alignment requirement for the variable in memory. align 1 means the variable can be placed at any byte boundary (no special alignment needed). 
+
+
+
 ## Global Variables: examples from C++ to LLVM IR
 
 Let's compile some C++ global declarations and look at the corresponding IR
