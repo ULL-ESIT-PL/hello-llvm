@@ -213,8 +213,18 @@ define i64 @foo(i64 %val, ptr %myptr) {
 }
 ```
 
-This function loads an `i64` `Value` from `%ptr`, multiplies it with `%val` and
-returns the result (`ret` instruction).
+This function loads an `i64` `Value` from `%ptr`, 
+
+```ll
+  %temp = load i64, ptr %myptr
+```
+
+multiplies it with `%val`
+
+```ll
+  %mul = mul i64 %val, %temp
+
+and returns the result (`ret` instruction).
 
 What is the type of `@foo`? Like all global symbols, it defines a memory region
 and therefore its type is a pointer type (`ptr`).
