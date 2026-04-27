@@ -223,6 +223,7 @@ multiplies it with `%val`
 
 ```ll
   %mul = mul i64 %val, %temp
+```
 
 and returns the result (`ret` instruction).
 
