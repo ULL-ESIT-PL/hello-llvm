@@ -40,7 +40,7 @@ Des:1 https://cli.github.com/packages stable InRelease [3.917 B]
 ...
 ```
 
-You can use the `scripts/llvm-health-check.sh` to check that LLVM is working:
+You can use the [scripts/llvm-health-check.sh](/scripts/llvm-health-check.sh) to check that LLVM is working:
 
 ```
 usuario@ubuntu:~/pl/hello-llvm$ scripts/llvm-health-check.sh
