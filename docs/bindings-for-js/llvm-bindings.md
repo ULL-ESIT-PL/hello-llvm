@@ -124,3 +124,4 @@ I tried it in a GitHub Codespace and it did not work.
 
 You cannot install LLVM 14 directly with apt on Ubuntu 24.04 (noble) because the repository does not exist. You must compile from source, use packages from another version, or use a container.
 
+See section [/docs/installing/github-codespaces.md](/docs/installing/github-codespaces.md)
