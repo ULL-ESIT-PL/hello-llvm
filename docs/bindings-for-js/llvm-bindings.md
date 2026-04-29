@@ -65,7 +65,7 @@ Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
 
 ### Script to set LLVM version
 
-I have both LLVM 14 and LLVM 21 installed. I created a script to set the environment variables for the desired version:
+I have both LLVM 14 and LLVM 21 installed. I created a [script llvm-version.sh](/llvm-version.sh) to set the environment variables for the desired version:
 
 ```zsh
 ➜  hello-llvm git:(main) cat llvm-version.sh
