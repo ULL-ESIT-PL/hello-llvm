@@ -13,7 +13,7 @@ See section [docs/syntax/README.md](/docs/syntax/README.md)
 
 These two repos are private. Students do not have access to them:
   - A Translator from Simple Arithmetic Expressions to LLVM IR at https://github.com/ULL-ESIT-PL/calc2llvmIR/ .
-  - Labs [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) has a translator to LLVM IR.
+  - PL 25/26 Solution to the Competential Labs at [Dragon](https://github.com/ULL-ESIT-PL/dragon2js) has an example of translators to LLVM IR in branches LLVM*. (private repo, students do not have access to it).
 
 ### The Complect project
 
