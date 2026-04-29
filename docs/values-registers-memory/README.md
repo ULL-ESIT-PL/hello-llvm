@@ -113,7 +113,7 @@ It returns a `Value` corresponding to the address of that memory location, and
 that `Value` is placed in the register named `%address`. What is the type of this
 `Value`? It is a pointer type: `ptr`. While we haven't yet talked about
 `Functions`, the memory allocated by an `alloca` is [automatically freed when
-the `Function` exits](garbage-collector.md).
+the `Function` exits](/docs/syntax/garbage-collector.md).
 
 The second instruction, `store` , does not produce a `Value`. It takes the integer `i32` value in the register`%result`, and stores the value into the memory location stored in the register `%address`.
 
