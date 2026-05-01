@@ -38,7 +38,7 @@ for.body:
   %3 = load i32, ptr %i, align 4         ; Load the current loop counter
   %idxprom = sext i32 %3 to i64          ; Convert loop counter to i64: Many frontends normalize index to i64 on 64-bit targets to avoid ambiguity when mixing integer widths.
   ;%elemPtr = getelementptr inbounds i32, ptr %2, i64 %idxprom ; Get address of arr[i]. Uncomment this line and try
-  %elemPtr = getelementptr inbounds i32, ptr %2, i32 %3 ; Get address of arr[i] ; i32 can be valid
+  %elemPtr = getelementptr inbounds i32, ptr %2, i32 %3 ; Get address of arr[i] ; inbounds means the index is within array bounds (optimization hint)
 
   %val = load i32, ptr %elemPtr, align 4 ; Load the value at arr[i]
   %fmtPtr = getelementptr inbounds [4 x i8], ptr @.fmt, i64 0, i64 0 ; Get format string
