@@ -97,6 +97,8 @@ If you want to run LLVM-based tests in a GitHub Actions workflow, you can use th
 
 See also https://github.com/ULL-ESIT-PL/dragon2js/blob/LLVM-simple/.github/workflows/llvm-simple-tests.yml (private repo, but you can see the file content in the link above)
 
+File `.github/workflows/llvm-simple-tests.yml`:
+
 ```yaml
 name: LLVM Simple Tests
 
