@@ -59,7 +59,7 @@ entry:
 
 The `@printArray(ptr noundef %arr, i32 noundef %N)` function takes a pointer to the first element of the array `%arr` and its size `%N`, and prints the elements of the array. Both parameters are given the [noundef attribute](noundef.md), which means that they cannot be `undef` values.
 
-See [docs/images/hello-array.png](docs/images/hello-array.png) for the CFG of the `printArray` function.
+See [docs/images/hello-array.png](/docs/images/hello-array.png) for the CFG of the `printArray` function.
 
 ## Multi-dimensional arrays
 
