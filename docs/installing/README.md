@@ -91,6 +91,54 @@ This repo [devcontainer](/.devcontainer/devcontainer.json) is configured for the
 
 See section [/docs/installing/github-codespaces.md](/docs/installing/github-codespaces.md)
 
+## GitHub Actions
+
+If you want to run LLVM-based tests in a GitHub Actions workflow, you can use the following configuration as a starting point. This example installs LLVM and runs tests on a Linux environment.
+
+See also https://github.com/ULL-ESIT-PL/dragon2js/blob/LLVM-simple/.github/workflows/llvm-simple-tests.yml (private repo, but you can see the file content in the link above)
+
+```yaml
+name: LLVM Simple Tests
+
+on:
+  push:
+    branches:
+      - LLVM-simple
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install LLVM
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y llvm llvm-runtime
+
+      - name: Check LLVM tools
+        run: |
+          which lli
+          lli --version
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 25
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run main test suite
+        run: npm test
+
+      - name: Run LLVM test suite
+        run: npm run test:llvm
+```
+
 ## Building from source
 
 See also the LLVM section

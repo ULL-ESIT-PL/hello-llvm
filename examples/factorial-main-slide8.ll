@@ -5,5 +5,5 @@ define i32 @main(i32 %argc, i8** %argv) {
   %2 = mul i32 %1, 7 
   %3 = icmp eq i32 %2, 42 
   %result = zext i1 %3 to i32 
-  ret i32 %2
+  ret i32 %result
 }
