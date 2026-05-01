@@ -10,7 +10,7 @@ To create an array in LLVM IR, we can use the `alloca` instruction to allocate m
 ```
 This allocates memory for an array of 5 integers (`i32`) and returns a pointer to the array, which is stored in the register `%arr`. The `align 16` specifies that the memory should be aligned to a 16-byte boundary.
 
-To access elements of the array, we can use the `getelementptr` instruction, which computes the address of a specific element in the array. For example, to access the third element of the array, we can do:
+To access elements of the array, we can use the [getelementptr](https://llvm.org/docs/LangRef.html#getelementptr-instruction) instruction, which computes the address of a specific element in the array. For example, to access the third element of the array, we can do:
 
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 0, i64 2
