@@ -134,9 +134,6 @@ jobs:
 
       - name: Run main test suite
         run: npm test
-
-      - name: Run LLVM test suite
-        run: npm run test:llvm
 ```
 
 ## Building from source
