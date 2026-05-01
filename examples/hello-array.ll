@@ -14,37 +14,44 @@ declare i32 @printf(ptr noundef, ...)
 
 define void @printArray(ptr noundef %arr, i32 noundef %N) {
 entry:
-  %arr.addr = alloca ptr, align 8
-  %N.addr = alloca i32, align 4
-  %i = alloca i32, align 4
+  ; Allocate local storage for function parameters and loop counter
+  %arr.addr = alloca ptr, align 8        ; Storage for the array pointer parameter
+  %N.addr = alloca i32, align 4          ; Storage for the array size parameter
+  %i = alloca i32, align 4               ; Loop counter
+  
+  ; Store the parameter values into our local variables
   store ptr %arr, ptr %arr.addr, align 8
   store i32 %N, ptr %N.addr, align 4
-  store i32 0, ptr %i, align 4
-  br label %for.cond
+  store i32 0, ptr %i, align 4           ; Initialize loop counter to 0
+  br label %for.cond                     ; Jump to loop condition check
 
 for.cond:
-  %0 = load i32, ptr %i, align 4
-  %1 = load i32, ptr %N.addr, align 4
-  %cmp = icmp slt i32 %0, %1
-  br i1 %cmp, label %for.body, label %for.end
+  ; Check if loop counter is less than array size (i < N)
+  %0 = load i32, ptr %i, align 4         ; Load current loop counter
+  %1 = load i32, ptr %N.addr, align 4    ; Load array size
+  %cmp = icmp slt i32 %0, %1             ; Compare: i < N
+  br i1 %cmp, label %for.body, label %for.end ; If true, enter loop; else exit
 
 for.body:
-  %2 = load ptr, ptr %arr.addr, align 8
-  %3 = load i32, ptr %i, align 4
-  %idxprom = sext i32 %3 to i64
-  %elemPtr = getelementptr inbounds i32, ptr %2, i64 %idxprom
-  %val = load i32, ptr %elemPtr, align 4
-  %fmtPtr = getelementptr inbounds [4 x i8], ptr @.fmt, i64 0, i64 0
-  %4 = call i32 (ptr, ...) @printf(ptr noundef %fmtPtr, i32 noundef %val)
-  br label %for.inc
+  ; Loop body: print the current array element
+  %2 = load ptr, ptr %arr.addr, align 8  ; Load the array pointer
+  %3 = load i32, ptr %i, align 4         ; Load the current loop counter
+  %idxprom = sext i32 %3 to i64          ; Convert loop counter to i64 for getelementptr
+  %elemPtr = getelementptr inbounds i32, ptr %2, i64 %idxprom ; Get address of arr[i]
+  %val = load i32, ptr %elemPtr, align 4 ; Load the value at arr[i]
+  %fmtPtr = getelementptr inbounds [4 x i8], ptr @.fmt, i64 0, i64 0 ; Get format string
+  %4 = call i32 (ptr, ...) @printf(ptr noundef %fmtPtr, i32 noundef %val) ; Print the value
+  br label %for.inc                      ; Jump to increment
 
 for.inc:
-  %5 = load i32, ptr %i, align 4
-  %inc = add nsw i32 %5, 1
-  store i32 %inc, ptr %i, align 4
-  br label %for.cond
+  ; Increment the loop counter
+  %5 = load i32, ptr %i, align 4         ; Load current counter
+  %inc = add nsw i32 %5, 1               ; Increment by 1
+  store i32 %inc, ptr %i, align 4        ; Store back the incremented value
+  br label %for.cond                     ; Jump back to condition check
 
 for.end:
+  ; Loop finished, return from function
   ret void
 }
 

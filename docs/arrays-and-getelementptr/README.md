@@ -15,7 +15,9 @@ To access elements of the array, we can use the `getelementptr` instruction, whi
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 0, i64 2
 ```
-The first index `0` is convenient because each index reduces the type of the pointer by one level. The first index reduces the pointer from `ptr` to `[5 x i32]*` to `i32*`. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`". For one dimensional arrays, we can omit the first index, which is always `0`, and simplify it to
+The first index `0` is convenient because each index reduces the type of the pointer by one level. The first index reduces the pointer from `ptr` to `[5 x i32]*` to `i32*`. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`". 
+
+For one dimensional arrays, we can omit the first index, which is always `0`, and simplify it to
 
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 2
