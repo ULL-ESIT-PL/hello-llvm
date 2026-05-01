@@ -1,5 +1,5 @@
 ; Compile and run with clang (version 21.0.0:
-; clang examples/hello-array.ll -o tmp/hello-array
+; clang examples/hello-array.ll -o tmp/hello-array # Or lli examples/hello-array.ll
 ; tmp/hello-array
 ; 1
 ; 2
@@ -37,7 +37,7 @@ for.body:
   %2 = load ptr, ptr %arr.addr, align 8  ; Load the array pointer
   %3 = load i32, ptr %i, align 4         ; Load the current loop counter
   %idxprom = sext i32 %3 to i64          ; Convert loop counter to i64: Many frontends normalize index to i64 on 64-bit targets to avoid ambiguity when mixing integer widths.
-  ;%elemPtr = getelementptr inbounds i32, ptr %2, i64 %idxprom ; Get address of arr[i]
+  ;%elemPtr = getelementptr inbounds i32, ptr %2, i64 %idxprom ; Get address of arr[i]. Uncomment this line and try
   %elemPtr = getelementptr inbounds i32, ptr %2, i32 %3 ; Get address of arr[i] ; i32 can be valid
 
   %val = load i32, ptr %elemPtr, align 4 ; Load the value at arr[i]
