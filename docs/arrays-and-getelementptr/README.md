@@ -24,7 +24,7 @@ The base type `[5 x i32]` tells GEP the layout for calculating byte offsets. A u
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 2
 ```
-This computes the address of the third element of the array and stores it in the register `%p0`. The `i64 2` is the index for the element. See file [/examples/hello-array.ll](/examples/hello-array.ll) for the actual code.
+This computes the address of the third element of the array and stores it in the register `%p0`. The `i64 2` is the index for the element. See file [/examples/hello-array.ll](/examples/hello-array.ll#L60-L83) for the actual code.
 
 ```ll
 declare i32 @printf(ptr noundef, ...)
