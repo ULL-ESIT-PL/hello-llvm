@@ -15,7 +15,9 @@ To access elements of the array, we can use the [getelementptr](https://llvm.org
 ```ll
 %p0 = getelementptr [5 x i32], ptr %arr, i64 0, i64 2
 ```
-The first index `0` is a navigational index: the base type `[5 x i32]` tells GEP the layout, and the first index steps through elements of that base type (each of size `sizeof([5 x i32])`). The second index then steps into the array elements (each of size `sizeof(i32)`). In modern LLVM IR with opaque pointers, the result is always `ptr` regardless of how many indices are used — the old notation `[5 x i32]*` or `i32*` no longer exists in the IR. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`". 
+The base type `[5 x i32]` tells GEP the layout for calculating byte offsets. A useful mental model (inherited from the old typed-pointer era) is that each index "reduces the type by one level": the first index steps through elements of type `[5 x i32]`, and the second index steps through elements of type `i32`. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`".
+
+> **Note on pointer styles:** LLVM 15+ made *opaque pointers* (`ptr`) the default. In this style the result of GEP is always `ptr`. The older *typed pointer* style (`i32*`, `[5 x i32]*`, …) is still accepted for backwards compatibility but is considered legacy. The examples in this document use the modern `ptr` style. 
 
 For one dimensional arrays, we can omit the first index, which is always `0`, and simplify it to
 
@@ -80,11 +82,11 @@ The `getelementptr` instruction computes the address of the element at position 
 
 **We need three indices** to access the element at position `[1,2]` (remember that indices are zero-based).
 
-- **The first index must be `0`** because it navigates through elements of the base type `[3 x [3 x i32]]` (each of size `sizeof([3 x [3 x i32]])`). An index of `0` means no movement — it simply enters the array.
-- The second index is `1` because it steps into the outer array using the element type `[3 x i32]`, selecting the second row of the matrix.
+- **The first index must be `0`** because it steps through elements of the base type `[3 x [3 x i32]]`. An index of `0` means no displacement — it "enters" the array without moving past it.
+- The second index is `1` because it steps through elements of type `[3 x i32]`, selecting the second row of the matrix.
+- The third index `2` steps through elements of type `i32`, selecting the third column.
 
-  In modern LLVM IR with opaque pointers, the result is always `ptr` — the old typed pointer notation (`[3 x [3 x i32]]*`, `[3 x i32]*`, `i32*`) no longer exists in the IR. The base type in `getelementptr` is used only to calculate the byte offset. 
-- The third index `2` is now an `i32` offset. 
+In the old typed-pointer style you would think of each index as reducing the pointer type by one level: `[3 x [3 x i32]]*` → `[3 x i32]*` → `i32*`. This mental model is still useful for understanding how GEP calculates byte offsets, even when using the modern opaque `ptr` style where the result is always `ptr`. 
 
 See [/examples/hello-array2.ll](/examples/hello-array2.ll) for the actual code.
 
