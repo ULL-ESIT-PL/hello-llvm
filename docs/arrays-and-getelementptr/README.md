@@ -17,7 +17,7 @@ To access elements of the array, we can use the [getelementptr](https://llvm.org
 ```
 The base type `[5 x i32]` tells GEP the layout for calculating byte offsets. A useful mental model (inherited from the old typed-pointer era) is that each index "reduces the type by one level": the first index steps through elements of type `[5 x i32]`, and the second index steps through elements of type `i32`. This means "get the address of the element at index 2 of the array pointed to by `%arr` at offset `0`".
 
-> **Note on pointer styles:** LLVM 15+ made *opaque pointers* (`ptr`) the default. In this style the result of GEP is always `ptr`. The older *typed pointer* style (`i32*`, `[5 x i32]*`, …) is still accepted for backwards compatibility but is considered legacy. The examples in this document use the modern `ptr` style. 
+> **Note on pointer styles:** LLVM 15+ made *opaque pointers* (`ptr`) the default. In this style the result of GEP is always `ptr`. The older *typed pointer* style (`i32*`, `[5 x i32]*`, …) is still accepted for backwards compatibility but is considered legacy. 
 
 For one dimensional arrays, we can omit the first index, which is always `0`, and simplify it to
 
