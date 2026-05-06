@@ -20,7 +20,8 @@ The base type `[5 x i32]` tells GEP the layout for calculating byte offsets. A u
 > **Note on pointer styles:** LLVM 15+ made *opaque pointers* (`ptr`) the default. In this style the result of GEP is always `ptr`. The older *typed pointer* style (`i32*`, `[5 x i32]*`, …) is still accepted for backwards compatibility but is considered legacy. 
 
 
-See file [/examples/hello-array.ll](/examples/hello-array.ll#L60-L83) for an example. We can play to move through the array using the first index of `getelementptr` because it steps through elements of the base type. 
+See file [/examples/hello-array.ll](/examples/hello-array.ll#L60-L83) for an example. We can play to move through the array using the first index of `getelementptr` because it steps through elements of the base type. See also section [Simplifying access specificating the base type
+](/docs/arrays-and-getelementptr/README.md#simplifying-access-specificating-the-base-type).
 
 ```ll
 declare i32 @printf(ptr noundef, ...)
