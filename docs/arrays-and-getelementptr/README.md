@@ -61,7 +61,19 @@ entry:
 
 The [@printArray(ptr noundef %arr, i32 noundef %N)](/examples/hello-array.ll#L15-L58) function takes a pointer to the first element of the array `%arr` and its size `%N`, and prints the elements of the array. Both parameters are given the [noundef attribute](noundef.md), which means that they cannot be `undef` values.
 
-See [docs/images/hello-array.png](/docs/images/hello-array.png) for the CFG of the `printArray` function.
+See [docs/images/hello-array.png](/docs/images/hello-array.png) for the CFG of the `printArray` function. 
+The file was generated with:
+
+```bash
+➜  hello-llvm git:(main) ✗ source ./llvm-version.sh 21
+➜  hello-llvm git:(main) ✗ opt -passes=dot-cfg examples/hello-array.ll -disable-output 
+Writing '.printArray.dot'...
+Writing '.main.dot'...
+➜  hello-llvm git:(main) ✗ dot -Tpng .printArray.dot -o diag.png
+```
+
+The default colors
+were removed using the script at [scripts/filter-color.sh](/scripts/filter-color.sh) to make it easier to read.
 
 ## Multi-dimensional arrays
 
