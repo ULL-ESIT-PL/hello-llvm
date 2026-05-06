@@ -69,7 +69,7 @@ The file was generated with:
 ➜  hello-llvm git:(main) ✗ opt -passes=dot-cfg examples/hello-array.ll -disable-output 
 Writing '.printArray.dot'...
 Writing '.main.dot'...
-➜  hello-llvm git:(main) ✗ dot -Tpng .printArray.dot -o diag.png
+➜  hello-llvm git:(main) ✗ dot -Tpng .printArray.dot -o printArray.png
 ```
 
 The default colors
