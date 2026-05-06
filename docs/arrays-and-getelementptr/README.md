@@ -36,7 +36,7 @@ entry:
   %p0 = getelementptr i32, ptr %arr, i64 0
   store i32 1, ptr %p0, align 4
 
-  %p1 = getelementptr i32, ptr %arr, i64 1 ; Notice that this work with the i32 base type used 
+  %p1 = getelementptr i32, ptr %arr, i64 1 ; Notice that this works with the i32 base type used 
   store i32 2, ptr %p1, align 4
 
   %p2 = getelementptr i32, ptr %arr, i64 2
