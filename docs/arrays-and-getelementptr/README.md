@@ -64,7 +64,7 @@ The [@printArray(ptr noundef %arr, i32 noundef %N)](/examples/hello-array.ll#L15
 See [docs/images/hello-array.png](/docs/images/hello-array.png) for the CFG of the `printArray` function. 
 The file was generated with:
 
-```bash
+```console
 ➜  hello-llvm git:(main) ✗ source ./llvm-version.sh 21
 ➜  hello-llvm git:(main) ✗ opt -passes=dot-cfg examples/hello-array.ll -disable-output 
 Writing '.printArray.dot'...
