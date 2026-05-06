@@ -19,12 +19,8 @@ The base type `[5 x i32]` tells GEP the layout for calculating byte offsets. A u
 
 > **Note on pointer styles:** LLVM 15+ made *opaque pointers* (`ptr`) the default. In this style the result of GEP is always `ptr`. The older *typed pointer* style (`i32*`, `[5 x i32]*`, …) is still accepted for backwards compatibility but is considered legacy. 
 
-**For one dimensional arrays**, we can omit the first index, which is always `0`, and simplify it to
 
-```ll
-%p0 = getelementptr [5 x i32], ptr %arr, i64 2
-```
-This computes the address of the third element of the array and stores it in the register `%p0`. The `i64 2` is the index for the element. See file [/examples/hello-array.ll](/examples/hello-array.ll#L60-L83) for the actual code.
+See file [/examples/hello-array.ll](/examples/hello-array.ll#L60-L83) for the actual code.
 
 ```ll
 declare i32 @printf(ptr noundef, ...)
