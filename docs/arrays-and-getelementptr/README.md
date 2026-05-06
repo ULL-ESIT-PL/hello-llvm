@@ -75,6 +75,12 @@ Writing '.main.dot'...
 The default colors
 were removed using the script at [scripts/filter-color.sh](/scripts/filter-color.sh) to make it easier to read.
 
+## The first index of getelementptr: pointer arithmetic on the base type
+
+![](/docs/images/getelementptr.0.png)
+
+![](/docs/images/getelementptr.1.png)
+
 ## Multi-dimensional arrays
 
 To create a multi-dimensional array, we can use nested `alloca` instructions. For example, to create a 3x3 matrix `%M` of `i32`integers, we can do:
